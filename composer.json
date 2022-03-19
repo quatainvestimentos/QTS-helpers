@@ -1,0 +1,19 @@
+{
+    "name": "quata-investimentos/helpers",
+    "description": "Conjunto de funções a serem utilizadas nos diversos projetos da Quatá Investimentos",
+    "type": "library",
+    "license": "UNLICENSED",
+    "authors": [
+        {
+            "name": "Tecnologia Quatá Investimentos",
+            "email": "suporte@quatainvestimentos.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "QTS": "src/"
+        }
+    },
+    "require": {}
+}
