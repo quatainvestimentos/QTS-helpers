@@ -1,6 +1,6 @@
 <?php 
 
-namespace QTS;
+namespace QuataInvestimentos;
 
 class QTS 
 {
@@ -8,7 +8,7 @@ class QTS
     public static function translateStatus(String $string)
     {
 
-        return 'MODAFOCA: ' . $string;
+        return 'MODAFOCA, zimbabuê: ' . $string;
 
     }
 
