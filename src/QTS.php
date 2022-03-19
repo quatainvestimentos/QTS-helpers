@@ -15,6 +15,11 @@ class QTS
                 $badge = 'warning';
                 break;
 
+            case 'JSON_API':
+                $string = 'Via API em JSON';
+                $badge = 'warning';
+                break;
+
             case 'ACCESS_STAGE':
                 $string = 'AccessStage';
                 $badge = 'danger';
