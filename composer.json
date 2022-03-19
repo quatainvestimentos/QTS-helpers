@@ -15,5 +15,8 @@
             "QuataInvestimentos\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "php": "^7.4",
+        "quata-investimentos/helpers": "@dev"
+    }
 }
