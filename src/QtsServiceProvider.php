@@ -11,11 +11,10 @@ class QtsServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                Console\Commands\CustomServeCommand::class
-            ]);
-        }
+        $this->commands([
+            Console\Commands\CustomServeCommand::class
+        ]);
+        
     }
 
 }

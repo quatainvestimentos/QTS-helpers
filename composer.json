@@ -18,5 +18,12 @@
     "require": {
         "php": "^7.4",
         "quata-investimentos/helpers": "@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "QtsServiceProvider"
+            ]
+        }
     }
 }
