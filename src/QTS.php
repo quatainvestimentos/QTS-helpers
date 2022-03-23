@@ -2,7 +2,7 @@
 
 namespace QuataInvestimentos;
 
-class QTS 
+class Qts 
 {
 
     public static function translateEnums(String $string, Bool $get_badge=false)
