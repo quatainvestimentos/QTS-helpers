@@ -31,6 +31,31 @@ class QTS
                 $badge = 'success';
                 break;
 
+            case 'READ':
+                $string = 'Lido';
+                $badge = 'success';
+                break;
+
+            case 'UNREAD':
+                $string = 'Não lido';
+                $badge = 'success';
+                break;
+
+            case 'WARNING':
+                $string = 'Alertas';
+                $badge = 'warning';
+                break;
+
+            case 'DEBUG':
+                $string = 'Debug do sistema';
+                $badge = 'info';
+                break;
+
+            case 'ERROR':
+                $string = 'Erro';
+                $badge = 'danger';
+                break;
+
             /** Default */
             default:
                 $string = 'Não encontrado: ' . $string;
