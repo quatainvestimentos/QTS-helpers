@@ -5,6 +5,54 @@ namespace QuataInvestimentos;
 class QtsApi 
 {
 
+    public static function fetchError($endpoint, $params, $exceptions, $errors='LOCAL')
+    {
+        
+        $payload = (isset($params['json']) && $params['json'] ? $params['json'] : []);
+        if(isset($params['json']) && $params['json']) { unset($params['json']); }
+
+        if(isset($exceptions) && $exceptions){
+            foreach($exceptions as $exception):
+                $payload['exceptions'][] = $exception;
+            endforeach;
+        }
+
+        /**
+         * Save error into database
+         */
+
+        $payload = [
+            'person_api_key' => (isset($payload->person_api_key) ? $payload->person_api_key : '00000000-0000-0000-0000-000000000000'),
+            'app' => $endpoint,
+            'filename' => (isset($payload->trace_filename) ? $payload->trace_filename : 'N/I'),
+            'line' => (isset($payload->trace_line) ? $payload->trace_line : 0),
+            'payload' => json_encode($payload)
+        ];
+
+        switch(strtoupper($errors)){
+            case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
+            case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
+            case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
+            default: echo 'Endpoint de debug desconhecido: ' . $debug; exit;
+        }
+
+        $params += [\GuzzleHttp\RequestOptions::JSON => $payload];
+
+        try { 
+
+            $client = new \GuzzleHttp\Client();
+            $request = $client->post( $endpoint . 'errors', $params );
+
+        } catch (\Exception $e){
+
+            return false;
+            
+        }
+
+        return true;
+        
+    }
+
     public static function fetch($endpoint,$method='GET',$payload=[],$timeout=5)
     {
 
@@ -72,7 +120,7 @@ class QtsApi
                 $response = (object)json_decode($e->getResponse()->getBody()->getContents(), true);
                 $status_code = $e->getResponse()->getStatusCode();
 
-                $response = (isset($response->results) && $response->results) ? $response->results : ['Erro desconhecido'];
+                $response = (isset($response->results) && $response->results) ? $response->results : ['Erro desconhecido: ' . Qts::cleanSpecialChars(strip_tags($e->getMessage()))];
 
                 $data = [];
                 foreach($response as $key => $value):
@@ -80,6 +128,14 @@ class QtsApi
                     $data[] = $value;
                 endforeach;
             
+            }
+
+            /**
+             * Post Error at errors endpoint
+             */
+
+            if(isset($payload['errors']) && $payload['errors']){
+                QtsApi::fetchError($endpoint, $params, $data, $payload['errors']);
             }
 
             return (object)['status' => 500, 'data' => $data];

@@ -25,6 +25,11 @@ class Qts
                 $badge = 'danger';
                 break;
 
+            case 'QTS':
+                $string = 'QTS';
+                $badge = 'primary';
+                break;
+
             /** Status */
             case 'RECEIVED':
                 $string = 'Recebido';
@@ -72,6 +77,14 @@ class Qts
 
         return date($format, strtotime($datetime));
 
+    }
+
+    public static function cleanSpecialChars($string) {
+  
+        $string = str_replace( array( '\'', '"', ',' , ';', '<', '>' ), '', $string);
+        $string = trim($string);
+
+        return $string;
     }
 
 }
