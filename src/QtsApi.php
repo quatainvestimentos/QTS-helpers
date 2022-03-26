@@ -5,6 +5,90 @@ namespace QuataInvestimentos;
 class QtsApi 
 {
 
+    public static function fetchWarning($payload, $timeout=5, $warnings='LOCAL')
+    {
+
+        $params = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer: marcelomotta',
+                'ApiKey' => 'flux'
+            ],
+            'timeout' => $timeout
+        ];
+        
+        $payload = [
+            'person_api_key' => (isset($payload->person_api_key) && $payload->person_api_key ? $payload->person_api_key : 'Não informado'),
+            'text' => (isset($payload->text) && $payload->text ? $payload->text : 'Não informado'),
+            'json' => (isset($payload->json) && $payload->json ? $payload->json : 'Não informado')
+        ];
+
+        switch(strtoupper($warnings)){
+            case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
+            case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
+            case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
+            default: echo 'Endpoint de alertas desconhecido: ' . $warnings; exit;
+        }
+
+        $params += [\GuzzleHttp\RequestOptions::JSON => $payload];
+
+        try { 
+
+            $client = new \GuzzleHttp\Client();
+            $request = $client->post( $endpoint . 'warnings', $params );
+
+        } catch (\Exception $e){
+
+            return false;
+            
+        }
+
+        return true;
+        
+    }
+
+    public static function fetchDebug($payload, $timeout=5, $debugs='LOCAL')
+    {
+
+        $params = [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer: marcelomotta',
+                'ApiKey' => 'flux'
+            ],
+            'timeout' => $timeout
+        ];
+        
+        $payload = [
+            'person_api_key' => (isset($payload->person_api_key) && $payload->person_api_key ? $payload->person_api_key : 'Não informado'),
+            'text' => (isset($payload->text) && $payload->text ? $payload->text : 'Não informado'),
+            'json' => (isset($payload->json) && $payload->json ? $payload->json : 'Não informado')
+        ];
+
+        switch(strtoupper($debugs)){
+            case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
+            case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
+            case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
+            default: echo 'Endpoint de debug desconhecido: ' . $debugs; exit;
+        }
+
+        $params += [\GuzzleHttp\RequestOptions::JSON => $payload];
+
+        try { 
+
+            $client = new \GuzzleHttp\Client();
+            $request = $client->post( $endpoint . 'debugs', $params );
+
+        } catch (\Exception $e){
+
+            return false;
+            
+        }
+
+        return true;
+        
+    }
+
     public static function fetchError($endpoint, $params, $exceptions, $errors='LOCAL')
     {
         
@@ -33,7 +117,7 @@ class QtsApi
             case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
             case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
             case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
-            default: echo 'Endpoint de debug desconhecido: ' . $debug; exit;
+            default: echo 'Endpoint de erro desconhecido: ' . $errors; exit;
         }
 
         $params += [\GuzzleHttp\RequestOptions::JSON => $payload];
@@ -62,7 +146,7 @@ class QtsApi
                 'Authorization' => 'Bearer: marcelomotta',
                 'ApiKey' => 'flux'
             ],
-            'timeout' => 5
+            'timeout' => $timeout
         ];
 
         try {
