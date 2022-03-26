@@ -30,6 +30,11 @@ class Qts
                 $badge = 'primary';
                 break;
 
+            case 'CNAB':
+                $string = 'Arquivo CNAB';
+                $badge = 'primary';
+                break;
+
             /** Status */
             case 'RECEIVED':
                 $string = 'Recebido';

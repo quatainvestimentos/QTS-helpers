@@ -105,9 +105,17 @@ class QtsApi
              */
 
             $guzzle_available = true;
+            
             if(strpos($e->getMessage(), 'Connection refused') !== false){
                 $guzzle_available = false;
+                # Acumula os erros em data
                 $data[] = 'A conexão foi recusada pelo servidor, verifique se o endpoint está disponível para acesso';
+            }
+
+            if(strpos($e->getMessage(), 'Operation timed out after') !== false){
+                $guzzle_available = false;
+                # Retorna apenas esse erro
+                $data = ['A requisição foi encerrada devido ao tempo lento de resposta da API, configurado em ' . $timeout . ' segundo(s)'];
             }
 
             /**
