@@ -1,6 +1,6 @@
 <?php 
 
-namespace QuataInvestimentos;
+namespace QuataInvestimentos\helpers;
 
 class Qts 
 {

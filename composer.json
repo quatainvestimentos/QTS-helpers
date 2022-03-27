@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "QuataInvestimentos\\": "src/"
+            "QuataInvestimentos\\": "helpers/src/"
         }
     },
     "require": {
