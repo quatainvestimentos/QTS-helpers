@@ -1,6 +1,6 @@
 <?php
 
-namespace QuataInvestimentos\helpers;
+namespace QuataInvestimentos;
 
 class QtsApi 
 {
