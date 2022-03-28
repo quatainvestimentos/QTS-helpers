@@ -2,6 +2,8 @@
 
 namespace QuataInvestimentos;
 
+use QuataInvestimentos\QtsHelpers;
+
 class QtsApi 
 {
 
@@ -212,7 +214,7 @@ class QtsApi
                 $response = (object)json_decode($e->getResponse()->getBody()->getContents(), true);
                 $status_code = $e->getResponse()->getStatusCode();
 
-                $response = (isset($response->results) && $response->results) ? $response->results : ['Erro desconhecido: ' . Qts::cleanSpecialChars(strip_tags($e->getMessage()))];
+                $response = (isset($response->results) && $response->results) ? $response->results : ['Erro desconhecido: ' . QtsHelpers::cleanSpecialChars(strip_tags($e->getMessage()))];
 
                 $data = [];
                 foreach($response as $key => $value):
