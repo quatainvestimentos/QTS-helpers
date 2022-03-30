@@ -10,14 +10,25 @@ class QtsApi
     public static function fetchWarning($payload, $timeout=5, $warnings='LOCAL')
     {
 
+        if(!isset($payload->qts_headers['token']) || !isset($payload->qts_headers['client_secret'])){
+            return (object)['status' => 500, 'data' => ['Favor informar o token e o client secret para fazer conexões com a API']];
+        }
+
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: marcelomotta',
-                'ApiKey' => 'flux'
+                'Authorization' => 'Bearer: ' . $payload->qts_headers['token']['token'],
+                'client_secret' => $payload->qts_headers['client_secret']
             ],
             'timeout' => $timeout
         ];
+
+        /**
+         * Unset payload headers from request
+         */
+
+        $payload->qts_headers = null;
+        unset($payload->qts_headers);
         
         $payload = [
             'person_api_key' => (isset($payload->person_api_key) && $payload->person_api_key ? $payload->person_api_key : 'Não informado'),
@@ -52,14 +63,25 @@ class QtsApi
     public static function fetchDebug($payload, $timeout=5, $debugs='LOCAL')
     {
 
+        if(!isset($payload->qts_headers['token']) || !isset($payload->qts_headers['client_secret'])){
+            return (object)['status' => 500, 'data' => ['Favor informar o token e o client secret para fazer conexões com a API']];
+        }
+
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: marcelomotta',
-                'ApiKey' => 'flux'
+                'Authorization' => 'Bearer: ' . $payload->qts_headers['token']['token'],
+                'client_secret' => $payload->qts_headers['client_secret']
             ],
             'timeout' => $timeout
         ];
+
+        /**
+         * Unset payload headers from request
+         */
+
+        $payload->qts_headers = null;
+        unset($payload->qts_headers);
         
         $payload = [
             'person_api_key' => (isset($payload->person_api_key) && $payload->person_api_key ? $payload->person_api_key : 'Não informado'),
@@ -117,8 +139,8 @@ class QtsApi
 
         switch(strtoupper($errors)){
             case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
-            case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
-            case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
+            case 'TESTING': $endpoint = 'https://dev-docs.quatainvestimentos.com.br/api/'; break;
+            case 'PRODUCTION': $endpoint = 'https://docs.quatainvestimentos.com.br/api/'; break;
             default: echo 'Endpoint de erro desconhecido: ' . $errors; exit;
         }
 
@@ -142,14 +164,25 @@ class QtsApi
     public static function fetch($endpoint,$method='GET',$payload=[],$timeout=5)
     {
 
+        if(!isset($payload->qts_headers['token']) || !isset($payload->qts_headers['client_secret'])){
+            return (object)['status' => 500, 'data' => ['Favor informar o token e o client secret para fazer conexões com a API']];
+        }
+
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: marcelomotta',
-                'ApiKey' => 'flux'
+                'Authorization' => 'Bearer: ' . $payload->qts_headers['token']['token'],
+                'client_secret' => $payload->qts_headers['client_secret']
             ],
             'timeout' => $timeout
         ];
+
+        /**
+         * Unset payload headers from request
+         */
+
+        $payload->qts_headers = null;
+        unset($payload->qts_headers);
 
         try {
 
