@@ -11,7 +11,7 @@ class QtsApi
     {
 
         if(!isset($headers['token']) && !isset($headers['client_secret'])){
-            return (object)['status' => 500, 'data' => ['Favor informar o token ou client secret para fazer conexões com a API']];
+            return (object)['status' => 500, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
         }
 
         $params = [
@@ -58,7 +58,7 @@ class QtsApi
     {
 
         if(!isset($headers['token']) && !isset($headers['client_secret'])){
-            return (object)['status' => 500, 'data' => ['Favor informar o token ou client secret para fazer conexões com a API']];
+            return (object)['status' => 500, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
         }
 
         $params = [
@@ -105,11 +105,18 @@ class QtsApi
     {
         
         $payload = (isset($params['json']) && $params['json'] ? $params['json'] : []);
+        $payload = (object)$payload;
+
+        /**
+         * Removes JSON from payload
+         * json key is used on Guzzle requests
+         */
+
         if(isset($params['json']) && $params['json']) { unset($params['json']); }
 
         if(isset($exceptions) && $exceptions){
             foreach($exceptions as $exception):
-                $payload['exceptions'][] = $exception;
+                $payload->exceptions[] = $exception;
             endforeach;
         }
 
@@ -118,7 +125,7 @@ class QtsApi
          */
 
         $payload = [
-            'person_api_key' => (isset($payload->person_api_key) ? $payload->person_api_key : '00000000-0000-0000-0000-000000000000'),
+            'person_api_key' => (isset($payload->trace_person_api_key) ? $payload->trace_person_api_key : '00000000-0000-0000-0000-000000000000'),
             'app' => $endpoint,
             'filename' => (isset($payload->trace_filename) ? $payload->trace_filename : 'N/I'),
             'line' => (isset($payload->trace_line) ? $payload->trace_line : 0),
@@ -132,6 +139,7 @@ class QtsApi
             default: echo 'Endpoint de erro desconhecido: ' . $errors; exit;
         }
 
+        $params['headers']['client_secret'] = env('DOCS_CLIENT_SECRET');
         $params += [\GuzzleHttp\RequestOptions::JSON => $payload];
 
         try { 
@@ -153,7 +161,7 @@ class QtsApi
     {
 
         if(!isset($headers['token']) && !isset($headers['client_secret'])){
-            return (object)['status' => 500, 'data' => ['Favor informar o token ou client secret para fazer conexões com a API']];
+            return (object)['status' => 500, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
         }
 
         $params = [
