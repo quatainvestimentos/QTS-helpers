@@ -10,15 +10,15 @@ class QtsApi
     public static function fetchWarning($payload, $timeout=5, $warnings='LOCAL')
     {
 
-        if(!isset($payload->qts_headers['token']) || !isset($payload->qts_headers['client_secret'])){
+        if(!isset($payload['qts_headers']['token']) || !isset($payload['qts_headers']['client_secret'])){
             return (object)['status' => 500, 'data' => ['Favor informar o token e o client secret para fazer conexões com a API']];
         }
 
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: ' . $payload->qts_headers['token'],
-                'client_secret' => $payload->qts_headers['client_secret']
+                'Authorization' => 'Bearer: ' . $payload['qts_headers']['token'],
+                'client_secret' => $payload['qts_headers']['client_secret']
             ],
             'timeout' => $timeout
         ];
@@ -27,8 +27,8 @@ class QtsApi
          * Unset payload headers from request
          */
 
-        $payload->qts_headers = null;
-        unset($payload->qts_headers);
+        $payload['qts_headers'] = null;
+        unset($payload['qts_headers']);
         
         $payload = [
             'person_api_key' => (isset($payload->person_api_key) && $payload->person_api_key ? $payload->person_api_key : 'Não informado'),
@@ -63,15 +63,15 @@ class QtsApi
     public static function fetchDebug($payload, $timeout=5, $debugs='LOCAL')
     {
 
-        if(!isset($payload->qts_headers['token']) || !isset($payload->qts_headers['client_secret'])){
+        if(!isset($payload['qts_headers']['token']) || !isset($payload['qts_headers']['client_secret'])){
             return (object)['status' => 500, 'data' => ['Favor informar o token e o client secret para fazer conexões com a API']];
         }
 
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: ' . $payload->qts_headers['token'],
-                'client_secret' => $payload->qts_headers['client_secret']
+                'Authorization' => 'Bearer: ' . $payload['qts_headers']['token'],
+                'client_secret' => $payload['qts_headers']['client_secret']
             ],
             'timeout' => $timeout
         ];
@@ -80,8 +80,8 @@ class QtsApi
          * Unset payload headers from request
          */
 
-        $payload->qts_headers = null;
-        unset($payload->qts_headers);
+        $payload['qts_headers'] = null;
+        unset($payload['qts_headers']);
         
         $payload = [
             'person_api_key' => (isset($payload->person_api_key) && $payload->person_api_key ? $payload->person_api_key : 'Não informado'),
@@ -164,15 +164,15 @@ class QtsApi
     public static function fetch($endpoint,$method='GET',$payload=[],$timeout=5)
     {
 
-        if(!isset($payload->qts_headers['token']) || !isset($payload->qts_headers['client_secret'])){
+        if(!isset($payload['qts_headers']['token']) || !isset($payload['qts_headers']['client_secret'])){
             return (object)['status' => 500, 'data' => ['Favor informar o token e o client secret para fazer conexões com a API']];
         }
 
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: ' . $payload->qts_headers['token'],
-                'client_secret' => $payload->qts_headers['client_secret']
+                'Authorization' => 'Bearer: ' . $payload['qts_headers']['token'],
+                'client_secret' => $payload['qts_headers']['client_secret']
             ],
             'timeout' => $timeout
         ];
@@ -181,8 +181,8 @@ class QtsApi
          * Unset payload headers from request
          */
 
-        $payload->qts_headers = null;
-        unset($payload->qts_headers);
+        $payload['qts_headers'] = null;
+        unset($payload['qts_headers']);
 
         try {
 
