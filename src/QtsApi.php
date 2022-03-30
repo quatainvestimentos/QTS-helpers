@@ -216,7 +216,7 @@ class QtsApi
             if(strpos($e->getMessage(), 'Operation timed out after') !== false){
                 $guzzle_available = false;
                 # Retorna apenas esse erro
-                $data = ['A requisição foi encerrada devido ao tempo lento de resposta da API, configurado em ' . $timeout . ' segundo(s)'];
+                $data = ['A requisição foi encerrada devido ao tempo lento de resposta da API, configurado em ' . $params['timeout'] . ' segundo(s)'];
             }
 
             if(strpos($e->getMessage(), '401 Unauthorized') !== false){
