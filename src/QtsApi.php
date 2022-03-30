@@ -17,7 +17,7 @@ class QtsApi
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: ' . $payload->qts_headers['token']['token'],
+                'Authorization' => 'Bearer: ' . $payload->qts_headers['token'],
                 'client_secret' => $payload->qts_headers['client_secret']
             ],
             'timeout' => $timeout
@@ -70,7 +70,7 @@ class QtsApi
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: ' . $payload->qts_headers['token']['token'],
+                'Authorization' => 'Bearer: ' . $payload->qts_headers['token'],
                 'client_secret' => $payload->qts_headers['client_secret']
             ],
             'timeout' => $timeout
@@ -171,7 +171,7 @@ class QtsApi
         $params = [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer: ' . $payload->qts_headers['token']['token'],
+                'Authorization' => 'Bearer: ' . $payload->qts_headers['token'],
                 'client_secret' => $payload->qts_headers['client_secret']
             ],
             'timeout' => $timeout
