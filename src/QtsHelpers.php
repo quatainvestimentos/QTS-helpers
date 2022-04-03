@@ -92,4 +92,53 @@ class QtsHelpers
         return $string;
     }
 
+    public static function convertToBase64(Request $request, $input_name)
+    {
+
+        if( !$request->hasFile($input_name) ){ return []; }
+
+        $converted = [];            
+        foreach($request->file($input_name) as $remittance):
+
+            $converted[] = (object)[
+                'filename' => date('His-') . $remittance->getClientOriginalName(),
+                'base64' => base64_encode(file_get_contents($remittance))
+            ];
+
+        endforeach;
+
+        return $converted;
+
+    }
+
+    public static function extractBase64(Request $request, $input_name)
+    {
+
+        if(!$request->has($input_name)){ return []; }
+
+        $converted = [];
+
+        foreach($request->all() as $key => $value):
+            if($key === $input_name):
+
+                foreach($value as $remittance):
+
+                    if(isset($remittance['filename']) && isset($remittance['base64'])){
+        
+                        $converted[] = (object)[
+                            'filename' => date('His-') . $remittance['filename'],
+                            'base64' => $remittance['base64'],
+                        ];     
+        
+                    }
+        
+                endforeach;
+
+            endif;
+        endforeach;
+
+        return $converted;
+        
+    }
+
 }
