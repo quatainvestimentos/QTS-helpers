@@ -92,7 +92,7 @@ class QtsHelpers
         return $string;
     }
 
-    public static function convertToBase64(Request $request, $input_name)
+    public static function convertToBase64($request, $input_name)
     {
 
         if( !$request->hasFile($input_name) ){ return []; }
@@ -111,7 +111,7 @@ class QtsHelpers
 
     }
 
-    public static function extractBase64(Request $request, $input_name)
+    public static function extractBase64($request, $input_name)
     {
 
         if(!$request->has($input_name)){ return []; }
