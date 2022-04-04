@@ -129,7 +129,8 @@ class QtsApi
             'app' => $endpoint,
             'filename' => (isset($payload->trace_filename) ? $payload->trace_filename : 'N/I'),
             'line' => (isset($payload->trace_line) ? $payload->trace_line : 0),
-            'payload' => json_encode($payload)
+            'payload' => json_encode($payload),
+            'base64_attachments' => (isset($payload->base64_attachments) ? $payload->base64_attachments : [])
         ];
 
         switch(strtoupper($errors)){
