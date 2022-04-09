@@ -25,6 +25,11 @@ class QtsHelpers
                 $badge = 'danger';
                 break;
 
+            case 'FINNET':
+                $string = 'Finnet';
+                $badge = 'danger';
+                break;
+
             case 'QTS':
                 $string = 'QTS';
                 $badge = 'primary';
@@ -39,6 +44,16 @@ class QtsHelpers
             case 'RECEIVED':
                 $string = 'Recebido';
                 $badge = 'success';
+                break;
+
+            case 'PENDING':
+                $string = 'Pendente';
+                $badge = 'warning';
+                break;
+
+            case 'STORED':
+                $string = 'Armazenado';
+                $badge = 'primary';
                 break;
 
             case 'READ':
@@ -63,6 +78,16 @@ class QtsHelpers
 
             case 'ERROR':
                 $string = 'Erro';
+                $badge = 'danger';
+                break;
+
+            case 'ACTIVE':
+                $string = 'Ativo';
+                $badge = 'primary';
+                break;
+            
+            case 'INACTIVE':
+                $string = 'Inativo';
                 $badge = 'danger';
                 break;
 
