@@ -140,7 +140,7 @@ class QtsApi
             default: echo 'Endpoint de erro desconhecido: ' . $errors; exit;
         }
 
-        $params['headers']['client-secret'] = env('DOCS_CLIENT_SECRET');
+        $params['headers']['client-secret'] = env('CLIENT_SECRET');
         $params += [\GuzzleHttp\RequestOptions::JSON => $payload];
 
         try { 
