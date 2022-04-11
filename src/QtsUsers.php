@@ -46,7 +46,7 @@ class QtsUsers
             return (object)['status' => 404, 'data' => $results->data];
         }
 
-        return (object)['status' => 200, 'data' => $data->results];
+        return (object)['status' => 200, 'data' => (isset($data->results) && $data->results ? $data->results : [])];
 
     }
 
