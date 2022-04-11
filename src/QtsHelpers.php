@@ -167,44 +167,44 @@ class QtsHelpers
     }
 
     public static function mask($val, $mask){
-        $maskared = '';
+        $masked = '';
         $k = 0;
         for($i = 0; $i<=strlen($mask)-1; $i++){
             if($mask[$i] == '#'){
             if(isset($val[$k]))
-            $maskared .= $val[$k++];
+            $masked .= $val[$k++];
         } else {
             if(isset($mask[$i]))
-            $maskared .= $mask[$i];
+            $masked .= $mask[$i];
         }}
         
-        return $maskared;
+        return $masked;
     }
 
     public static function translate_complete_phone_mask($value,$pad=19){
         $value = preg_replace( '/[\W]/', '', $value); 
-        return str_pad(mask($value,'+## (##) #####-####'), $pad, "0", STR_PAD_LEFT);
+        return str_pad(QtsHelpers::mask($value,'+## (##) #####-####'), $pad, "0", STR_PAD_LEFT);
     }
     
     public static function translate_phone_mask($value,$pad=10){
-        return str_pad(mask($value,'#####-####'), $pad, "0", STR_PAD_LEFT);
+        return str_pad(QtsHelpers::mask($value,'#####-####'), $pad, "0", STR_PAD_LEFT);
     }
 
     public static function mask_identification_type($type,$value){
         switch($type){
-            case 'TAXPAYER_ID': return mask($value,'###.###.###-##'); break;
-            case 'EIN': return mask($value,'##.###.###/####-##'); break;
+            case 'TAXPAYER_ID': return QtsHelpers::mask($value,'###.###.###-##'); break;
+            case 'EIN': return QtsHelpers::mask($value,'##.###.###/####-##'); break;
             default: return 'Desconhecido: ' . $value;
         }
     }
 
     public static function translate_barcode($value){
-        return mask($value,'#####.#####  #####.######  #####.######  #  ##############');
+        return QtsHelpers::mask($value,'#####.#####  #####.######  #####.######  #  ##############');
     }
 
     function translate_zipcode($value){
         if(strlen($value)===8){
-            return mask($value,'#####-###');
+            return QtsHelpers::mask($value,'#####-###');
         }
 
         return $value;
