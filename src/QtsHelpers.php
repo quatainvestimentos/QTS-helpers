@@ -126,7 +126,7 @@ class QtsHelpers
         foreach($request->file($input_name) as $remittance):
 
             $converted[] = (object)[
-                'filename' => date('His-') . $remittance->getClientOriginalName(),
+                'filename' => $remittance->getClientOriginalName(),
                 'base64' => base64_encode(file_get_contents($remittance))
             ];
 
@@ -151,7 +151,7 @@ class QtsHelpers
                     if(isset($remittance['filename']) && isset($remittance['base64'])){
         
                         $converted[] = (object)[
-                            'filename' => date('His-') . $remittance['filename'],
+                            'filename' => $remittance['filename'],
                             'base64' => $remittance['base64'],
                         ];     
         
