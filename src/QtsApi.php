@@ -181,6 +181,7 @@ class QtsApi
 
             switch(strtoupper($method)){
                 case 'GET':
+                    $params += (isset($payload) && $payload ? ['query' => $payload] : []);
                     $request = $client->get( $endpoint, $params );
                     break;
                 
@@ -195,6 +196,7 @@ class QtsApi
                     break;
                 
                 case 'DELETE': 
+                    $params += (isset($payload) && $payload ? ['query' => $payload] : []);
                     $request = $client->delete( $endpoint, $params );
                     break;
             }
