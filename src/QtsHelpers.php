@@ -337,4 +337,19 @@ class QtsHelpers
         return "{$minute} {$hour} {$month_day} {$month} {$weekday}.";
     }
 
+    public static function translate_countable($countable, $none='nenhum', $singular='resultado', $plural='resultados')
+    {
+
+        $total = (is_array($countable) ? count($countable) : $countable);
+        $result = (isset($total) && $total === 0) ? $none : null;
+        
+        if(!$result){
+            $result = ($total === 1) ? $singular : $plural;
+            $result = $total . ' ' . $result;
+        }
+
+        return $result;
+
+    }
+
 }
