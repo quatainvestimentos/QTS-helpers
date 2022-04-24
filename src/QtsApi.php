@@ -236,6 +236,12 @@ class QtsApi
                 $data = ['Não autorizado. Favor validar/enviar token e client_secret antes de fazer requisições na API'];
             }
 
+            if(strpos($e->getMessage(), 'Could not resolve host:') !== false){
+                $guzzle_available = false;
+                # Retorna apenas esse erro
+                $data = ['Não foi possível chamar a URL/endpoint: ' . $endpoint];
+            }
+
             /**
              * Substitui o erro padrão por outros erros
              * Se existirem (validado pelo status code)
