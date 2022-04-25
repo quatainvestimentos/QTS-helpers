@@ -7,7 +7,5 @@ use QuataInvestimentos\QtsHelpers;
 use QuataInvestimentos\QtsUsers;
 
 class Qts {
-    use QtsApi;
-    use QtsHelpers;
-    use QtsUsers;
+    use QtsApi, QtsHelpers, QtsUsers;
 }

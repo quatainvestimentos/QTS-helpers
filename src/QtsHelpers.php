@@ -183,28 +183,28 @@ trait QtsHelpers
 
     public static function translate_complete_phone_mask($value,$pad=19){
         $value = preg_replace( '/[\W]/', '', $value); 
-        return str_pad(QtsHelpers::mask($value,'+## (##) #####-####'), $pad, "0", STR_PAD_LEFT);
+        return str_pad(Qts::mask($value,'+## (##) #####-####'), $pad, "0", STR_PAD_LEFT);
     }
     
     public static function translate_phone_mask($value,$pad=10){
-        return str_pad(QtsHelpers::mask($value,'#####-####'), $pad, "0", STR_PAD_LEFT);
+        return str_pad(Qts::mask($value,'#####-####'), $pad, "0", STR_PAD_LEFT);
     }
 
     public static function mask_identification_type($type,$value){
         switch($type){
-            case 'TAXPAYER_ID': return QtsHelpers::mask($value,'###.###.###-##'); break;
-            case 'EIN': return QtsHelpers::mask($value,'##.###.###/####-##'); break;
+            case 'TAXPAYER_ID': return Qts::mask($value,'###.###.###-##'); break;
+            case 'EIN': return Qts::mask($value,'##.###.###/####-##'); break;
             default: return 'Desconhecido: ' . $value;
         }
     }
 
     public static function translate_barcode($value){
-        return QtsHelpers::mask($value,'#####.#####  #####.######  #####.######  #  ##############');
+        return Qts::mask($value,'#####.#####  #####.######  #####.######  #  ##############');
     }
 
     function translate_zipcode($value){
         if(strlen($value)===8){
-            return QtsHelpers::mask($value,'#####-###');
+            return Qts::mask($value,'#####-###');
         }
 
         return $value;
@@ -306,12 +306,12 @@ trait QtsHelpers
 
             if(strpos($month,'*/') !== false ){
                 list($every,$month) = explode('/', $month);
-                $month = "somente no mês de " . QtsHelpers::translate_month($month);
+                $month = "somente no mês de " . Qts::translate_month($month);
             }
 
             if(strpos($month,'-') !== false ){
                 list($from,$to) = explode('-', $month);
-                $month = "de " . QtsHelpers::translate_month($from) . " a " . QtsHelpers::translate_month($to);
+                $month = "de " . Qts::translate_month($from) . " a " . Qts::translate_month($to);
             }
 
         }
@@ -324,12 +324,12 @@ trait QtsHelpers
 
             if(strpos($weekday,'*/') !== false ){
                 list($every,$weekday) = explode('/', $weekday);
-                $weekday = "somente de " . QtsHelpers::translate_weekday($weekday);
+                $weekday = "somente de " . Qts::translate_weekday($weekday);
             }
 
             if(strpos($weekday,'-') !== false ){
                 list($from,$to) = explode('-', $weekday);
-                $weekday = "no intervalo de " . QtsHelpers::translate_weekday($from) . " a " . QtsHelpers::translate_weekday($to);
+                $weekday = "no intervalo de " . Qts::translate_weekday($from) . " a " . Qts::translate_weekday($to);
             }
 
         }

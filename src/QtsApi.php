@@ -265,7 +265,7 @@ trait QtsApi
              */
 
             if(isset($payload['errors']) && $payload['errors']){
-                QtsApi::fetchError($endpoint, $params, $data, $payload['errors']);
+                Qts::fetchError($endpoint, $params, $data, $payload['errors']);
             }
 
             return (object)['status' => 500, 'data' => $data];

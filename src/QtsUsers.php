@@ -20,7 +20,7 @@ trait QtsUsers
     public static function isValid($key, $env='LOCAL')
     {
 
-        $results = QtsApi::fetch(QtsUsers::getEndpoint($env) . 'validate/' . $key, 'GET', [
+        $results = Qts::fetch(Qts::getEndpoint($env) . 'validate/' . $key, 'GET', [
             'token' => 'N/A',
             'client-secret' => 'N/A'
         ]);
@@ -39,7 +39,7 @@ trait QtsUsers
     public static function cachedUsers($env='LOCAL')
     {
 
-        $results = QtsApi::fetch(QtsUsers::getEndpoint($env) . 'cache/users', 'GET', ['client-secret' => env('CLIENT_SECRET')]);
+        $results = Qts::fetch(Qts::getEndpoint($env) . 'cache/users', 'GET', ['client-secret' => env('CLIENT_SECRET')]);
         $data = (isset($results->data) && $results->data ? $results->data : []);
 
         if(isset($results->status) && $results->status !== 200){
