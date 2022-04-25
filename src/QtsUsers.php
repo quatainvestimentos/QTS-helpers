@@ -2,7 +2,7 @@
 
 namespace QuataInvestimentos;
 
-class QtsUsers 
+trait QtsUsers 
 {
 
     protected static function getEndpoint($env)
