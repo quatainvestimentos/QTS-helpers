@@ -352,4 +352,19 @@ class QtsHelpers
 
     }
 
+    public static function extractUserData($json,$data='ALL')
+    {
+
+        $json = json_decode($json, true);
+        if(strtoupper($data) === 'ALL'){ return $json; }
+
+        foreach($json as $key => $value):
+            if(strtoupper($key) === strtoupper($data)){
+                return $value;
+            }
+        endforeach;
+
+        return null;
+    }
+
 }
