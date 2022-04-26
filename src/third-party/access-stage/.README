@@ -22,12 +22,19 @@ $ apt-get install openjdk-8-jdk
 # Permissões
 Colocar tudo com permissão 0775 + os arquivos da raiz e os da lib
 
+$ chmod 0775 *.lck
 $ chmod 0775 *.jar
 $ chmod 0775 *.cfg
 $ chmod 0775 *.sh
 $ chmod 0775 inbox
 $ chmod 0775 outbox
 $ chmod 0775 lib/*.jar
+
+# Hidden Files
+Verificar se os arquivos escondidos também estão com a permissão correta
+E também se estão com o chown (owner como forge forge) para rodar via cron
+
+$ ls -Al
 
 # Sincronizar a primeira vez
 
