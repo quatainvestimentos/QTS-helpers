@@ -1,24 +1,43 @@
 # Instalação do APUS/AccessStage no servidor Linux
-https://www.accesstage.com.br/downloads/apus/4015/ApusJavaUnix.zip 
+Disponível aqui em: ApusJavaUnix.zip 
 
 # Configuração
 Usar o apusClient.cfg que está atualmente no servidor como base ou pegar um novo com a AccessStage
 
 # FTP/SSH
 Subir os arquivos dentro da pasta apus (via FTP ou SSH) 
+Ou subir o zip e descompactar direto no servidor
+Acessar como root
+
+$ sudo su
+$ unzip ApusJavaUnix.zip
+$ rm -r __MACOSX (se necessário)
+$ rm ApusJavaUnix.zip
 
 # JAVA
 Baixar o Java no servidor (caso ainda não tenha)
-$ sudo apt install openjdk-11-jre-headless 
+Essa é a versão oficial (segura) para rodar o ApusClient
+$ apt-get install openjdk-8-jdk
 
-Executar esse comando 
-$ java -jar ApusClient.jar -sync -password novasenha 
+# Permissões
+Colocar tudo com permissão 0775 + os arquivos da raiz e os da lib
+
+$ chmod 0775 *.jar
+$ chmod 0775 *.cfg
+$ chmod 0775 *.sh
+$ chmod 0775 inbox
+$ chmod 0775 outbox
+$ chmod 0775 lib/*.jar
+
+# Sincronizar a primeira vez
+
+$ java -jar ApusClient.jar -sync
 
 # StartApus
 Sincronizar o startApus.sh (para teste de funcionamento) 
-sh startApus.sh –-sync 
+sh startApus.sh –sync 
 
 Configurar a cron para que o startApus.sh rode de tempos em tempos
 Preferenciamente entre o intervalo que o sistema puxa os arquivos da Inbox para a remessa 
 
-10 * * * * sh /caminho/do/servidor/startApus.sh –-sync 
+10 * * * * sh /caminho/do/servidor/startApus.sh –sync 
