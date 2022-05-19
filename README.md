@@ -1,3 +1,3 @@
 # Teste
 
-Classes QtsApi, QtsHelpers
+Classes QtsApi, QtsHelpers, QtsUsers, QtsEs512, QiTech
