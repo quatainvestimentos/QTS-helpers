@@ -5,6 +5,29 @@ namespace QuataInvestimentos;
 trait QtsHelpers 
 {
 
+    public static function debug($label,$debug)
+    {
+        $header = <<<EOD
+ 
+        -------------------
+        DEBUG: {$label}
+
+
+        EOD;
+
+        $debug = (isset($debug) && is_array($debug) ? $debug : json_encode($debug));
+
+        $footer = <<<EOD
+
+
+        EOD;
+        
+        echo strtoupper($header);
+        print_r($debug);
+        echo $footer;
+        
+    }
+
     public static function translateEnums(String $string, Bool $get_badge=false)
     {
 
@@ -154,6 +177,89 @@ trait QtsHelpers
                             'filename' => $remittance['filename'],
                             'base64' => $remittance['base64'],
                         ];     
+        
+                    }
+        
+                endforeach;
+
+            endif;
+        endforeach;
+
+        return $converted;
+        
+    }
+
+    public static function convertToBinary($request, $input_name)
+    {
+
+        if( !$request->hasFile($input_name) ){ return []; }
+
+        $converted = [];            
+        foreach($request->file($input_name) as $file):
+
+            $data = fopen($file,'rb');
+            $contents = fread($data, filesize($file));
+            fclose ($data);
+
+            $converted[] = (object)[
+                'md5' => md5($contents),
+                'name' => $file->getPathName(),
+                'mime' => $file->getMimeType(),
+                'postname' => $file->getClientOriginalName()
+            ];
+
+        endforeach;
+
+        return $converted;
+
+    }
+
+    public static function extractBinary($request, $input_name)
+    {
+
+        if(!$request->has($input_name)){ return []; }
+
+        $converted = [];
+
+        foreach($request->all() as $key => $value):
+            if($key === $input_name):
+
+                foreach($value as $file):
+
+                    /**
+                     * Check integrity
+                     */
+
+                    $valid = true;
+                    $valid = (!isset($file['base64']) ? false : true);
+                    $valid = (!isset($file['filename']) ? false : true);
+
+                    if($valid){
+
+                        try {
+                            
+                            \Storage::disk('local')->put('temp/' . $file['filename'], base64_decode($file['base64']));
+                            $path = '../storage/app/temp/' . $file['filename'];
+
+                            $data = fopen($path,'rb');
+                            $contents = fread($data, filesize($path));
+                            fclose ($data);
+                    
+                            $converted[] = (object)[
+                                'md5' => md5($contents),
+                                'name' => $path,
+                                'mime' => mime_content_type($path),
+                                'postname' => $file['filename']
+                            ];
+
+                        } catch(\Exception $e){
+
+                            echo $e->getMessage();
+                            exit;
+
+                            $converted[] = null;
+
+                        }
         
                     }
         
