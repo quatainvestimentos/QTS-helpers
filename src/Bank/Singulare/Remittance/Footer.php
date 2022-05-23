@@ -1,6 +1,6 @@
 <?php
 
-namespace QuataInvestimentos\Bank\Singulare;
+namespace QuataInvestimentos\Bank\Singulare\Remittance;
 
 trait Footer {
 
