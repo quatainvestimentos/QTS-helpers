@@ -4,7 +4,7 @@ namespace QuataInvestimentos\Bank\Bradesco\Remittance;
 
 trait Footer {
 
-    public function extractFrom($line,$data,$pad=true)
+    public function extractFooterFrom($line,$data,$pad=true)
     {
 
         switch(strtoupper($data)){
@@ -15,12 +15,12 @@ trait Footer {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return $this->padLine($data, $value); }
+        if($pad){ return Remittance::padLine($data, $value); }
         return $value;
 
     }
 
-    public function help()
+    public function footerHelp()
     {
         $data = [
             'CNAB' => 'BRADESCO',
@@ -51,7 +51,7 @@ trait Footer {
         return $data;
     }
 
-    public function replaceOn($line,$data,$new_value)
+    public function footerReplaceOn($line,$data,$new_value)
     {
 
         switch(strtoupper($data)){
@@ -65,11 +65,11 @@ trait Footer {
 
     }
 
-    public function padLine($data,$value)
+    public function footerPadLine($data,$value)
     {
 
-        $value = $this->cleanUp($value);
-        $value = $this->removeExtraSpaces($value);
+        $value = Common::cleanUp($value);
+        $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
 

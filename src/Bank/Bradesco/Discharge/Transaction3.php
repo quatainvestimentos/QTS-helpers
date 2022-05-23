@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Discharge;
+use QuataInvestimentos\Bank\Common;
 
 trait Transaction3 {
 
@@ -55,7 +56,7 @@ trait Transaction3 {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return $this->padLine($data, $value); }
+        if($pad){ return Discharge::padLine($data, $value); }
         return $value;
 
     }
@@ -428,8 +429,8 @@ trait Transaction3 {
     public function padLine($data,$value)
     {
 
-        $value = $this->cleanUp($value);
-        $value = $this->removeExtraSpaces($value);
+        $value = Common::cleanUp($value);
+        $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
 

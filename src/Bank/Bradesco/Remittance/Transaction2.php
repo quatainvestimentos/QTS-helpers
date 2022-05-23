@@ -1,10 +1,11 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Common;
 
 trait Transaction2 {
 
-    public function extractFrom($line,$data,$pad=true)
+    public function extractTransaction2From($line,$data,$pad=true)
     {
 
         switch(strtoupper($data)){
@@ -47,15 +48,15 @@ trait Transaction2 {
 
         if($check_required_fields){
             $value = (int)$value;
-            if(!$value){ $value = (string)$this->padLine($data, $value); }
+            if(!$value){ $value = (string)Remittance::padLine($data, $value); }
         }
 
-        if($pad){ return $this->padLine($data, $value); }
+        if($pad){ return Remittance::padLine($data, $value); }
         return $value;
 
     }
 
-    public function help(){
+    public function transaction2Help(){
         $data = [
             'CNAB' => 'BRADESCO',
             'TYPE' => 'TIPO2',
@@ -182,7 +183,7 @@ trait Transaction2 {
         return $data;
     }
 
-    public function replaceOn($line,$data,$new_value)
+    public function transaction2ReplaceOn($line,$data,$new_value)
     {
 
         switch(strtoupper($data)){
@@ -210,11 +211,11 @@ trait Transaction2 {
 
     }
 
-    public function padLine($data,$value)
+    public function transaction2PadLine($data,$value)
     {
 
-        $value = $this->cleanUp($value);
-        $value = $this->removeExtraSpaces($value);
+        $value = Common::cleanUp($value);
+        $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
 

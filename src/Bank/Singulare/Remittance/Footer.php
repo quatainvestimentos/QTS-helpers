@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Singulare\Remittance;
+use QuataInvestimentos\Bank\Common;
 
 trait Footer {
 
@@ -13,7 +14,7 @@ trait Footer {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return $this->padLine($data, $value); }
+        if($pad){ return Remittance::padLine($data, $value); }
         return $value;
 
     }
@@ -32,8 +33,8 @@ trait Footer {
     public function padLine($data,$value)
     {
            
-        $value = $this->cleanUp($value);
-        $value = $this->removeExtraSpaces($value);
+        $value = Common::cleanUp($value);
+        $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
 

@@ -1,10 +1,11 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Common;
 
 trait Transaction1 {
 
-    public function extractFrom($line,$data,$pad=true)
+    public function extractTransaction1From($line,$data,$pad=true)
     {
 
         switch(strtoupper($data)){
@@ -57,12 +58,12 @@ trait Transaction1 {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return $this->padLine($data, $value); }
+        if($pad){ return Remittance::padLine($data, $value); }
         return $value;
 
     }
 
-    public function help()
+    public function transaction1Help()
     {
         $data = [
             'CNAB' => 'BRADESCO',
@@ -439,7 +440,7 @@ trait Transaction1 {
         return $data;
     }
 
-    public function replaceOn($line,$data,$new_value)
+    public function transaction1ReplaceOn($line,$data,$new_value)
     {
 
         switch(strtoupper($data)){
@@ -494,11 +495,11 @@ trait Transaction1 {
 
     }
 
-    public function padLine($data,$value)
+    public function transaction1PadLine($data,$value)
     {
 
-        $value = $this->cleanUp($value);
-        $value = $this->removeExtraSpaces($value);
+        $value = Common::cleanUp($value);
+        $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
 
