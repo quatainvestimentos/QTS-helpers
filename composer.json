@@ -18,7 +18,7 @@
     "require": {
         "php": ">=7.4",
         "guzzlehttp/guzzle": "*",
-        "lcobucci/jwt": "^4.1",
+        "lcobucci/jwt": "3.3",
         "quata-investimentos/helpers": "@dev"
     }
 }
