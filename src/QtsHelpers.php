@@ -39,12 +39,38 @@ trait QtsHelpers
                 break;
 
             case 'JSON_API':
+            case 'API':
                 $string = 'Via API em JSON';
                 $badge = 'warning';
                 break;
 
-            case 'ACCESS_STAGE':
-                $string = 'AccessStage';
+            case 'INPUT':
+                $string = 'Inclusão manual';
+                $badge = 'warning';
+                break;
+
+            case 'CSV':
+                $string = 'Arquivo CSV';
+                $badge = 'warning';
+                break;
+
+            case 'CNAB':
+                $string = 'CNAB (.REM)';
+                $badge = 'warning';
+                break;
+
+            case 'XML':
+                $string = 'NF-e (XML)';
+                $badge = 'warning';
+                break;
+
+            case 'PIPE':
+                $string = 'E-mail';
+                $badge = 'warning';
+                break;
+
+            case 'ACCESSTAGE':
+                $string = 'Accesstage';
                 $badge = 'danger';
                 break;
 
@@ -55,11 +81,6 @@ trait QtsHelpers
 
             case 'QTS':
                 $string = 'QTS';
-                $badge = 'primary';
-                break;
-
-            case 'CNAB':
-                $string = 'Arquivo CNAB';
                 $badge = 'primary';
                 break;
 
