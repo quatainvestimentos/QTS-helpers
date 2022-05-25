@@ -253,10 +253,19 @@ trait QtsApi
                 $response = (isset($response->results) && $response->results) ? $response->results : ['Erro desconhecido: ' . Qts::cleanSpecialChars(strip_tags($e->getMessage()))];
 
                 $data = [];
-                foreach($response as $key => $value):
-                    $value = (is_array($value) ? $value[0] : $value);
-                    $data[] = $value;
-                endforeach;
+
+                if(!is_array($response)){
+                    $data[] = $response;
+                }
+
+                if(is_array($response)){
+
+                    foreach($response as $key => $value):
+                        $value = (is_array($value) ? $value[0] : $value);
+                        $data[] = $value;
+                    endforeach;
+
+                }
             
             }
 
