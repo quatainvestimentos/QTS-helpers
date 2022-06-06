@@ -84,6 +84,78 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
+            /** Operational */
+            case 'BANK':
+                $string = 'Banco Cobrador';
+                $badge = '';
+                break;
+        
+            case 'ASSIGNOR':
+                $string = 'Cedente';
+                $badge = '';
+                break;
+
+            case 'DISCOUNT':
+                $string = 'Desconto';
+                $badge = '';
+                break;
+
+            case 'WARRANTY':
+                $string = 'Garantia';
+                $badge = '';
+                break;
+
+            case 'REAL_STATE':
+                $string = 'Operações Imobiliárias';
+                $badge = '';
+                break;
+
+            case 'CONFIRMING':
+                $string = 'Confirming';
+                $badge = '';
+                break;
+            
+            case 'DEVELOPMENT':
+                $string = 'Fomento';
+                $badge = '';
+                break;
+
+            case 'SIMPLE_CHARGE':
+                $string = 'Cobrança Simples';
+                $badge = '';
+                break;
+            
+            case 'WORKING_CAPITAL':
+                $string = 'Capital de Giro';
+                $badge = '';
+                break;
+
+            case 'MARKET_DEBT':
+                $string = 'Dívida - mercado secundário';
+                $badge = '';
+                break;
+
+            case 'PULVERIZED':
+                $string = 'Pulverizada';
+                $badge = '';
+                break;
+
+            case 'INTERCOMPANY':
+                $string = 'Intercompany';
+                $badge = '';
+                break;
+
+            case 'CONFIDENTIAL_FACTORING':
+                $string = 'Comissária';
+                $badge = '';
+                break;
+
+            case 'DUPLICATAS':
+                $string = 'Duplicatas';
+                $badge = '';
+                break;
+                
+
             /** Status */
             case 'RECEIVED':
                 $string = 'Recebido';
@@ -133,6 +205,16 @@ trait QtsHelpers
             case 'INACTIVE':
                 $string = 'Inativo';
                 $badge = 'danger';
+                break;
+
+            case 'PRODUCTION':
+                $string = 'Produção';
+                $badge = 'success';
+                break;
+
+            case 'STAGING':
+                $string = 'Homologação';
+                $badge = 'warning';
                 break;
 
             /** Default */
