@@ -17,7 +17,22 @@ trait Common {
          * Translate and sanitize string
          */
 
-        $string = iconv(mb_detect_encoding($string), 'ISO-8859-1', $string);
+        try {
+
+            $string = iconv(mb_detect_encoding($string), 'ISO-8859-1//TRANSLIT', $string);
+
+        } catch(\Exception $e){
+
+            $string = utf8_encode($string);
+
+            // echo $e->getMessage() . PHP_EOL . 
+            // 'Encoding atual: ' . mb_detect_encoding($string) . 
+            // 'Erro para detectar o encoding da string: ' . $string;
+            
+            // exit;
+
+        }
+        
         $string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/","/(ç)/","/(Ç)/"),explode(" ","a A e E i I o O u U n N c C"),$string);
         $string = preg_replace("/[^A-Za-z0-9 ]-/", ' ', $string);
         $string = str_replace('?',' ', $string);

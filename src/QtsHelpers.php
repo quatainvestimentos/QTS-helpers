@@ -135,6 +135,11 @@ trait QtsHelpers
                 $badge = '';
                 break;
 
+            case 'NOT_APPLICABLE':
+                $string = 'Não aplicável';
+                $badge = '';
+                break;
+
             case 'PULVERIZED':
                 $string = 'Pulverizada';
                 $badge = '';
@@ -585,6 +590,19 @@ trait QtsHelpers
         }
 
         return round($bytes, 2) . ' ' . $units[$i];
+    }
+
+    public static function extractAgreementFromFilename($path)
+    {
+
+        $path = explode('/', $path);
+        $total_folders = count($path);
+
+        $filename = $path[($total_folders - 1)];
+        list($agreement, $filename) = explode('__', $filename);
+
+        return (isset($agreement) && $agreement ? $agreement : null);
+
     }
 
 }
