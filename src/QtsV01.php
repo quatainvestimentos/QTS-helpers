@@ -117,10 +117,11 @@ trait QtsV01
         }
 
         $response = json_decode($response, true);
+        $access_token = (strtoupper(env('APP_ENV')) === 'LOCAL' ? 'jD53Ktq2TNFT8Q868N4C' : $response['access_token']);
 
         return (object)[
             'status' => 200,
-            'data' => (object)['access_token' => $response['access_token']]
+            'data' => (object)['access_token' => $access_token]
         ];
 
     }
