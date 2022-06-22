@@ -7,8 +7,16 @@ use QuataInvestimentos\QtsHelpers;
 use QuataInvestimentos\QtsUsers;
 use QuataInvestimentos\QtsEs512;
 use QuataInvestimentos\QiTech;
-use QuataInvestimentos\QtsV01;
+
+/**
+ * V01 Integration
+ */
+
+use QuataInvestimentos\V01\QtsV01;
+use QuataInvestimentos\V01\InstructionController;
+use QuataInvestimentos\V01\RemittanceController;
+use QuataInvestimentos\V01\UploadController;
 
 class Qts {
-    use QtsApi, QtsHelpers, QtsUsers, QtsEs512, QiTech, QtsV01;
+    use QtsApi, QtsHelpers, QtsUsers, QtsEs512, QiTech, QtsV01, InstructionController, RemittanceController, UploadController;
 }

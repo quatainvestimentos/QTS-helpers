@@ -1,6 +1,7 @@
 <?php 
 
-namespace QuataInvestimentos;
+namespace QuataInvestimentos\V01;
+use QuataInvestimentos\Qts;
 
 trait QtsV01 
 {
@@ -145,6 +146,28 @@ trait QtsV01
             case 'DUPLICATAS': return 1; break;
             default: return null;
         }
+    }
+
+    protected static function bindRemittanceErrors($data, $key='campos')
+    {
+
+        $results = [];
+
+        if(isset($data[$key]) && $data[$key]){
+            foreach($data[$key] as $d):
+
+                $results[] = (
+                    isset($d['idTituloBanco'][0]['dsMensagem']) && 
+                    $d['idTituloBanco'][0]['dsMensagem'] ? 
+                    $d['idTituloBanco'][0]['dsMensagem'] : 
+                    $d
+                );
+
+            endforeach;
+        }
+
+        return $results;
+
     }
 
 }
