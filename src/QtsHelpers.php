@@ -605,4 +605,32 @@ trait QtsHelpers
 
     }
 
+    public static function keyValueMessage($array)
+    {
+
+        $key_value_message = [];
+        $count = 1;
+
+        foreach($array as $value):
+
+            if(is_array($value)){
+
+                foreach($value as $v):
+                    $key_value_message += ['mensagem ' . $count => $v];
+                    $count++;
+                endforeach;
+            
+            } else {
+
+                $key_value_message += ['mensagem ' . $count => $value];
+                $count++;
+
+            }
+
+        endforeach;
+
+        return $key_value_message;
+        
+    }
+
 }
