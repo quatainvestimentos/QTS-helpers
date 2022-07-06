@@ -144,6 +144,9 @@ trait QtsV01
             case 'INTERCOMPANY': return 3; break;
             case 'CONFIDENTIAL_FACTORING': return 4; break;
             case 'DUPLICATAS': return 1; break;
+            case 'MULTISETORIAL': return 1; break;
+            case 'PRASS_II': return 5; break;
+            case 'QUATA_NX': return 33; break;
             default: return null;
         }
     }
