@@ -222,6 +222,22 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            /** Fundos */
+            case 'MULTISETORIAL':
+                $string = 'Multisetorial';
+                $badge = 'primary';
+                break;
+
+            case 'PRASS_II':
+                $string = 'Prass II';
+                $badge = 'primary';
+                break;
+
+            case 'QUATA_NX':
+                $string = 'Quatá NX';
+                $badge = 'primary';
+                break;
+
             /** Default */
             default:
                 $string = 'Não encontrado: ' . $string;
