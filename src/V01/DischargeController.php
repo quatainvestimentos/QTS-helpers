@@ -20,20 +20,9 @@ trait DischargeController
 
         foreach($types as $type):
 
-            /**
-             * 1: Multisetorial
-             * 5: Prass 2
-             * 33: Quatá NX
-             * 
-             * Daria para tentarmos colocar esses fundos associados ao convênio
-             * Para que cada loop puxasse somente o fundo correto
-             */
-
-            $funds = [1,5,33];
-
             $payload = [
                 "parametros" => [
-                    "idFundo" => $funds,
+                    "idFundo" => $data->fund,
                     "idModalidade" => $data->modality,
                     "tipoRetorno" => $type,
                     "pagina" => 1,
