@@ -172,6 +172,16 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'PROCESSED':
+                $string = 'Processado';
+                $badge = 'success';
+                break;
+
+            case 'FAIL':
+                $string = 'Falha';
+                $badge = 'danger';
+                break;
+
             case 'STORED':
                 $string = 'Armazenado';
                 $badge = 'primary';
@@ -647,6 +657,21 @@ trait QtsHelpers
 
         return $key_value_message;
         
+    }
+
+    public static function outboxRenaming($filename, $sequential)
+    {
+
+        $filename = str_replace('AA',date('y'),$filename);
+        $filename = str_replace('MM',date('m'),$filename);
+        $filename = str_replace('DD',date('d'),$filename);
+        $filename = str_replace('HH',date('H'),$filename);
+        $filename = str_replace('MM',date('i'),$filename);
+        $filename = str_replace('SS',date('s'),$filename);
+        $filename = str_replace('SEQ3',str_pad($sequential, 3, 0, STR_PAD_LEFT),$filename);
+
+        return $filename;
+
     }
 
 }
