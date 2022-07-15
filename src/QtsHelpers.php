@@ -659,6 +659,14 @@ trait QtsHelpers
         
     }
 
+    public static function cleanArray($array=[]){
+        $new_array = [];
+        foreach($array as $a):
+            if($a && !in_array($a, $new_array)){ $new_array[] = $a; }
+        endforeach;
+        return $new_array;
+    }
+
     public static function outboxRenaming($filename, $sequential)
     {
 
