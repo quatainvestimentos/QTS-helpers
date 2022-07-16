@@ -13,7 +13,7 @@ trait QtsV01
          * Auth
          */
 
-        $results = Qts::QtsAccessToken();
+        $results = Qts::QtsAccessToken($endpoint);
         if(!isset($results->status) || $results->status >= 400){
             return (object)[
                 'status' => $results->status,
@@ -87,7 +87,7 @@ trait QtsV01
 
     }
 
-    protected static function QtsAccessToken()
+    protected static function QtsAccessToken($check_exception=null)
     {
 
         $keycloak = 'https://'.env('QTSV1_KEYCLOAK_ENV').'.quatainvestimentos.com.br/auth/realms/'.env('QTSV1_KEYCLOAK_REALM').'/protocol/openid-connect/token';
@@ -119,6 +119,17 @@ trait QtsV01
 
         $response = json_decode($response, true);
         $access_token = (strtoupper(env('APP_ENV')) === 'LOCAL' ? 'jD53Ktq2TNFT8Q868N4C' : $response['access_token']);
+
+        /**
+         * Some routes, even in staging environment
+         * needs to use fresh access token
+         */
+
+        switch($check_exception){
+            case 'v1/TbUpload/listagemArquivoRetorno':
+                $access_token = $response['access_token'];
+                break;
+        }
 
         return (object)[
             'status' => 200,
