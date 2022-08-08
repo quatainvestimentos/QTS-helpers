@@ -30,8 +30,8 @@ trait QtsApi
 
         switch(strtoupper($warnings)){
             case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
-            case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
-            case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
+            case 'TESTING': $endpoint = 'https://dev-docs.quatainvestimentos.com.br/api/'; break;
+            case 'PRODUCTION': $endpoint = 'https://docs.quatainvestimentos.com.br/api/'; break;
             default: echo 'Endpoint de alertas desconhecido: ' . $warnings; exit;
         }
 
@@ -77,8 +77,8 @@ trait QtsApi
 
         switch(strtoupper($debugs)){
             case 'LOCAL': $endpoint = 'http://local-docs.quatainvestimentos.com.br:4003/api/'; break;
-            case 'TESTING': $endpoint = 'http://dev-docs.quatainvestimentos.com.br/api/'; break;
-            case 'PRODUCTION': $endpoint = 'http://docs.quatainvestimentos.com.br/api/'; break;
+            case 'TESTING': $endpoint = 'https://dev-docs.quatainvestimentos.com.br/api/'; break;
+            case 'PRODUCTION': $endpoint = 'https://docs.quatainvestimentos.com.br/api/'; break;
             default: echo 'Endpoint de debug desconhecido: ' . $debugs; exit;
         }
 
