@@ -40,36 +40,6 @@ trait DischargeController
 
             $results = Qts::v1Fetch('POST',$endpoint,$payload);
             $data_files = (isset($results->data) && $results->data ?  $results->data : []);
-        
-            /**
-             * Debug
-             */
-
-            if(isset($data->debug) && $data->debug){
-
-                $debug_payload = (object)[
-                    'person_api_key' => '0000000000-0000000000-0000000000-000',
-                    'text' => "Debug do V01GetDischarge: {$data->qts_client_id}",
-                    'json' => [
-                        'payload' => $payload,
-                        'endpoint' => $endpoint,
-                        'results' => $results
-                    ]
-                ];
-
-                $debug_results = Qts::fetchDebug([
-                    'client-secret' => env('CLIENT_SECRET'),
-                    'timeout' => 30
-                ], $debug_payload, strtoupper(env('APP_ENV')));
-
-            }
-
-            if(!isset($results->status) || $results->status >= 400){
-                return (object)[
-                    'status' => $results->status,
-                    'data' => $results->data
-                ];
-            }
 
             # Cleaning data
             unset($data_files['count']);
@@ -78,7 +48,12 @@ trait DischargeController
             foreach($data_files['arquivos'] as $fund_id => $files):
                 foreach($files as $file):
 
-                    if($file['dt_arquivo'] === $data->reference_date){
+                    # Check if the file belongs to the client
+                    # Every QTS discharge file, has the qts_client_id at the beginning
+
+                    $check_file_name = explode('-', $file['nm_arquivo']);
+
+                    if($file['dt_arquivo'] === $data->reference_date && (int)$check_file_name[0] === (int)$data->qts_client_id){
 
                         $download_files[] = (object)[
                             'name' => $file['nm_arquivo'],
@@ -93,6 +68,37 @@ trait DischargeController
             endforeach;
 
         endforeach;
+
+        /**
+         * Debug
+         */
+
+        if(isset($data->debug) && $data->debug){
+
+            $debug_payload = (object)[
+                'person_api_key' => '0000000000-0000000000-0000000000-000',
+                'text' => "Debug do V01GetDischarge: {$data->qts_client_id}",
+                'json' => [
+                    'payload' => $payload,
+                    'endpoint' => $endpoint,
+                    'results' => $results,
+                    'filtered_downloads' => $download_files
+                ]
+            ];
+
+            $debug_results = Qts::fetchDebug([
+                'client-secret' => env('CLIENT_SECRET'),
+                'timeout' => 30
+            ], $debug_payload, strtoupper(env('APP_ENV')));
+
+        }
+
+        if(!isset($results->status) || $results->status >= 400){
+            return (object)[
+                'status' => $results->status,
+                'data' => $results->data
+            ];
+        }
 
         return (object)[
             'status' => 200,
