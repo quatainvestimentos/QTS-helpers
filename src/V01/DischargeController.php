@@ -67,6 +67,29 @@ trait DischargeController
                 endforeach;
             endforeach;
 
+            /**
+             * Debug
+             */
+
+            if(isset($data->debug) && $data->debug){
+
+                $debug_payload = (object)[
+                    'person_api_key' => '0000000000-0000000000-0000000000-000',
+                    'text' => "Debug do V01GetDischarge: {$data->qts_client_id}",
+                    'json' => [
+                        'payload' => $payload,
+                        'endpoint' => $endpoint,
+                        'results' => $results
+                    ]
+                ];
+
+                $debug_results = Qts::fetchDebug([
+                    'client-secret' => env('CLIENT_SECRET'),
+                    'timeout' => 30
+                ], $debug_payload, strtoupper(env('APP_ENV')));
+
+            }
+
         endforeach;
 
         /**
@@ -79,10 +102,7 @@ trait DischargeController
                 'person_api_key' => '0000000000-0000000000-0000000000-000',
                 'text' => "Debug do V01GetDischarge: {$data->qts_client_id}",
                 'json' => [
-                    'payload' => $payload,
-                    'endpoint' => $endpoint,
-                    'results' => $results,
-                    'filtered_downloads' => $download_files
+                    'filtered' => $download_files
                 ]
             ];
 
