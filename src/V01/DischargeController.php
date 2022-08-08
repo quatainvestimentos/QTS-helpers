@@ -75,7 +75,7 @@ trait DischargeController
 
                 $debug_payload = (object)[
                     'person_api_key' => '0000000000-0000000000-0000000000-000',
-                    'text' => "Debug do V01GetDischarge: {$data->qts_client_id}",
+                    'text' => "Debug do V01GetDischarge: {$data->qts_client_id} (Fundo: {$data->fund}, Modalidade: {$data->modality}, Tipo: {$type})",
                     'json' => [
                         'payload' => $payload,
                         'endpoint' => $endpoint,
