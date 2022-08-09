@@ -9,6 +9,7 @@ trait DischargeController
     public function V01GetDischarge($data)
     {
 
+        # pendentes (will not be used for now)
         $types = ['padrao','liquidacao','instrucoes','rejeitados'];
 
         /**
@@ -20,75 +21,89 @@ trait DischargeController
 
         foreach($types as $type):
 
-            $payload = [
-                "parametros" => [
-                    "idFundo" => $data->fund,
-                    "idModalidade" => $data->modality,
-                    "tipoRetorno" => $type,
-                    "pagina" => 1,
-                    "quantidade" => 10,
-                    "dateFrom" => $data->reference_date,
-                    "dateTo" => $data->reference_date
-                ],
-                "context" => [
-                    "id_cliente" => $data->qts_client_id,
-                    "env" => "V02"
-                ]
-            ];
-
-            $endpoint = "v1/TbUpload/listagemArquivoRetorno";
-
-            $results = Qts::v1Fetch('POST',$endpoint,$payload);
-            $data_files = (isset($results->data) && $results->data ?  $results->data : []);
-
-            # Cleaning data
-            unset($data_files['count']);
-            unset($data_files['arquivos']['total']);
-
-            foreach($data_files['arquivos'] as $fund_id => $files):
-                foreach($files as $file):
-
-                    # Check if the file belongs to the client
-                    # Every QTS discharge file, has the qts_client_id at the beginning
-
-                    $check_file_name = explode('-', $file['nm_arquivo']);
-
-                    if($file['dt_arquivo'] === $data->reference_date && (int)$check_file_name[0] === (int)$data->qts_client_id){
-
-                        $download_files[] = (object)[
-                            'name' => $file['nm_arquivo'],
-                            'modality' => $file['id_modalidade'],
-                            'fund_id' => $file['id_fundo'],
-                            'type' => $type
-                        ];
-
-                    }
-
-                endforeach;
-            endforeach;
-
             /**
-             * Debug
+             * Discount also has 'Simple Charge' 
+             * To download automatically
+             * 
+             * if discount, push to array (6) Simple Charge
              */
 
-            if(isset($data->debug) && $data->debug){
+            $modalities_array = [$data->modality];
+            if((int)$data->modality === 1){ $modalities_array[] = 6; }
 
-                $debug_payload = (object)[
-                    'person_api_key' => '0000000000-0000000000-0000000000-000',
-                    'text' => "Debug do V01GetDischarge: {$data->qts_client_id} (Fundo: {$data->fund}, Modalidade: {$data->modality}, Tipo: {$type})",
-                    'json' => [
-                        'payload' => $payload,
-                        'endpoint' => $endpoint,
-                        'results' => $results
+            foreach($modalities_array as $modality):
+
+                $payload = [
+                    "parametros" => [
+                        "idFundo" => $data->fund,
+                        "idModalidade" => $data->modality,
+                        "tipoRetorno" => $type,
+                        "pagina" => 1,
+                        "quantidade" => 10,
+                        "dateFrom" => $data->reference_date,
+                        "dateTo" => $data->reference_date
+                    ],
+                    "context" => [
+                        "id_cliente" => $data->qts_client_id,
+                        "env" => "V02"
                     ]
                 ];
 
-                $debug_results = Qts::fetchDebug([
-                    'client-secret' => env('CLIENT_SECRET'),
-                    'timeout' => 30
-                ], $debug_payload, strtoupper(env('APP_ENV')));
+                $endpoint = "v1/TbUpload/listagemArquivoRetorno";
 
-            }
+                $results = Qts::v1Fetch('POST',$endpoint,$payload);
+                $data_files = (isset($results->data) && $results->data ?  $results->data : []);
+
+                # Cleaning data
+                unset($data_files['count']);
+                unset($data_files['arquivos']['total']);
+
+                foreach($data_files['arquivos'] as $fund_id => $files):
+                    foreach($files as $file):
+
+                        # Check if the file belongs to the client
+                        # Every QTS discharge file, has the qts_client_id at the beginning
+
+                        $check_file_name = explode('-', $file['nm_arquivo']);
+
+                        if($file['dt_arquivo'] === $data->reference_date && (int)$check_file_name[0] === (int)$data->qts_client_id){
+
+                            $download_files[] = (object)[
+                                'name' => $file['nm_arquivo'],
+                                'modality' => $file['id_modalidade'],
+                                'fund_id' => $file['id_fundo'],
+                                'type' => $type
+                            ];
+
+                        }
+
+                    endforeach;
+                endforeach;
+
+                /**
+                 * Debug
+                 */
+
+                if(isset($data->debug) && $data->debug){
+
+                    $debug_payload = (object)[
+                        'person_api_key' => '0000000000-0000000000-0000000000-000',
+                        'text' => "Debug do V01GetDischarge: {$data->qts_client_id} (Fundo: {$data->fund}, Modalidade: {$modality}, Tipo: {$type})",
+                        'json' => [
+                            'payload' => $payload,
+                            'endpoint' => $endpoint,
+                            'results' => $results
+                        ]
+                    ];
+
+                    $debug_results = Qts::fetchDebug([
+                        'client-secret' => env('CLIENT_SECRET'),
+                        'timeout' => 30
+                    ], $debug_payload, strtoupper(env('APP_ENV')));
+
+                }
+
+            endforeach;
 
         endforeach;
 
@@ -100,7 +115,7 @@ trait DischargeController
 
             $debug_payload = (object)[
                 'person_api_key' => '0000000000-0000000000-0000000000-000',
-                'text' => "Debug do V01GetDischarge: {$data->qts_client_id}",
+                'text' => "Debug do V01GetDischarge: {$data->qts_client_id} (Filtered Files)",
                 'json' => [
                     'filtered' => $download_files
                 ]
