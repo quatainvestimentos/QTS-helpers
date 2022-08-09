@@ -36,7 +36,7 @@ trait DischargeController
                 $payload = [
                     "parametros" => [
                         "idFundo" => $data->fund,
-                        "idModalidade" => $data->modality,
+                        "idModalidade" => $modality,
                         "tipoRetorno" => $type,
                         "pagina" => 1,
                         "quantidade" => 10,
