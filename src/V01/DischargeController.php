@@ -42,10 +42,10 @@ trait DischargeController
                         "quantidade" => 10,
                         "dateFrom" => $data->reference_date,
                         "dateTo" => $data->reference_date,
-                        "nmModalidade" => $this->nmModality($modality),
+                        "nmModalidade" => Qts::bindNmModality($modality),
                         "modalidadeList" => [
                             "id_modalidade" => $modality,
-                            "nm_modalidade" => $this->nmModality($modality)
+                            "nm_modalidade" => Qts::bindNmModality($modality)
                         ]
                     ],
                     "context" => [
@@ -231,21 +231,6 @@ trait DischargeController
             'data' => $results
         ];
 
-    }
-
-    protected function nmModality($id)
-    {
-        switch($id){
-            case 1: return 'Desconto'; break;
-            case 2: return 'Garantia'; break;
-            case 3: return 'Operações Imobiliarias'; break;
-            case 4: return 'Operação de Confirming'; break;
-            case 5: return 'Fomento'; break;
-            case 6: return 'Cobrança Simples'; break;
-            case 7: return 'Capital de Giro'; break;
-            case 8: return 'Dívida (mercado secundário)'; break;
-            default: return '';
-        }
     }
 
 }

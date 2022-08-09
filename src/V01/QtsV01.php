@@ -173,4 +173,19 @@ trait QtsV01
 
     }
 
+    protected static function bindNmModality($id)
+    {
+        switch($id){
+            case 1: return 'Desconto'; break;
+            case 2: return 'Garantia'; break;
+            case 3: return 'Operações Imobiliarias'; break;
+            case 4: return 'Operação de Confirming'; break;
+            case 5: return 'Fomento'; break;
+            case 6: return 'Cobrança Simples'; break;
+            case 7: return 'Capital de Giro'; break;
+            case 8: return 'Dívida (mercado secundário)'; break;
+            default: return '';
+        }
+    }
+
 }
