@@ -175,6 +175,28 @@ trait DischargeController
 
             $file_path = 'temp-discharge/' . $file->name;
 
+
+            try {
+
+                /**
+                 * Delete any existing file that has the same name
+                 * In order to avoid caching
+                 */
+
+                if( \Storage::disk('local')->exists($file_path) ) {
+                    \Storage::disk('local')->delete($file_path);
+                }
+            
+            } catch (\Exception $e){
+
+                return (object)[
+                    'status' => 403,
+                    'data' => $e->getMessage()
+                ];
+
+            }
+
+
             try {
 
                 \Storage::disk('local')->put($file_path, file_get_contents("{$url}?{$params}"), 'public');
