@@ -233,4 +233,35 @@ trait DischargeController
 
     }
 
+    public function V01ImprovedGetDischarge($data)
+    {
+
+        $payload = [
+            "fundos" => [$data->fund],
+            "idModalidade" => $data->modality,
+            "dateFrom" => $data->reference_date,
+            "dateTo" => $data->reference_date,
+            "idCliente" => $data->qts_client_id,
+            "env" => "V02"
+        ];
+
+        $endpoint = "v1/TbUpload/V2ListagemArquivoRetorno";
+
+        $results = Qts::v1Fetch('POST',$endpoint,$payload);
+        $data = (isset($results->data) && $results->data ?  $results->data : []);
+
+        if(!isset($results->status) || $results->status >= 400){
+            return (object)[
+                'status' => $results->status,
+                'data' => $data
+            ];
+        }
+
+        return (object)[
+            'status' => 200,
+            'data' => $data
+        ];
+    
+    }
+
 }
