@@ -232,6 +232,11 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'SUCCESS':
+                $string = 'Sucesso';
+                $badge = 'success';
+                break;
+
             /** Fundos */
             case 'MULTISETORIAL':
                 $string = 'Multisetorial';
@@ -245,6 +250,17 @@ trait QtsHelpers
 
             case 'QUATA_NX':
                 $string = 'Quatá NX';
+                $badge = 'primary';
+                break;
+
+            /** Bancos */
+            case 'BRADESCO':
+                $string = 'Bradesco';
+                $badge = 'primary';
+                break;
+
+            case 'QI_TECH':
+                $string = 'Qi Tech';
                 $badge = 'primary';
                 break;
 
