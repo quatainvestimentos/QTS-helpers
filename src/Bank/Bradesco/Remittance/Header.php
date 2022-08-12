@@ -1,6 +1,8 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+
+use QuataInvestimentos\Bank\Bradesco\Remittance;
 use QuataInvestimentos\Bank\Common;
 
 trait Header {
@@ -30,6 +32,45 @@ trait Header {
         if($pad){ return Remittance::padLine('HEADER',$data, $value); }
         return $value;
 
+    }
+
+    public static function extractAllFromHeader($line)
+    {
+
+        $type = 'HEADER';
+
+        $registro = Remittance::extractFrom($type,$line,'registro', false);
+        $identificacao = Remittance::extractFrom($type,$line,'identificacao', false);
+        $remessa = Remittance::extractFrom($type,$line,'remessa', false);
+        $cod_servico = Remittance::extractFrom($type,$line,'cod_servico', false);
+        $servico = Remittance::extractFrom($type,$line,'servico', false);
+        $convenio = Remittance::extractFrom($type,$line,'convenio', false);
+        $nome_empresa = Remittance::extractFrom($type,$line,'nome_empresa', false);
+        $cod_banco = Remittance::extractFrom($type,$line,'cod_banco', false);
+        $nome_banco = Remittance::extractFrom($type,$line,'nome_banco', false);
+        $data_arquivo = Remittance::extractFrom($type,$line,'data_arquivo', false);
+        $branco_1 = Remittance::extractFrom($type,$line,'branco_1', false);
+        $identificacao_sistema = Remittance::extractFrom($type,$line,'identificacao_sistema', false);
+        $sequencial_remessa = Remittance::extractFrom($type,$line,'sequencial_remessa', false);
+        $branco_2 = Remittance::extractFrom($type,$line,'branco_2', false);
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+
+        return 
+        $registro . 
+        $identificacao . 
+        $remessa . 
+        $cod_servico . 
+        $servico . 
+        $convenio . 
+        $nome_empresa . 
+        $cod_banco . 
+        $nome_banco . 
+        $data_arquivo . 
+        $branco_1 . 
+        $identificacao_sistema . 
+        $sequencial_remessa . 
+        $branco_2 . 
+        $sequencial;
     }
 
     public function headerHelp()

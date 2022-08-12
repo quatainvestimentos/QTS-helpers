@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Bradesco\Remittance;
 use QuataInvestimentos\Bank\Common;
 
 trait Transaction7 {
@@ -29,8 +30,46 @@ trait Transaction7 {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return Remittance::padLine($data, $value); }
+        if($pad){ return Remittance::padLine('TRANSACTION7', $data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromTransaction7($line)
+    {
+
+        $type = 'TRANSACTION7';
+
+        $registro = Remittance::extractFrom($type,$line,'registro', false);
+        $endereco_beneficiario = Remittance::extractFrom($type,$line,'endereco_beneficiario', false);
+        $sacado_cep_prefixo = Remittance::extractFrom($type,$line,'sacado_cep_prefixo', false);
+        $sacado_cep_sufixo = Remittance::extractFrom($type,$line,'sacado_cep_sufixo', false);
+        $sacado_cidade = Remittance::extractFrom($type,$line,'sacado_cidade', false);
+        $sacado_uf = Remittance::extractFrom($type,$line,'sacado_uf', false);
+        $reserva = Remittance::extractFrom($type,$line,'reserva', false);
+        $carteira = Remittance::extractFrom($type,$line,'carteira', false);
+        $agencia = Remittance::extractFrom($type,$line,'agencia', false);
+        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', false);
+        $conta_corrente_dv = Remittance::extractFrom($type,$line,'conta_corrente_dv', false);
+        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', false);
+        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', false);   
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+
+        return 
+        $registro . 
+        $endereco_beneficiario . 
+        $sacado_cep_prefixo . 
+        $sacado_cep_sufixo . 
+        $sacado_cidade . 
+        $sacado_uf . 
+        $reserva . 
+        $carteira . 
+        $agencia . 
+        $conta_corrente . 
+        $conta_corrente_dv . 
+        $nosso_num . 
+        $nosso_num_dv . 
+        $sequencial;
 
     }
 

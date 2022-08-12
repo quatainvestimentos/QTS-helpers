@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Bradesco\Remittance;
 use QuataInvestimentos\Bank\Common;
 
 trait Transaction3 {
@@ -54,8 +55,96 @@ trait Transaction3 {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return Remittance::padLine($data, $value); }
+        if($pad){ return Remittance::padLine('TRANSACTION3', $data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromTransaction3($line)
+    {
+
+        $type = 'TRANSACTION3';
+
+        $registro = Remittance::extractFrom($type,$line,'registro', false);
+        $empresa_banco = Remittance::extractFrom($type,$line,'empresa_banco', false);
+        $titulo_banco = Remittance::extractFrom($type,$line,'titulo_banco', false);
+        $cod_calculo_rateio = Remittance::extractFrom($type,$line,'cod_calculo_rateio', false);
+        $tipo_valor = Remittance::extractFrom($type,$line,'tipo_valor', false);
+        $filler_1 = Remittance::extractFrom($type,$line,'filler_1', false);
+        
+        $cod_banco_beneficiario_1 = Remittance::extractFrom($type,$line,'cod_banco_beneficiario_1', false);
+        $agencia_beneficiario_1 = Remittance::extractFrom($type,$line,'agencia_beneficiario_1', false);
+        $agencia_dv_beneficiario_1 = Remittance::extractFrom($type,$line,'agencia_dv_beneficiario_1', false);
+        $conta_corrente_beneficiario_1 = Remittance::extractFrom($type,$line,'conta_corrente_beneficiario_1', false);
+        $conta_corrente_dv_beneficiario_1 = Remittance::extractFrom($type,$line,'conta_corrente_dv_beneficiario_1', false);
+        $valor_beneficiario_1 = Remittance::extractFrom($type,$line,'valor_beneficiario_1', false);
+        $nome_beneficiario_1 = Remittance::extractFrom($type,$line,'nome_beneficiario_1', false);
+        $filler_2 = Remittance::extractFrom($type,$line,'filler_2', false);
+        $parcela_1 = Remittance::extractFrom($type,$line,'parcela_1', false);
+        $floating_beneficiario_1 = Remittance::extractFrom($type,$line,'floating_beneficiario_1', false);
+
+        $cod_banco_beneficiario_2 = Remittance::extractFrom($type,$line,'cod_banco_beneficiario_2', false);
+        $agencia_beneficiario_2 = Remittance::extractFrom($type,$line,'agencia_beneficiario_2', false);
+        $agencia_dv_beneficiario_2 = Remittance::extractFrom($type,$line,'agencia_dv_beneficiario_2', false);
+        $conta_corrente_beneficiario_2 = Remittance::extractFrom($type,$line,'conta_corrente_beneficiario_2', false);
+        $conta_corrente_dv_beneficiario_2 = Remittance::extractFrom($type,$line,'conta_corrente_dv_beneficiario_2', false);
+        $valor_beneficiario_2 = Remittance::extractFrom($type,$line,'valor_beneficiario_2', false);
+        $nome_beneficiario_2 = Remittance::extractFrom($type,$line,'nome_beneficiario_2', false);
+        $filler_3 = Remittance::extractFrom($type,$line,'filler_3', false);
+        $parcela_2 = Remittance::extractFrom($type,$line,'parcela_2', false);
+        $floating_beneficiario_2 = Remittance::extractFrom($type,$line,'floating_beneficiario_2', false);
+
+        $cod_banco_beneficiario_3 = Remittance::extractFrom($type,$line,'cod_banco_beneficiario_3', false);
+        $agencia_beneficiario_3 = Remittance::extractFrom($type,$line,'agencia_beneficiario_3', false);
+        $agencia_dv_beneficiario_3 = Remittance::extractFrom($type,$line,'agencia_dv_beneficiario_3', false);
+        $conta_corrente_beneficiario_3 = Remittance::extractFrom($type,$line,'conta_corrente_beneficiario_3', false);
+        $conta_corrente_dv_beneficiario_3 = Remittance::extractFrom($type,$line,'conta_corrente_dv_beneficiario_3', false);
+        $valor_beneficiario_3 = Remittance::extractFrom($type,$line,'valor_beneficiario_3', false);
+        $nome_beneficiario_3 = Remittance::extractFrom($type,$line,'nome_beneficiario_3', false);
+        $filler_4 = Remittance::extractFrom($type,$line,'filler_4', false);
+        $parcela_3 = Remittance::extractFrom($type,$line,'parcela_3', false);
+        $floating_beneficiario_3 = Remittance::extractFrom($type,$line,'floating_beneficiario_3', false);
+
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+
+        return 
+        $registro . 
+        $empresa_banco . 
+        $titulo_banco . 
+        $cod_calculo_rateio . 
+        $tipo_valor . 
+        $filler_1 . 
+        $cod_banco_beneficiario_1 . 
+        $agencia_beneficiario_1 . 
+        $agencia_dv_beneficiario_1 . 
+        $conta_corrente_beneficiario_1 . 
+        $conta_corrente_dv_beneficiario_1 . 
+        $valor_beneficiario_1 . 
+        $nome_beneficiario_1 . 
+        $filler_2 . 
+        $parcela_1 . 
+        $floating_beneficiario_1 . 
+        $cod_banco_beneficiario_2 . 
+        $agencia_beneficiario_2 . 
+        $agencia_dv_beneficiario_2 . 
+        $conta_corrente_beneficiario_2 . 
+        $conta_corrente_dv_beneficiario_2 . 
+        $valor_beneficiario_2 . 
+        $nome_beneficiario_2 . 
+        $filler_3 . 
+        $parcela_2 . 
+        $floating_beneficiario_2 . 
+        $cod_banco_beneficiario_3 . 
+        $agencia_beneficiario_3 . 
+        $agencia_dv_beneficiario_3 . 
+        $conta_corrente_beneficiario_3 . 
+        $conta_corrente_dv_beneficiario_3 . 
+        $valor_beneficiario_3 . 
+        $nome_beneficiario_3 . 
+        $filler_4 . 
+        $parcela_3 . 
+        $floating_beneficiario_3 . 
+        $sequencial;
 
     }
 

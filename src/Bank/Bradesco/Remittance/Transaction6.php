@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Bradesco\Remittance;
 use QuataInvestimentos\Bank\Common;
 
 trait Transaction6 {
@@ -26,8 +27,44 @@ trait Transaction6 {
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
-        if($pad){ return Remittance::padLine($data, $value); }
+        if($pad){ return Remittance::padLine('TRANSACTION6', $data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromTransaction6($line)
+    {
+
+        $type = 'TRANSACTION6';
+
+        $registro = Remittance::extractFrom($type,$line,'registro', false);
+        $carteira = Remittance::extractFrom($type,$line,'carteira', false);
+        $agencia = Remittance::extractFrom($type,$line,'agencia', false);
+        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', false);
+        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', false);
+        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', false);
+        $tipo_operacao = Remittance::extractFrom($type,$line,'tipo_operacao', false);
+        $cheque_especial = Remittance::extractFrom($type,$line,'cheque_especial', false);
+        $saldo_apos_vencimento = Remittance::extractFrom($type,$line,'saldo_apos_vencimento', false);
+        $cod_contrato = Remittance::extractFrom($type,$line,'cod_contrato', false);
+        $validade_contrato = Remittance::extractFrom($type,$line,'validade_contrato', false);
+        $brancos = Remittance::extractFrom($type,$line,'brancos', false);
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+
+        return 
+        $registro .
+        $carteira .
+        $agencia .
+        $conta_corrente .
+        $nosso_num .
+        $nosso_num_dv .
+        $tipo_operacao .
+        $cheque_especial .
+        $saldo_apos_vencimento .
+        $cod_contrato .
+        $validade_contrato .
+        $brancos .
+        $sequencial;
 
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Bradesco\Remittance;
 use QuataInvestimentos\Bank\Common;
 
 trait Transaction2 {
@@ -48,11 +49,55 @@ trait Transaction2 {
 
         if($check_required_fields){
             $value = (int)$value;
-            if(!$value){ $value = (string)Remittance::padLine($data, $value); }
+            if(!$value){ $value = (string)Remittance::padLine('TRANSACTION2', $data, $value); }
         }
 
-        if($pad){ return Remittance::padLine($data, $value); }
+        if($pad){ return Remittance::padLine('TRANSACTION2', $data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromTransaction2($line)
+    {
+
+        $type = 'TRANSACTION2';
+
+        $registro = Remittance::extractFrom($type,$line,'registro', false);
+        $mensagem_1 = Remittance::extractFrom($type,$line,'mensagem_1', false);
+        $mensagem_2 = Remittance::extractFrom($type,$line,'mensagem_2', false);
+        $mensagem_3 = Remittance::extractFrom($type,$line,'mensagem_3', false);
+        $mensagem_4 = Remittance::extractFrom($type,$line,'mensagem_4', false);
+        $data_limite_desconto = Remittance::extractFrom($type,$line,'data_limite_desconto', false);
+        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto', false);
+        $data_limite_desconto_2 = Remittance::extractFrom($type,$line,'data_limite_desconto_2', false);
+        $valor_desconto_2 = Remittance::extractFrom($type,$line,'valor_desconto_2', false);
+        $reserva = Remittance::extractFrom($type,$line,'reserva', false);
+        $carteira = Remittance::extractFrom($type,$line,'carteira', false);
+        $agencia = Remittance::extractFrom($type,$line,'agencia', false);
+        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', false);
+        $conta_corrente_dv = Remittance::extractFrom($type,$line,'conta_corrente_dv', false);
+        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', false);
+        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', false);        
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+
+        return 
+        $registro .
+        $mensagem_1 .
+        $mensagem_2 .
+        $mensagem_3 .
+        $mensagem_4 .
+        $data_limite_desconto .
+        $valor_desconto .
+        $data_limite_desconto_2 .
+        $valor_desconto_2 .
+        $reserva .
+        $carteira .
+        $agencia . 
+        $conta_corrente .
+        $conta_corrente_dv .
+        $nosso_num .
+        $nosso_num_dv .
+        $sequencial;
 
     }
 

@@ -20,6 +20,22 @@ trait Init {
 
     }
 
+    public static function extractAllFrom($type='HEADER',$line)
+    {
+
+        switch(strtoupper($type)){
+            case 'HEADER': return Header::extractAllFromHeader($line); break;
+            case 'TRANSACTION1': return Transaction1::extractAllFromTransaction1($line); break;
+            case 'TRANSACTION2': return Transaction2::extractAllFromTransaction2($line); break;
+            case 'TRANSACTION3': return Transaction3::extractAllFromTransaction3($line); break;
+            case 'TRANSACTION6': return Transaction6::extractAllFromTransaction6($line); break;
+            case 'TRANSACTION7': return Transaction7::extractAllFromTransaction7($line); break;
+            case 'FOOTER': return Footer::extractAllFromFooter($line); break;
+            default: return 'Tipo de linha/transação de CNAB inválido: ' . $type;
+        }        
+
+    }
+
     public static function help($type='HEADER')
     {
 
