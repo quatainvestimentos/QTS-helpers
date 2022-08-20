@@ -2,6 +2,9 @@
 
 namespace QuataInvestimentos\Bank\Bradesco\Remittance;
 
+use QuataInvestimentos\Bank\Bradesco\Remittance;
+use QuataInvestimentos\Bank\Common;
+
 trait Footer {
 
     public function extractFooterFrom($line,$data,$pad=true)
