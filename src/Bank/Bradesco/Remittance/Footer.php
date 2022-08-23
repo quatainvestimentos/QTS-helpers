@@ -78,9 +78,9 @@ trait Footer {
 
         switch(strtoupper($data)){
 
-            case 'REGISTRO': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'BRANCO': return str_pad($value, 393, $pad_replace, STR_PAD_RIGHT); break;
-            case 'SEQUENCIAL': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
+            case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'BRANCO': return str_pad(substr($value, 0, 393), 393, $pad_replace, STR_PAD_RIGHT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
 
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }

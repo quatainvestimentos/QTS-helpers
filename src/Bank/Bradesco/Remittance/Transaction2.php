@@ -263,26 +263,25 @@ trait Transaction2 {
         $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
-
+        
         switch(strtoupper($data)){
-
-            case 'REGISTRO': return str_pad($value, 1, '2', STR_PAD_LEFT); break;
-            case 'MENSAGEM_1': return str_pad($value, 80, $pad_replace, STR_PAD_RIGHT); break;
-            case 'MENSAGEM_2': return str_pad($value, 80, $pad_replace, STR_PAD_RIGHT); break;
-            case 'MENSAGEM_3': return str_pad($value, 80, $pad_replace, STR_PAD_RIGHT); break;
-            case 'MENSAGEM_4': return str_pad($value, 80, $pad_replace, STR_PAD_RIGHT); break;
-            case 'DATA_LIMITE_DESCONTO': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR_DESCONTO': return str_pad($value, 13, '0', STR_PAD_LEFT); break;
-            case 'DATA_LIMITE_DESCONTO_2': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR_DESCONTO_2': return str_pad($value, 13, '0', STR_PAD_LEFT); break;
-            case 'RESERVA': return str_pad($value, 7, $pad_replace, STR_PAD_RIGHT); break;
-            case 'CARTEIRA': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA': return str_pad($value, 5, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE': return str_pad($value, 7, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE_DV': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'NOSSO_NUM': return str_pad($value, 11, '0', STR_PAD_LEFT); break;
-            case 'NOSSO_NUM_DV': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'SEQUENCIAL': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
+            case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '2', STR_PAD_LEFT); break;
+            case 'MENSAGEM_1': return str_pad(substr($value, 0, 80), 80, $pad_replace, STR_PAD_RIGHT); break;
+            case 'MENSAGEM_2': return str_pad(substr($value, 0, 80), 80, $pad_replace, STR_PAD_RIGHT); break;
+            case 'MENSAGEM_3': return str_pad(substr($value, 0, 80), 80, $pad_replace, STR_PAD_RIGHT); break;
+            case 'MENSAGEM_4': return str_pad(substr($value, 0, 80), 80, $pad_replace, STR_PAD_RIGHT); break;
+            case 'DATA_LIMITE_DESCONTO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
+            case 'VALOR_DESCONTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'DATA_LIMITE_DESCONTO_2': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
+            case 'VALOR_DESCONTO_2': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'RESERVA': return str_pad(substr($value, 0, 7), 7, $pad_replace, STR_PAD_RIGHT); break;
+            case 'CARTEIRA': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE': return str_pad(substr($value, 0, 7), 7, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE_DV': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'NOSSO_NUM': return str_pad(substr($value, 0, 11), 11, '0', STR_PAD_LEFT); break;
+            case 'NOSSO_NUM_DV': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
 
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }

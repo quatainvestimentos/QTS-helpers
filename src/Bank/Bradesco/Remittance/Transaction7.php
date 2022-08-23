@@ -217,22 +217,22 @@ trait Transaction7 {
 
         switch(strtoupper($data)){
 
-            case 'REGISTRO': return str_pad($value, 1, '7', STR_PAD_LEFT); break;
-            case 'ENDERECO_BENEFICIARIO': return str_pad($value, 45, $pad_replace, STR_PAD_RIGHT); break;
-            case 'SACADO_CEP_PREFIXO': return str_pad($value, 5, '0', STR_PAD_LEFT); break;
-            case 'SACADO_CEP_SUFIXO': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'SACADO_CIDADE': return str_pad($value, 20, $pad_replace, STR_PAD_RIGHT); break;
-            case 'SACADO_UF': return str_pad($value, 2, $pad_replace, STR_PAD_RIGHT); break;
+            case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '7', STR_PAD_LEFT); break;
+            case 'ENDERECO_BENEFICIARIO': return str_pad(substr($value, 0, 45), 45, $pad_replace, STR_PAD_RIGHT); break;
+            case 'SACADO_CEP_PREFIXO': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
+            case 'SACADO_CEP_SUFIXO': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'SACADO_CIDADE': return str_pad(substr($value, 0, 20), 20, $pad_replace, STR_PAD_RIGHT); break;
+            case 'SACADO_UF': return str_pad(substr($value, 0, 2), 2, $pad_replace, STR_PAD_RIGHT); break;
 
-            case 'RESERVA': return str_pad($value, 290, $pad_replace, STR_PAD_RIGHT); break;
-            case 'CARTEIRA': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA': return str_pad($value, 5, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE': return str_pad($value, 7, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE_DV': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'RESERVA': return str_pad(substr($value, 0, 290), 290, $pad_replace, STR_PAD_RIGHT); break;
+            case 'CARTEIRA': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE': return str_pad(substr($value, 0, 7), 7, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE_DV': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
 
-            case 'NOSSO_NUM': return str_pad($value, 11, '0', STR_PAD_LEFT); break;
-            case 'NOSSO_NUM_DV': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'SEQUENCIAL': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
+            case 'NOSSO_NUM': return str_pad(substr($value, 0, 11), 11, '0', STR_PAD_LEFT); break;
+            case 'NOSSO_NUM_DV': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
 
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }

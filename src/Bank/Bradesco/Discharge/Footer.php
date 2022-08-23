@@ -320,36 +320,36 @@ trait Footer {
 
         switch(strtoupper($data)){
 
-            case 'IDENTIFICACAO_REGISTRO': return str_pad($value, 1, "0", STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO_RETORNO': return str_pad($value, 1, "0", STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO_TIPO_REGISTRO': return str_pad($value, 2, "0", STR_PAD_LEFT); break;
-            case 'COD_BANCO': return str_pad($value, 3, "0", STR_PAD_LEFT); break;
-            case 'BRANCOS_1': return str_pad($value, 10, $pad_replace, STR_PAD_RIGHT); break;
-            case 'QUANT_TITULO': return str_pad($value, 8, "0", STR_PAD_LEFT); break;
-            case 'VAL_TOTAL': return str_pad($value, 14, "0", STR_PAD_LEFT); break;
-            case 'N_AVISO_BANCARIO': return str_pad($value, 8, "0", STR_PAD_LEFT); break;
-            case 'BRANCOS_2': return str_pad($value, 10, $pad_replace, STR_PAD_RIGHT); break;
-            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_02': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_06_LIQUIDACAO': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_06_LIQUIDACAO': return str_pad($value, 5, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_06': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_09_10': return str_pad($value, 5, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_09_10': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_13': return str_pad($value, 5, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_13': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_14': return str_pad($value, 5, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_14': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_12': return str_pad($value, 5, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_12': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'QUANT_REG_OCORRENCIA_19': return str_pad($value, 5, "0", STR_PAD_LEFT); break;
-            case 'VALOR_REG_OCORRENCIA_19': return str_pad($value, 12, "0", STR_PAD_LEFT); break;
-            case 'NOME_2_BENEFICIARIO': return str_pad($value, 40, "0", STR_PAD_LEFT); break;
-            case 'BRANCOS_3': return str_pad($value, 174, $pad_replace, STR_PAD_RIGHT); break;
-            case 'VALOR_TOTAL_RATEIOS': return str_pad($value, 15, "0", STR_PAD_LEFT); break;
-            case 'QUANT_TOTAL_RATEIOS': return str_pad($value, 8, "0", STR_PAD_LEFT); break;
-            case 'BRANCOS_4': return str_pad($value, 8, $pad_replace, STR_PAD_RIGHT); break;
-            case 'SEQUENCIAL': return str_pad($value, 6, "0", STR_PAD_LEFT); break;
+            case 'IDENTIFICACAO_REGISTRO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
+            case 'IDENTIFICACAO_RETORNO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
+            case 'IDENTIFICACAO_TIPO_REGISTRO': return str_pad(substr($value, 0, 2), 2, "0", STR_PAD_LEFT); break;
+            case 'COD_BANCO': return str_pad(substr($value, 0, 3), 3, "0", STR_PAD_LEFT); break;
+            case 'BRANCOS_1': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;
+            case 'QUANT_TITULO': return str_pad(substr($value, 0, 8), 8, "0", STR_PAD_LEFT); break;
+            case 'VAL_TOTAL': return str_pad(substr($value, 0, 14), 14, "0", STR_PAD_LEFT); break;
+            case 'N_AVISO_BANCARIO': return str_pad(substr($value, 0, 8), 8, "0", STR_PAD_LEFT); break;
+            case 'BRANCOS_2': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;
+            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_02': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_06_LIQUIDACAO': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_06_LIQUIDACAO': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_06': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_09_10': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_09_10': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_13': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_13': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_14': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_14': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_12': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_12': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'QUANT_REG_OCORRENCIA_19': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
+            case 'VALOR_REG_OCORRENCIA_19': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'NOME_2_BENEFICIARIO': return str_pad(substr($value, 0, 40), 40, "0", STR_PAD_LEFT); break;
+            case 'BRANCOS_3': return str_pad(substr($value, 0, 174), 174, $pad_replace, STR_PAD_RIGHT); break;
+            case 'VALOR_TOTAL_RATEIOS': return str_pad(substr($value, 0, 15), 15, "0", STR_PAD_LEFT); break;
+            case 'QUANT_TOTAL_RATEIOS': return str_pad(substr($value, 0, 8), 8, "0", STR_PAD_LEFT); break;
+            case 'BRANCOS_4': return str_pad(substr($value, 0, 8), 8, $pad_replace, STR_PAD_RIGHT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, "0", STR_PAD_LEFT); break;
 
             default: return 'Coluna não aceita no extract retorno data: ' . $data;
         }

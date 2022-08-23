@@ -476,47 +476,47 @@ trait Transaction3 {
         $pad_replace = ' ';
 
         switch(strtoupper($data)){
-            case 'REGISTRO': return str_pad($value, 1, '3', STR_PAD_LEFT); break;
-            case 'EMPRESA_BANCO': return str_pad($value, 16, $pad_replace, STR_PAD_RIGHT); break;
-            case 'TITULO_BANCO': return str_pad($value, 12, $pad_replace, STR_PAD_RIGHT); break;
-            case 'COD_CALCULO_RATEIO': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'TIPO_VALOR': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'FILLER_1': return str_pad($value, 12, $pad_replace, STR_PAD_RIGHT); break;
+            case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '3', STR_PAD_LEFT); break;
+            case 'EMPRESA_BANCO': return str_pad(substr($value, 0, 16), 16, $pad_replace, STR_PAD_RIGHT); break;
+            case 'TITULO_BANCO': return str_pad(substr($value, 0, 12), 12, $pad_replace, STR_PAD_RIGHT); break;
+            case 'COD_CALCULO_RATEIO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'TIPO_VALOR': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'FILLER_1': return str_pad(substr($value, 0, 12), 12, $pad_replace, STR_PAD_RIGHT); break;
             
-            case 'COD_BANCO_BENEFICIARIO_1': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA_BENEFICIARIO_1': return str_pad($value, 5, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA_DV_BENEFICIARIO_1': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'CONTA_CORRENTE_BENEFICIARIO_1': return str_pad($value, 12, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE_DV_BENEFICIARIO_1': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'VALOR_BENEFICIARIO_1': return str_pad($value, 15, '0', STR_PAD_LEFT); break;
-            case 'NOME_BENEFICIARIO_1': return str_pad($value, 40, $pad_replace, STR_PAD_RIGHT); break;
-            case 'FILLER_2': return str_pad($value, 31, $pad_replace, STR_PAD_RIGHT); break;
-            case 'PARCELA_1': return str_pad($value, 5, $pad_replace, STR_PAD_RIGHT); break;
-            case 'FLOATING_BENEFICIARIO_1': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
+            case 'COD_BANCO_BENEFICIARIO_1': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA_BENEFICIARIO_1': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA_DV_BENEFICIARIO_1': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'CONTA_CORRENTE_BENEFICIARIO_1': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE_DV_BENEFICIARIO_1': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'VALOR_BENEFICIARIO_1': return str_pad(substr($value, 0, 15), 15, '0', STR_PAD_LEFT); break;
+            case 'NOME_BENEFICIARIO_1': return str_pad(substr($value, 0, 40), 40, $pad_replace, STR_PAD_RIGHT); break;
+            case 'FILLER_2': return str_pad(substr($value, 0, 31), 31, $pad_replace, STR_PAD_RIGHT); break;
+            case 'PARCELA_1': return str_pad(substr($value, 0, 5), 5, $pad_replace, STR_PAD_RIGHT); break;
+            case 'FLOATING_BENEFICIARIO_1': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
 
-            case 'COD_BANCO_BENEFICIARIO_2': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA_BENEFICIARIO_2': return str_pad($value, 5, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA_DV_BENEFICIARIO_2': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'CONTA_CORRENTE_BENEFICIARIO_2': return str_pad($value, 12, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE_DV_BENEFICIARIO_2': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'VALOR_BENEFICIARIO_2': return str_pad($value, 15, '0', STR_PAD_LEFT); break;
-            case 'NOME_BENEFICIARIO_2': return str_pad($value, 40, $pad_replace, STR_PAD_RIGHT); break;
-            case 'FILLER_3': return str_pad($value, 31, $pad_replace, STR_PAD_RIGHT); break;
-            case 'PARCELA_2': return str_pad($value, 6, $pad_replace, STR_PAD_RIGHT); break;
-            case 'FLOATING_BENEFICIARIO_2': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
+            case 'COD_BANCO_BENEFICIARIO_2': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA_BENEFICIARIO_2': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA_DV_BENEFICIARIO_2': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'CONTA_CORRENTE_BENEFICIARIO_2': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE_DV_BENEFICIARIO_2': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'VALOR_BENEFICIARIO_2': return str_pad(substr($value, 0, 15), 15, '0', STR_PAD_LEFT); break;
+            case 'NOME_BENEFICIARIO_2': return str_pad(substr($value, 0, 40), 40, $pad_replace, STR_PAD_RIGHT); break;
+            case 'FILLER_3': return str_pad(substr($value, 0, 31), 31, $pad_replace, STR_PAD_RIGHT); break;
+            case 'PARCELA_2': return str_pad(substr($value, 0, 6), 6, $pad_replace, STR_PAD_RIGHT); break;
+            case 'FLOATING_BENEFICIARIO_2': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             
-            case 'COD_BANCO_BENEFICIARIO_3': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA_BENEFICIARIO_3': return str_pad($value, 5, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA_DV_BENEFICIARIO_3': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'CONTA_CORRENTE_BENEFICIARIO_3': return str_pad($value, 12, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE_DV_BENEFICIARIO_3': return str_pad($value, 1, $pad_replace, STR_PAD_RIGHT); break;
-            case 'VALOR_BENEFICIARIO_3': return str_pad($value, 15, '0', STR_PAD_LEFT); break;
-            case 'NOME_BENEFICIARIO_3': return str_pad($value, 40, $pad_replace, STR_PAD_RIGHT); break;
-            case 'FILLER_4': return str_pad($value, 31, $pad_replace, STR_PAD_RIGHT); break;
-            case 'PARCELA_3': return str_pad($value, 6, $pad_replace, STR_PAD_RIGHT); break;
-            case 'FLOATING_BENEFICIARIO_3': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
+            case 'COD_BANCO_BENEFICIARIO_3': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA_BENEFICIARIO_3': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA_DV_BENEFICIARIO_3': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'CONTA_CORRENTE_BENEFICIARIO_3': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE_DV_BENEFICIARIO_3': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
+            case 'VALOR_BENEFICIARIO_3': return str_pad(substr($value, 0, 15), 15, '0', STR_PAD_LEFT); break;
+            case 'NOME_BENEFICIARIO_3': return str_pad(substr($value, 0, 40), 40, $pad_replace, STR_PAD_RIGHT); break;
+            case 'FILLER_4': return str_pad(substr($value, 0, 31), 31, $pad_replace, STR_PAD_RIGHT); break;
+            case 'PARCELA_3': return str_pad(substr($value, 0, 6), 6, $pad_replace, STR_PAD_RIGHT); break;
+            case 'FLOATING_BENEFICIARIO_3': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             
-            case 'SEQUENCIAL': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
 
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }

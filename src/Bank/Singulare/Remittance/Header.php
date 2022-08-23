@@ -74,26 +74,26 @@ trait Header {
         $pad_replace = ' ';
 
         switch(strtoupper($data)){
-            case 'REGISTRO': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO': return str_pad($value, 1, '0', STR_PAD_LEFT); break;
-            case 'REMESSA': return str_pad($value, 7, ' ', STR_PAD_RIGHT); break;
-            case 'COD_SERVICO': return str_pad($value, 2, '0', STR_PAD_LEFT); break;
-            case 'SERVICO': return str_pad($value, 15, ' ', STR_PAD_RIGHT); break;
-            case 'CONVENIO_CONSULTORIA': return str_pad($value, 20, '0', STR_PAD_LEFT); break;
-            case 'NOME_CONSULTORIA': return str_pad($value, 30, ' ', STR_PAD_RIGHT); break;
-            case 'COD_BANCO_CONSULTORIA': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'NOME_BANCO_CONSULTORIA': return str_pad($value, 15, ' ', STR_PAD_RIGHT); break;
-            case 'DATA_ARQUIVO': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
-            case 'BRANCO_1': return str_pad($value, 8, ' ', STR_PAD_RIGHT); break;
-            case 'IDENTIFICACAO_SISTEMA': return str_pad($value, 2, ' ', STR_PAD_RIGHT); break;
-            case 'SEQUENCIAL_REMESSA': return str_pad($value, 7, '0', STR_PAD_LEFT); break;
-            case 'BRANCO_2': return str_pad($value, 2, ' ', STR_PAD_RIGHT); break;
-            case 'RETENCAO': return str_pad($value, 10, '0', STR_PAD_LEFT); break;
-            case 'COD_BANCO': return str_pad($value, 3, '0', STR_PAD_LEFT); break;
-            case 'AGENCIA':return str_pad($value, 4, '0', STR_PAD_LEFT); break;
-            case 'CONTA_CORRENTE': return str_pad($value, 14, '0', STR_PAD_LEFT); break;
-            case 'BRANCO_3': return str_pad($value, 288, ' ', STR_PAD_RIGHT); break;
-            case 'SEQUENCIAL': return str_pad($value, 6, '0', STR_PAD_LEFT); break;
+            case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'IDENTIFICACAO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'REMESSA': return str_pad(substr($value, 0, 7), 7, ' ', STR_PAD_RIGHT); break;
+            case 'COD_SERVICO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
+            case 'SERVICO': return str_pad(substr($value, 0, 15), 15, ' ', STR_PAD_RIGHT); break;
+            case 'CONVENIO_CONSULTORIA': return str_pad(substr($value, 0, 20), 20, '0', STR_PAD_LEFT); break;
+            case 'NOME_CONSULTORIA': return str_pad(substr($value, 0, 30), 30, ' ', STR_PAD_RIGHT); break;
+            case 'COD_BANCO_CONSULTORIA': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'NOME_BANCO_CONSULTORIA': return str_pad(substr($value, 0, 15), 15, ' ', STR_PAD_RIGHT); break;
+            case 'DATA_ARQUIVO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
+            case 'BRANCO_1': return str_pad(substr($value, 0, 8), 8, ' ', STR_PAD_RIGHT); break;
+            case 'IDENTIFICACAO_SISTEMA': return str_pad(substr($value, 0, 2), 2, ' ', STR_PAD_RIGHT); break;
+            case 'SEQUENCIAL_REMESSA': return str_pad(substr($value, 0, 7), 7, '0', STR_PAD_LEFT); break;
+            case 'BRANCO_2': return str_pad(substr($value, 0, 2), 2, ' ', STR_PAD_RIGHT); break;
+            case 'RETENCAO': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
+            case 'COD_BANCO': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
+            case 'AGENCIA':return str_pad(substr($value, 0, 4), 4, '0', STR_PAD_LEFT); break;
+            case 'CONTA_CORRENTE': return str_pad(substr($value, 0, 14), 14, '0', STR_PAD_LEFT); break;
+            case 'BRANCO_3': return str_pad(substr($value, 0, 288), 288, ' ', STR_PAD_RIGHT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }
     }
