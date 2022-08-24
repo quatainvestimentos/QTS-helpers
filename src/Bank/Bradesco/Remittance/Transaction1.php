@@ -14,7 +14,7 @@ trait Transaction1 {
             case 'AGENCIA': $value = substr($line, 1, 5); break;
             case 'AGENCIA_DV': $value = substr($line, 6, 1); break;
             case 'RAZAO_CONTA': $value = substr($line, 7, 5); break;
-            case 'CONTA_CORRENTE': $value = substr($line, 11, 7); break;
+            case 'CONTA_CORRENTE': $value = substr($line, 12, 7); break;
             case 'CONTA_CORRENTE_DV': $value = substr($line, 19, 1); break;
             case 'BENEFICIARIA': $value = substr($line, 20, 17); break;
             case 'SEU_NUM': $value = substr($line, 37, 25); break;
@@ -550,7 +550,7 @@ trait Transaction1 {
             case 'AGENCIA': return substr_replace($line, $new_value, 1, 5); break;
             case 'AGENCIA_DV': return substr_replace($line, $new_value, 6, 1); break;
             case 'RAZAO_CONTA': return substr_replace($line, $new_value, 7, 5); break;
-            case 'CONTA_CORRENTE': return substr_replace($line, $new_value, 11, 7); break;
+            case 'CONTA_CORRENTE': return substr_replace($line, $new_value, 12, 7); break;
             case 'CONTA_CORRENTE_DV': return substr_replace($line, $new_value, 19, 1); break;
             case 'BENEFICIARIA': return substr_replace($line, $new_value, 20, 17); break;
             case 'SEU_NUM': return substr_replace($line, $new_value, 37, 25); break;
