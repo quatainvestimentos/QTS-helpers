@@ -299,7 +299,7 @@ trait QtsHelpers
         foreach($request->file($input_name) as $remittance):
 
             $converted[] = (object)[
-                'filename' => $remittance->getClientOriginalName(),
+                'filename' => Qts::cleanUpString($remittance->getClientOriginalName()),
                 'base64' => base64_encode(file_get_contents($remittance))
             ];
 
@@ -324,7 +324,7 @@ trait QtsHelpers
                     if(isset($remittance['filename']) && isset($remittance['base64'])){
         
                         $converted[] = (object)[
-                            'filename' => $remittance['filename'],
+                            'filename' => Qts::cleanUpString($remittance['filename']),
                             'base64' => $remittance['base64'],
                         ];     
         
@@ -696,6 +696,15 @@ trait QtsHelpers
 
         return $filename;
 
+    }
+
+    public static function cleanUpString($string)
+    {
+        $string = str_replace('(', '', $string);
+        $string = str_replace(')', '', $string);
+        $string = str_replace(' ', '_', $string);
+        $string = str_replace('%20', '_', $string);
+        return $string;
     }
 
 }
