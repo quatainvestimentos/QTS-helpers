@@ -81,7 +81,8 @@ trait Transaction1 {
                     '02' => 'CNPJ',
                     '03' => 'PIS/PASEP',
                     '98' => 'Não tem',
-                    '99' => 'Outros'
+                    '99' => 'Outros',
+                    'OBS' => 'Relativo ao Sacado'
                 ],
                 'type' => 'Numérico',
             ],
@@ -89,7 +90,7 @@ trait Transaction1 {
                 'position_from' => '004',
                 'position_to' => '017',
                 'size' => '014',
-                'content' => 'CNPJ/CPF, Número, Filial, Controle',
+                'content' => 'CNPJ/CPF, Número, Filial, Controle do Sacado',
                 'type' => 'Numérico',
             ],
             'ZEROS_1' => [ 
@@ -97,7 +98,7 @@ trait Transaction1 {
                 'position_to' => '020',
                 'size' => '003',
                 'content' => 'Zeros',
-                'type' => 'Alfanumérico',
+                'type' => 'Numérico',
             ],
             'IDENTIFICACAO_EMPRESA' => [ 
                 'position_from' => '021',
@@ -112,6 +113,7 @@ trait Transaction1 {
                 'size' => '025',
                 'content' => 'Uso da Empresa',
                 'type' => 'Alfanumérico',
+                'content' => 'Sdocumento no banco de dados',
             ],
             'ZEROS_2' => [ 
                 'position_from' => '063',
@@ -139,7 +141,7 @@ trait Transaction1 {
                 'position_to' => '104',
                 'size' => '012',
                 'content' => 'Zeros',
-                'type' => 'Alfanumérico',
+                'type' => 'Numérico',
             ],
             'RATEIO' => [ 
                 'position_from' => '105',
@@ -235,7 +237,10 @@ trait Transaction1 {
                 'position_to' => '146',
                 'size' => '020',
                 'content' => 'Nº Banco',
-                'type' => 'Alfanumérico',
+                'type' => 'Numérico',
+                'content' => [
+                    'title' => 'Normalmente utilizamos o nosso número + dígito verificador'
+                ]
             ],
             'VENCIMENTO' => [ 
                 'position_from' => '147',
@@ -497,27 +502,27 @@ trait Transaction1 {
             case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
             case 'TIPO_INSCRICAO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'NUM_INSCRICAO': return str_pad(substr($value, 0, 14), 14, '0', STR_PAD_LEFT); break;
-            case 'ZEROS_1': return str_pad(substr($value, 0, 3), 3, ' ', STR_PAD_RIGHT); break;
+            case 'ZEROS_1': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             case 'IDENTIFICACAO_EMPRESA': return str_pad(substr($value, 0, 17), 17, ' ', STR_PAD_RIGHT); break;
             case 'NUM_PARTICIPANTE': return str_pad(substr($value, 0, 25), 25, ' ', STR_PAD_RIGHT); break;
             case 'ZEROS_2': return str_pad(substr($value, 0, 8), 8, '0', STR_PAD_LEFT); break;
-            case 'NOSSO_NUM': return str_pad(substr($value, 0, 12), 12, ' ', STR_PAD_RIGHT); break;
+            case 'NOSSO_NUM': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
             case 'BANCO_1': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
-            case 'BANCO_2': return str_pad(substr($value, 0, 12), 12, ' ', STR_PAD_RIGHT); break;
-            case 'RATEIO': return str_pad(substr($value, 0, 1), 1,  ' ', STR_PAD_RIGHT); break;
-            case 'PAGAMENTO_PARCIAL': return str_pad(substr($value, 0, 2), 2, ' ', STR_PAD_RIGHT); break;
+            case 'BANCO_2': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
+            case 'RATEIO': return str_pad(substr($value, 0, 1), 1,  '0', STR_PAD_RIGHT); break;
+            case 'PAGAMENTO_PARCIAL': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'CARTEIRA': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
             case 'IDENTIFICACAO_OCORRENCIA': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'DATA_OCORRENCIA': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             case 'NUM_DOCUMENTO': return str_pad(substr($value, 0, 10), 10, ' ', STR_PAD_RIGHT); break;
-            case 'TITULO': return str_pad(substr($value, 0, 20), 20, ' ', STR_PAD_RIGHT); break;
+            case 'TITULO': return str_pad(substr($value, 0, 20), 20, '0', STR_PAD_LEFT); break;
             case 'VENCIMENTO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             case 'VALOR_TITULO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'BANCO_COBRADOR': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             case 'AGENCIA_COBRADORA': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
             case 'ESPECIE': return str_pad(substr($value, 0, 2), 2, ' ', STR_PAD_RIGHT); break;
             case 'DESPESAS_1': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'DESPESAS_2': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
+            case 'DESPESAS_2': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'JUROS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'IOF': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'ABATIMENTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
