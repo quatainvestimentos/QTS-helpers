@@ -159,6 +159,16 @@ trait QtsHelpers
                 $string = 'Duplicatas';
                 $badge = '';
                 break;
+        
+            case 'ESCROW':
+                $string = 'Conta Escrow';
+                $badge = '';
+                break;
+
+            case 'CHECKING_ACCOUNT':
+                $string = 'Conta Livre Movimentação';
+                $badge = '';
+                break;
                 
 
             /** Status */
