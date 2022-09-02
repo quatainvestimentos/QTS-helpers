@@ -183,4 +183,77 @@ trait QiTech
 
     }
 
+    public static function qiHasError($data)
+    {
+        
+        $title = (isset($data['title']) && $data['title'] ? $data['title'] : null);
+
+        switch($title){
+            case 'Bad Request - CNAB ERROR':
+            case 'Internal Error':
+            case 'Unprocessable Entity':
+            case 'Permission Validator Error':
+            case 'Schema Validator Error':
+            case 'External API Error (Rest Connector)':
+            case 'PSTI Translation Error':
+            case 'Unauthorized':
+            case 'Locked':
+            case 'Bad Request':
+            case 'Not Found':
+            case 'Pub Sub Ocurrence Error':
+            case 'Invalid FileName':
+            case 'Gateway Time-Out':
+            case 'Service Unavailable':
+            case 'Invalid or empty token':
+            case 'Payment Required':
+            case 'Conflict':
+            case 'Syntax Error':
+            case 'Not Implemented':
+            case 'Search Params Error':
+                return true;
+                break;
+        }
+
+        return false;
+    }
+
+    public static function qiMapError($data)
+    {
+
+        $error_msg = '';
+        foreach($data['extra_fields'] as $key => $value):
+
+            switch(strtoupper($key)){
+                case 'DETAILS_BR':
+                case 'CNAB_FILENAME':
+                    $error_msg .= " {$value}";
+                    break;
+                case 'REASONS':
+                    $error_msg .= Qts::qiGetReasons($value);
+                    break;
+            }
+
+        endforeach;
+
+        if(isset($data['translation']) && $data['translation']){
+            $error_msg .= " " . $data['translation'];
+        }
+
+        if(isset($data['code']) && $data['code']){
+            $error_msg .= " " . $data['code'];
+        }
+
+        return trim($error_msg);
+
+    }
+
+    protected static function qiGetReasons($reasons_array)
+    {
+        $error = '';
+        foreach($reasons_array as $reason):
+            $error .= " {$reason['description']}";
+        endforeach;
+        return $error;
+    }
+
 }
