@@ -12,7 +12,6 @@ trait Common {
          */
 
         $string = preg_replace('/\xc2\xa0/', '', $string);
-        $string = preg_replace('/[[:^print:]]/', '', $string);
 
         /**
          * Translate and sanitize string
@@ -40,6 +39,7 @@ trait Common {
         $string = str_replace('?',' ', $string);
         $string = strtoupper($string);
         $string = str_replace(array("\n", "\r"), '', $string);
+        $string = preg_replace('/[[:^print:]]/', '', $string);
         $string = trim($string);
 
         return $string;
