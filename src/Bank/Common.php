@@ -39,7 +39,13 @@ trait Common {
         $string = str_replace('?',' ', $string);
         $string = strtoupper($string);
         $string = str_replace(array("\n", "\r"), '', $string);
-        $string = preg_replace('/[[:^print:]]/', '', $string);
+
+        # Tentamos fazer isso, porém ao remover caracteres não visíveis
+        # Comprometemos a posição do char (a linha fica correta)
+        # Mas o dado acaba invadindo a casa seguinte, comprometendo o arquivo
+        
+        # Não funciona: $string = preg_replace('/[[:^print:]]/', '', $string);
+
         $string = trim($string);
 
         return $string;
