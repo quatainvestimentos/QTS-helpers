@@ -20,16 +20,16 @@ trait Init {
 
     }
 
-    public static function extractAllFrom($type='HEADER',$line)
+    public static function extractAllFrom($type='HEADER',$line, $pad=true)
     {
 
         switch(strtoupper($type)){
-            case 'HEADER': return Header::extractAllFromHeader($line); break;
-            case 'TRANSACTION1': return Transaction1::extractAllFromTransaction1($line); break;
-            case 'TRANSACTION2': return Transaction2::extractAllFromTransaction2($line); break;
-            case 'TRANSACTION3': return Transaction3::extractAllFromTransaction3($line); break;
-            case 'TRANSACTION6': return Transaction6::extractAllFromTransaction6($line); break;
-            case 'TRANSACTION7': return Transaction7::extractAllFromTransaction7($line); break;
+            case 'HEADER': return Header::extractAllFromHeader($line, $pad); break;
+            case 'TRANSACTION1': return Transaction1::extractAllFromTransaction1($line, $pad); break;
+            case 'TRANSACTION2': return Transaction2::extractAllFromTransaction2($line, $pad); break;
+            case 'TRANSACTION3': return Transaction3::extractAllFromTransaction3($line, $pad); break;
+            case 'TRANSACTION6': return Transaction6::extractAllFromTransaction6($line, $pad); break;
+            case 'TRANSACTION7': return Transaction7::extractAllFromTransaction7($line, $pad); break;
             case 'FOOTER': return Footer::extractAllFromFooter($line); break;
             default: return 'Tipo de linha/transação de CNAB inválido: ' . $type;
         }        

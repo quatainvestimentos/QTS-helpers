@@ -12,6 +12,7 @@ trait Common {
          */
 
         $string = preg_replace('/\xc2\xa0/', '', $string);
+        $string = preg_replace('/[[:^print:]]/', '', $string);
 
         /**
          * Translate and sanitize string
@@ -35,6 +36,8 @@ trait Common {
         
         $string = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/","/(ç)/","/(Ç)/"),explode(" ","a A e E i I o O u U n N c C"),$string);
         $string = preg_replace("/[^A-Za-z0-9 ]-/", ' ', $string);
+        $string = preg_replace("/S\/A/", 'S.A.', $string);
+        $string = preg_replace("/S/A/", 'S.A.', $string);
         $string = str_replace('?',' ', $string);
         $string = strtoupper($string);
         $string = str_replace(array("\n", "\r"), '', $string);

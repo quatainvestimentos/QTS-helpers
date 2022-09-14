@@ -64,57 +64,57 @@ trait Transaction1 {
 
     }
 
-    public static function extractAllFromTransaction1($line)
+    public static function extractAllFromTransaction1($line,$pad=true)
     {
 
         $type = 'TRANSACTION1';
 
-        $registro = Remittance::extractFrom($type,$line,'registro', false);
-        $agencia = Remittance::extractFrom($type,$line,'agencia', false);
-        $agencia_dv = Remittance::extractFrom($type,$line,'agencia_dv', false);
-        $razao_conta = Remittance::extractFrom($type,$line,'razao_conta', false);
-        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', false);
-        $conta_corrente_dv = Remittance::extractFrom($type,$line,'conta_corrente_dv', false);
-        $beneficiaria = Remittance::extractFrom($type,$line,'beneficiaria', false);
-        $seu_num = Remittance::extractFrom($type,$line,'seu_num',false);
-        $cod_banco = Remittance::extractFrom($type,$line,'cod_banco',false);
-        $multa = Remittance::extractFrom($type,$line,'multa',false);
-        $percentual_multa = Remittance::extractFrom($type,$line,'percentual_multa',false);
-        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num',false);
-        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv',false);
-        $desconto_dia = Remittance::extractFrom($type,$line,'desconto_dia',false);
-        $tipo_emissao = Remittance::extractFrom($type,$line,'tipo_emissao',false);
-        $debito_automatico = Remittance::extractFrom($type,$line,'debito_automatico',false);
-        $operacao_banco = Remittance::extractFrom($type,$line,'operacao_banco',false);
-        $rateio = Remittance::extractFrom($type,$line,'rateio',false);
-        $aviso_debito = Remittance::extractFrom($type,$line,'aviso_debito',false);
-        $qtd_pagamentos = Remittance::extractFrom($type,$line,'qtd_pagamentos',false);
-        $instrucao = Remittance::extractFrom($type,$line,'instrucao',false);
-        $s_documento = Remittance::extractFrom($type,$line,'s_documento',false);
-        $vencimento = Remittance::extractFrom($type,$line,'vencimento',false);
-        $valor = Remittance::extractFrom($type,$line,'valor',false);
-        $banco_cobranca = Remittance::extractFrom($type,$line,'banco_cobranca',false);
-        $agencia_depositaria = Remittance::extractFrom($type,$line,'agencia_depositaria',false);
-        $especie_titulo = Remittance::extractFrom($type,$line,'especie_titulo',false);
-        $identificacao = Remittance::extractFrom($type,$line,'identificacao',false);
-        $emissao = Remittance::extractFrom($type,$line,'emissao',false);
-        $instrucao_1 = Remittance::extractFrom($type,$line,'instrucao_1',false);
-        $instrucao_2 = Remittance::extractFrom($type,$line,'instrucao_2',false);
-        $valor_dia_atraso = Remittance::extractFrom($type,$line,'valor_dia_atraso',false);
-        $data_limite_desconto = Remittance::extractFrom($type,$line,'data_limite_desconto',false);
-        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto',false);
-        $valor_iof = Remittance::extractFrom($type,$line,'valor_iof',false);
-        $valor_abatimento = Remittance::extractFrom($type,$line,'valor_abatimento',false);
-        $tipo_inscricao = Remittance::extractFrom($type,$line,'tipo_inscricao',false);
-        $sacado_inscricao = Remittance::extractFrom($type,$line,'sacado_inscricao',false);
-        $sacado_nome = Remittance::extractFrom($type,$line,'sacado_nome',false);
-        $sacado_endereco = Remittance::extractFrom($type,$line,'sacado_endereco',false);
-        $mensagem_1 = Remittance::extractFrom($type,$line,'mensagem_1',false);
-        $sacado_cep_prefixo = Remittance::extractFrom($type,$line,'sacado_cep_prefixo',false);
-        $sacado_cep_sufixo = Remittance::extractFrom($type,$line,'sacado_cep_sufixo',false);
-        $mensagem_2 = Remittance::extractFrom($type,$line,'mensagem_2',false);
-        $sequencial = Remittance::extractFrom($type,$line,'sequencial',false);
-        $nfe = Remittance::extractFrom($type,$line,'nfe',false);
+        $registro = Remittance::extractFrom($type,$line,'registro', $pad);
+        $agencia = Remittance::extractFrom($type,$line,'agencia', $pad);
+        $agencia_dv = Remittance::extractFrom($type,$line,'agencia_dv', $pad);
+        $razao_conta = Remittance::extractFrom($type,$line,'razao_conta', $pad);
+        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', $pad);
+        $conta_corrente_dv = Remittance::extractFrom($type,$line,'conta_corrente_dv', $pad);
+        $beneficiaria = Remittance::extractFrom($type,$line,'beneficiaria', $pad);
+        $seu_num = Remittance::extractFrom($type,$line,'seu_num',$pad);
+        $cod_banco = Remittance::extractFrom($type,$line,'cod_banco',$pad);
+        $multa = Remittance::extractFrom($type,$line,'multa',$pad);
+        $percentual_multa = Remittance::extractFrom($type,$line,'percentual_multa',$pad);
+        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num',$pad);
+        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv',$pad);
+        $desconto_dia = Remittance::extractFrom($type,$line,'desconto_dia',$pad);
+        $tipo_emissao = Remittance::extractFrom($type,$line,'tipo_emissao',$pad);
+        $debito_automatico = Remittance::extractFrom($type,$line,'debito_automatico',$pad);
+        $operacao_banco = Remittance::extractFrom($type,$line,'operacao_banco',$pad);
+        $rateio = Remittance::extractFrom($type,$line,'rateio',$pad);
+        $aviso_debito = Remittance::extractFrom($type,$line,'aviso_debito',$pad);
+        $qtd_pagamentos = Remittance::extractFrom($type,$line,'qtd_pagamentos',$pad);
+        $instrucao = Remittance::extractFrom($type,$line,'instrucao',$pad);
+        $s_documento = Remittance::extractFrom($type,$line,'s_documento',$pad);
+        $vencimento = Remittance::extractFrom($type,$line,'vencimento',$pad);
+        $valor = Remittance::extractFrom($type,$line,'valor',$pad);
+        $banco_cobranca = Remittance::extractFrom($type,$line,'banco_cobranca',$pad);
+        $agencia_depositaria = Remittance::extractFrom($type,$line,'agencia_depositaria',$pad);
+        $especie_titulo = Remittance::extractFrom($type,$line,'especie_titulo',$pad);
+        $identificacao = Remittance::extractFrom($type,$line,'identificacao',$pad);
+        $emissao = Remittance::extractFrom($type,$line,'emissao',$pad);
+        $instrucao_1 = Remittance::extractFrom($type,$line,'instrucao_1',$pad);
+        $instrucao_2 = Remittance::extractFrom($type,$line,'instrucao_2',$pad);
+        $valor_dia_atraso = Remittance::extractFrom($type,$line,'valor_dia_atraso',$pad);
+        $data_limite_desconto = Remittance::extractFrom($type,$line,'data_limite_desconto',$pad);
+        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto',$pad);
+        $valor_iof = Remittance::extractFrom($type,$line,'valor_iof',$pad);
+        $valor_abatimento = Remittance::extractFrom($type,$line,'valor_abatimento',$pad);
+        $tipo_inscricao = Remittance::extractFrom($type,$line,'tipo_inscricao',$pad);
+        $sacado_inscricao = Remittance::extractFrom($type,$line,'sacado_inscricao',$pad);
+        $sacado_nome = Remittance::extractFrom($type,$line,'sacado_nome',$pad);
+        $sacado_endereco = Remittance::extractFrom($type,$line,'sacado_endereco',$pad);
+        $mensagem_1 = Remittance::extractFrom($type,$line,'mensagem_1',$pad);
+        $sacado_cep_prefixo = Remittance::extractFrom($type,$line,'sacado_cep_prefixo',$pad);
+        $sacado_cep_sufixo = Remittance::extractFrom($type,$line,'sacado_cep_sufixo',$pad);
+        $mensagem_2 = Remittance::extractFrom($type,$line,'mensagem_2',$pad);
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial',$pad);
+        $nfe = Remittance::extractFrom($type,$line,'nfe',$pad);
 
         return 
         $registro .

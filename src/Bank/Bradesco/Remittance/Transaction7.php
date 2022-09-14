@@ -35,25 +35,25 @@ trait Transaction7 {
 
     }
 
-    public static function extractAllFromTransaction7($line)
+    public static function extractAllFromTransaction7($line, $pad=true)
     {
 
         $type = 'TRANSACTION7';
 
-        $registro = Remittance::extractFrom($type,$line,'registro', false);
-        $endereco_beneficiario = Remittance::extractFrom($type,$line,'endereco_beneficiario', false);
-        $sacado_cep_prefixo = Remittance::extractFrom($type,$line,'sacado_cep_prefixo', false);
-        $sacado_cep_sufixo = Remittance::extractFrom($type,$line,'sacado_cep_sufixo', false);
-        $sacado_cidade = Remittance::extractFrom($type,$line,'sacado_cidade', false);
-        $sacado_uf = Remittance::extractFrom($type,$line,'sacado_uf', false);
-        $reserva = Remittance::extractFrom($type,$line,'reserva', false);
-        $carteira = Remittance::extractFrom($type,$line,'carteira', false);
-        $agencia = Remittance::extractFrom($type,$line,'agencia', false);
-        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', false);
-        $conta_corrente_dv = Remittance::extractFrom($type,$line,'conta_corrente_dv', false);
-        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', false);
-        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', false);   
-        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+        $registro = Remittance::extractFrom($type,$line,'registro', $pad);
+        $endereco_beneficiario = Remittance::extractFrom($type,$line,'endereco_beneficiario', $pad);
+        $sacado_cep_prefixo = Remittance::extractFrom($type,$line,'sacado_cep_prefixo', $pad);
+        $sacado_cep_sufixo = Remittance::extractFrom($type,$line,'sacado_cep_sufixo', $pad);
+        $sacado_cidade = Remittance::extractFrom($type,$line,'sacado_cidade', $pad);
+        $sacado_uf = Remittance::extractFrom($type,$line,'sacado_uf', $pad);
+        $reserva = Remittance::extractFrom($type,$line,'reserva', $pad);
+        $carteira = Remittance::extractFrom($type,$line,'carteira', $pad);
+        $agencia = Remittance::extractFrom($type,$line,'agencia', $pad);
+        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', $pad);
+        $conta_corrente_dv = Remittance::extractFrom($type,$line,'conta_corrente_dv', $pad);
+        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', $pad);
+        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', $pad);   
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', $pad);
 
         return 
         $registro . 

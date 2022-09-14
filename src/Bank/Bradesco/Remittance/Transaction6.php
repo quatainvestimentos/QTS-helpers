@@ -32,24 +32,24 @@ trait Transaction6 {
 
     }
 
-    public static function extractAllFromTransaction6($line)
+    public static function extractAllFromTransaction6($line, $pad=true)
     {
 
         $type = 'TRANSACTION6';
 
-        $registro = Remittance::extractFrom($type,$line,'registro', false);
-        $carteira = Remittance::extractFrom($type,$line,'carteira', false);
-        $agencia = Remittance::extractFrom($type,$line,'agencia', false);
-        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', false);
-        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', false);
-        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', false);
-        $tipo_operacao = Remittance::extractFrom($type,$line,'tipo_operacao', false);
-        $cheque_especial = Remittance::extractFrom($type,$line,'cheque_especial', false);
-        $saldo_apos_vencimento = Remittance::extractFrom($type,$line,'saldo_apos_vencimento', false);
-        $cod_contrato = Remittance::extractFrom($type,$line,'cod_contrato', false);
-        $validade_contrato = Remittance::extractFrom($type,$line,'validade_contrato', false);
-        $brancos = Remittance::extractFrom($type,$line,'brancos', false);
-        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+        $registro = Remittance::extractFrom($type,$line,'registro', $pad);
+        $carteira = Remittance::extractFrom($type,$line,'carteira', $pad);
+        $agencia = Remittance::extractFrom($type,$line,'agencia', $pad);
+        $conta_corrente = Remittance::extractFrom($type,$line,'conta_corrente', $pad);
+        $nosso_num = Remittance::extractFrom($type,$line,'nosso_num', $pad);
+        $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv', $pad);
+        $tipo_operacao = Remittance::extractFrom($type,$line,'tipo_operacao', $pad);
+        $cheque_especial = Remittance::extractFrom($type,$line,'cheque_especial', $pad);
+        $saldo_apos_vencimento = Remittance::extractFrom($type,$line,'saldo_apos_vencimento', $pad);
+        $cod_contrato = Remittance::extractFrom($type,$line,'cod_contrato', $pad);
+        $validade_contrato = Remittance::extractFrom($type,$line,'validade_contrato', $pad);
+        $brancos = Remittance::extractFrom($type,$line,'brancos', $pad);
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', $pad);
 
         return 
         $registro .
