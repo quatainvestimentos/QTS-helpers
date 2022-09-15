@@ -14,6 +14,19 @@ trait Common {
         $string = preg_replace('/\xc2\xa0/', '', $string);
 
         /**
+         * Remove all "Non Ascii" and octal chars
+         */
+
+        $string = preg_replace('/[\x00-\x1F\x80-\xFF]/', ' ', $string);
+        $string = preg_replace('/[\000-\031\200-\377]/', ' ', $string);
+        
+        /**
+         * Remove all "Non pritable" chars
+         */
+
+        $string = preg_replace('/[[:^print:]]/', " ", $string);
+
+        /**
          * Translate and sanitize string
          */
 
@@ -37,14 +50,8 @@ trait Common {
         $string = preg_replace("/[^A-Za-z0-9 ]-/", ' ', $string);
         $string = str_replace(array("\\", "/"), '.', $string);
         $string = str_replace('?',' ', $string);
-        $string = strtoupper($string);
         $string = str_replace(array("\n", "\r"), '', $string);
-
-        # Tentamos fazer isso, porém ao remover caracteres não visíveis
-        # Comprometemos a posição do char (a linha fica correta)
-        # Mas o dado acaba invadindo a casa seguinte, comprometendo o arquivo
-        
-        # Não funciona: $string = preg_replace('/[[:^print:]]/', '', $string);
+        $string = strtoupper($string);
 
         $string = trim($string);
 
