@@ -19,7 +19,7 @@ trait Footer {
             case 'VAL_TOTAL': $value = substr($line, 25, 14); break;
             case 'N_AVISO_BANCARIO': $value = substr($line, 39, 8); break;
             case 'BRANCOS_2': $value = substr($line, 47, 10); break;
-            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': $value = substr($line, 52, 12); break;
+            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': $value = substr($line, 57, 5); break;
             case 'QUANT_REG_OCORRENCIA_02': $value = substr($line, 62, 12); break;
             case 'VALOR_REG_OCORRENCIA_06_LIQUIDACAO': $value = substr($line, 74, 12); break;
             case 'QUANT_REG_OCORRENCIA_06_LIQUIDACAO': $value = substr($line, 86, 5); break;
@@ -34,11 +34,10 @@ trait Footer {
             case 'VALOR_REG_OCORRENCIA_12': $value = substr($line, 159, 12); break;
             case 'QUANT_REG_OCORRENCIA_19': $value = substr($line, 171, 5); break;
             case 'VALOR_REG_OCORRENCIA_19': $value = substr($line, 176, 12); break;
-            case 'NOME_2_BENEFICIARIO': $value = substr($line, 197, 40); break;
             case 'BRANCOS_3': $value = substr($line, 188, 174); break;
             case 'VALOR_TOTAL_RATEIOS': $value = substr($line, 362, 15); break;
             case 'QUANT_TOTAL_RATEIOS': $value = substr($line, 377, 8); break;
-            case 'BRANCOS_4': $value = substr($line, 267, 8); break;
+            case 'BRANCOS_4': $value = substr($line, 385, 9); break;
             case 'SEQUENCIAL': $value = substr($line, 394, 6); break;
             
             default: return 'Coluna não aceita no extract retorno data: '. $data;
@@ -78,7 +77,6 @@ trait Footer {
         $valor_reg_ocorrencia_12 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_12',$pad);
         $quant_reg_ocorrencia_19 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_19',$pad);
         $valor_reg_ocorrencia_19 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_19',$pad);
-        $nome_2_beneficiario = Discharge::extractFrom($type,$line,'nome_2_beneficiario',$pad);
         $brancos_3 = Discharge::extractFrom($type,$line,'brancos_3',$pad);
         $valor_total_rateios = Discharge::extractFrom($type,$line,'valor_total_rateios',$pad);
         $quant_total_rateios = Discharge::extractFrom($type,$line,'quant_total_rateios',$pad);
@@ -110,7 +108,6 @@ trait Footer {
         $valor_reg_ocorrencia_12 . 
         $quant_reg_ocorrencia_19 . 
         $valor_reg_ocorrencia_19 . 
-        $nome_2_beneficiario . 
         $brancos_3 . 
         $valor_total_rateios . 
         $quant_total_rateios . 
@@ -187,9 +184,9 @@ trait Footer {
                 'type' => 'Alfanumérico',
             ],
             'COD_CONTA_CORRENTE_1_BENEFICIARIO' => [ 
-                'position_from' => '053',
-                'position_to' => '064',
-                'size' => '012',
+                'position_from' => '058',
+                'position_to' => '062',
+                'size' => '05',
                 'content' => 'Número da Conta-Corrente do Beneficiário',
                 'type' => 'Numérico',
             ],
@@ -291,13 +288,6 @@ trait Footer {
                 'content' => 'Valor dos Registros',
                 'type' => 'Numérico',
             ],
-            'NOME_2_BENEFICIARIO' => [ 
-                'position_from' => '198',
-                'position_to' => '237',
-                'size' => '040',
-                'content' => 'Nome do 2º Beneficiário',
-                'type' => 'Numérico',
-            ],
             'BRANCOS_3' => [ 
                 'position_from' => '189',
                 'position_to' => '362',
@@ -344,38 +334,36 @@ trait Footer {
     {
 
         switch(strtoupper($data)){
-
             case 'REGISTRO': return substr_replace($line, $new_value, 0, 1); break;
-            case 'RETORNO': return substr_replace($line, $new_value, 1, 1); break;
-            case 'TIPO_REGISTRO': return substr_replace($line, $new_value, 2, 2); break;
-            case 'COD_BANCO': return substr_replace($line, $new_value, 4, 3); break;
-            case 'BRANCOS_1': return substr_replace($line, $new_value, 7, 10); break;
-            case 'QUANT_TITULO': return substr_replace($line, $new_value, 17, 8); break;
-            case 'VAL_TOTAL': return substr_replace($line, $new_value, 25, 14); break;
-            case 'N_AVISO_BANCARIO': return substr_replace($line, $new_value, 39, 8); break;
-            case 'BRANCOS_2': return substr_replace($line, $new_value, 47, 10); break;
-            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': return substr_replace($line, $new_value, 52, 12); break;
-            case 'QUANT_REG_OCORRENCIA_02': return substr_replace($line, $new_value, 62, 12); break;
-            case 'VALOR_REG_OCORRENCIA_06_LIQUIDACAO': return substr_replace($line, $new_value, 74, 12); break;
-            case 'QUANT_REG_OCORRENCIA_06_LIQUIDACAO': return substr_replace($line, $new_value, 86, 5); break;
-            case 'VALOR_REG_OCORRENCIA_06': return substr_replace($line, $new_value, 91, 12); break;
-            case 'QUANT_REG_OCORRENCIA_09_10': return substr_replace($line, $new_value, 103, 5); break;
-            case 'VALOR_REG_OCORRENCIA_09_10': return substr_replace($line, $new_value, 108, 12); break;
-            case 'QUANT_REG_OCORRENCIA_13': return substr_replace($line, $new_value, 120, 5); break;
-            case 'VALOR_REG_OCORRENCIA_13': return substr_replace($line, $new_value, 125, 12); break;
-            case 'QUANT_REG_OCORRENCIA_14': return substr_replace($line, $new_value, 137, 5); break;
-            case 'VALOR_REG_OCORRENCIA_14': return substr_replace($line, $new_value, 142, 12); break;
-            case 'QUANT_REG_OCORRENCIA_12': return substr_replace($line, $new_value, 154, 5); break;
-            case 'VALOR_REG_OCORRENCIA_12': return substr_replace($line, $new_value, 159, 12); break;
-            case 'QUANT_REG_OCORRENCIA_19': return substr_replace($line, $new_value, 171, 5); break;
-            case 'VALOR_REG_OCORRENCIA_19': return substr_replace($line, $new_value, 176, 12); break;
-            case 'NOME_2_BENEFICIARIO': return substr_replace($line, $new_value, 197, 40); break;
-            case 'BRANCOS_3': return substr_replace($line, $new_value, 188, 174); break;
-            case 'VALOR_TOTAL_RATEIOS': return substr_replace($line, $new_value, 362, 15); break;
-            case 'QUANT_TOTAL_RATEIOS': return substr_replace($line, $new_value, 377, 8); break;
-            case 'BRANCOS_4': return substr_replace($line, $new_value, 267, 8); break;
-            case 'SEQUENCIAL': return substr_replace($line, $new_value, 394, 6); break;
-
+            case 'RETORNO': return substr_replace($line, $new_value,  1, 1); break;
+            case 'TIPO_REGISTRO': return substr_replace($line, $new_value,  2, 2); break;
+            case 'COD_BANCO': return substr_replace($line, $new_value,  4, 3); break;
+            case 'BRANCOS_1': return substr_replace($line, $new_value,  7, 10); break;
+            case 'QUANT_TITULO': return substr_replace($line, $new_value,  17, 8); break;
+            case 'VAL_TOTAL': return substr_replace($line, $new_value,  25, 14); break;
+            case 'N_AVISO_BANCARIO': return substr_replace($line, $new_value,  39, 8); break;
+            case 'BRANCOS_2': return substr_replace($line, $new_value,  47, 10); break;
+            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': return substr_replace($line, $new_value,  57, 5); break;
+            case 'QUANT_REG_OCORRENCIA_02': return substr_replace($line, $new_value,  62, 12); break;
+            case 'VALOR_REG_OCORRENCIA_06_LIQUIDACAO': return substr_replace($line, $new_value,  74, 12); break;
+            case 'QUANT_REG_OCORRENCIA_06_LIQUIDACAO': return substr_replace($line, $new_value,  86, 5); break;
+            case 'VALOR_REG_OCORRENCIA_06': return substr_replace($line, $new_value,  91, 12); break;
+            case 'QUANT_REG_OCORRENCIA_09_10': return substr_replace($line, $new_value,  103, 5); break;
+            case 'VALOR_REG_OCORRENCIA_09_10': return substr_replace($line, $new_value,  108, 12); break;
+            case 'QUANT_REG_OCORRENCIA_13': return substr_replace($line, $new_value,  120, 5); break;
+            case 'VALOR_REG_OCORRENCIA_13': return substr_replace($line, $new_value,  125, 12); break;
+            case 'QUANT_REG_OCORRENCIA_14': return substr_replace($line, $new_value,  137, 5); break;
+            case 'VALOR_REG_OCORRENCIA_14': return substr_replace($line, $new_value,  142, 12); break;
+            case 'QUANT_REG_OCORRENCIA_12': return substr_replace($line, $new_value,  154, 5); break;
+            case 'VALOR_REG_OCORRENCIA_12': return substr_replace($line, $new_value,  159, 12); break;
+            case 'QUANT_REG_OCORRENCIA_19': return substr_replace($line, $new_value,  171, 5); break;
+            case 'VALOR_REG_OCORRENCIA_19': return substr_replace($line, $new_value,  176, 12); break;
+            case 'BRANCOS_3': return substr_replace($line, $new_value,  188, 174); break;
+            case 'VALOR_TOTAL_RATEIOS': return substr_replace($line, $new_value,  362, 15); break;
+            case 'QUANT_TOTAL_RATEIOS': return substr_replace($line, $new_value,  377, 8); break;
+            case 'BRANCOS_4': return substr_replace($line, $new_value,  385, 9); break;
+            case 'SEQUENCIAL': return substr_replace($line, $new_value,  394, 6); break;
+            
             default: return 'Coluna não aceita no replace retorno data: ' . $data;
         }
 
@@ -400,7 +388,7 @@ trait Footer {
             case 'VAL_TOTAL': return str_pad(substr($value, 0, 14), 14, "0", STR_PAD_LEFT); break;
             case 'N_AVISO_BANCARIO': return str_pad(substr($value, 0, 8), 8, "0", STR_PAD_LEFT); break;
             case 'BRANCOS_2': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;
-            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
+            case 'COD_CONTA_CORRENTE_1_BENEFICIARIO': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
             case 'QUANT_REG_OCORRENCIA_02': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
             case 'VALOR_REG_OCORRENCIA_06_LIQUIDACAO': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
             case 'QUANT_REG_OCORRENCIA_06_LIQUIDACAO': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
@@ -415,11 +403,10 @@ trait Footer {
             case 'VALOR_REG_OCORRENCIA_12': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
             case 'QUANT_REG_OCORRENCIA_19': return str_pad(substr($value, 0, 5), 5, "0", STR_PAD_LEFT); break;
             case 'VALOR_REG_OCORRENCIA_19': return str_pad(substr($value, 0, 12), 12, "0", STR_PAD_LEFT); break;
-            case 'NOME_2_BENEFICIARIO': return str_pad(substr($value, 0, 40), 40, "0", STR_PAD_LEFT); break;
             case 'BRANCOS_3': return str_pad(substr($value, 0, 174), 174, $pad_replace, STR_PAD_RIGHT); break;
             case 'VALOR_TOTAL_RATEIOS': return str_pad(substr($value, 0, 15), 15, "0", STR_PAD_LEFT); break;
             case 'QUANT_TOTAL_RATEIOS': return str_pad(substr($value, 0, 8), 8, "0", STR_PAD_LEFT); break;
-            case 'BRANCOS_4': return str_pad(substr($value, 0, 8), 8, $pad_replace, STR_PAD_RIGHT); break;
+            case 'BRANCOS_4': return str_pad(substr($value, 0, 9), 9, $pad_replace, STR_PAD_RIGHT); break;
             case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, "0", STR_PAD_LEFT); break;
 
             default: return 'Coluna não aceita no extract retorno data: ' . $data;

@@ -19,13 +19,14 @@ trait Header {
             case 'NOME_EMPRESA': $value = substr($line, 46, 30); break;
             case 'NUMERO': $value = substr($line, 76, 3); break;
             case 'BANCO': $value = substr($line, 79, 15); break;
-            case 'ARQUIVO': $value = substr($line, 94, 6); break;
-            case 'GRAVACAO': $value = substr($line, 100, 8); break;
+            case 'GRAVACAO': $value = substr($line, 94, 6); break;
+            case 'DENSIDADE': $value = substr($line, 100, 8); break;
             case 'AVISO_BANCARIO': $value = substr($line, 108, 5); break;
             case 'BRANCO_1': $value = substr($line, 113, 266); break;
             case 'DATA_CREDITO': $value = substr($line, 379, 6); break;
             case 'BRANCO_2': $value = substr($line, 385, 9); break;
             case 'SEQUENCIAL': $value = substr($line, 394, 6); break;
+
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
@@ -48,8 +49,8 @@ trait Header {
         $nome_empresa = Discharge::extractFrom($type,$line,'nome_empresa',$pad);
         $numero = Discharge::extractFrom($type,$line,'numero',$pad);
         $banco = Discharge::extractFrom($type,$line,'banco',$pad);
-        $arquivo = Discharge::extractFrom($type,$line,'arquivo',$pad);
         $gravacao = Discharge::extractFrom($type,$line,'gravacao',$pad);
+        $densidade = Discharge::extractFrom($type,$line,'densidade',$pad);
         $aviso_bancario = Discharge::extractFrom($type,$line,'aviso_bancario',$pad);
         $branco_1 = Discharge::extractFrom($type,$line,'branco_1',$pad);
         $data_credito = Discharge::extractFrom($type,$line,'data_credito',$pad);
@@ -66,8 +67,8 @@ trait Header {
         $nome_empresa . 
         $numero . 
         $banco . 
-        $arquivo . 
         $gravacao . 
+        $densidade . 
         $aviso_bancario . 
         $branco_1 . 
         $data_credito . 
@@ -144,14 +145,14 @@ trait Header {
                 'content' => 'BRADESCO ou QI SCD',
                 'type' => 'Alfanumérico',
             ],
-            'ARQUIVO' => [ 
+            'GRAVACAO' => [ 
                 'position_from' => '095',
                 'position_to' => '100',
                 'size' => '006',
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
             ],
-            'GRAVACAO' => [ 
+            'DENSIDADE' => [ 
                 'position_from' => '101',
                 'position_to' => '108',
                 'size' => '008',
@@ -201,19 +202,19 @@ trait Header {
 
     public function headerReplaceOn($line,$data,$new_value)
     {
-
+        
         switch(strtoupper($data)){
             case 'REGISTRO': return substr_replace($line, $new_value, 0, 1); break;
             case 'IDENTIFICACAO': return substr_replace($line, $new_value, 1, 1); break;
-            case 'RETORNO': return substr_replace($line, $new_value, 2, 7 ); break;
+            case 'RETORNO': return substr_replace($line, $new_value, 2, 7); break;
             case 'COD_SERVICO': return substr_replace($line, $new_value, 9, 2); break;
             case 'COBRANCA': return substr_replace($line, $new_value, 11, 15); break;
             case 'CODIGO_EMPRESA': return substr_replace($line, $new_value, 26, 20); break;
             case 'NOME_EMPRESA': return substr_replace($line, $new_value, 46, 30); break;
             case 'NUMERO': return substr_replace($line, $new_value, 76, 3); break;
             case 'BANCO': return substr_replace($line, $new_value, 79, 15); break;
-            case 'ARQUIVO': return substr_replace($line, $new_value, 94, 6); break;
-            case 'GRAVACAO': return substr_replace($line, $new_value, 100, 8); break;
+            case 'GRAVACAO': return substr_replace($line, $new_value, 94, 6); break;
+            case 'DENSIDADE': return substr_replace($line, $new_value, 100, 8); break;
             case 'AVISO_BANCARIO': return substr_replace($line, $new_value, 108, 5); break;
             case 'BRANCO_1': return substr_replace($line, $new_value, 113, 266); break;
             case 'DATA_CREDITO': return substr_replace($line, $new_value, 379, 6); break;
@@ -235,19 +236,19 @@ trait Header {
         switch(strtoupper($data)){
             case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
             case 'IDENTIFICACAO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'RETORNO': return str_pad(substr($value, 0, 7), 7, ' ', STR_PAD_RIGHT); break;
+            case 'RETORNO': return str_pad(substr($value, 0, 7), 7, $pad_replace, STR_PAD_RIGHT); break;
             case 'COD_SERVICO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
-            case 'COBRANCA': return str_pad(substr($value, 0, 15), 15, ' ', STR_PAD_RIGHT); break;
+            case 'COBRANCA': return str_pad(substr($value, 0, 15), 15, $pad_replace, STR_PAD_RIGHT); break;
             case 'CODIGO_EMPRESA': return str_pad(substr($value, 0, 20), 20, '0', STR_PAD_LEFT); break;
-            case 'NOME_EMPRESA': return str_pad(substr($value, 0, 30), 30, ' ', STR_PAD_RIGHT); break;
+            case 'NOME_EMPRESA': return str_pad(substr($value, 0, 30), 30, $pad_replace, STR_PAD_RIGHT); break;
             case 'NUMERO': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
-            case 'BANCO': return str_pad(substr($value, 0, 15), 15, ' ', STR_PAD_RIGHT); break;
-            case 'ARQUIVO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'GRAVACAO': return str_pad(substr($value, 0, 8), 8, '0', STR_PAD_LEFT); break;
+            case 'BANCO': return str_pad(substr($value, 0, 15), 15, $pad_replace, STR_PAD_RIGHT); break;
+            case 'GRAVACAO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
+            case 'DENSIDADE': return str_pad(substr($value, 0, 8), 8, '0', STR_PAD_LEFT); break;
             case 'AVISO_BANCARIO': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
-            case 'BRANCO_1': return str_pad(substr($value, 0, 266), 266, '0', STR_PAD_LEFT); break;
+            case 'BRANCO_1': return str_pad(substr($value, 0, 266), 266, $pad_replace, STR_PAD_RIGHT); break;
             case 'DATA_CREDITO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'BRANCO_2': return str_pad(substr($value, 0, 9), 9, '0', STR_PAD_LEFT); break;
+            case 'BRANCO_2': return str_pad(substr($value, 0, 9), 9, $pad_replace, STR_PAD_RIGHT); break;
             case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }
