@@ -14,7 +14,7 @@ trait Transaction1 {
             case 'TIPO_INSCRICAO': $value = substr($line, 1, 2); break;
             case 'NUM_INSCRICAO': $value = substr($line, 3, 14); break;
             case 'ZEROS_1': $value = substr($line, 17, 3); break;
-            case 'IDENTIFICACAO_EMPRESA': $value = substr($line, 20, 17); break;
+            case 'BENEFICIARIA': $value = substr($line, 20, 17); break;
             case 'NUM_PARTICIPANTE': $value = substr($line, 37, 25); break;
             case 'ZEROS_2': $value = substr($line, 62, 8); break;
             case 'NOSSO_NUM': $value = substr($line, 70, 12); break;
@@ -70,7 +70,7 @@ trait Transaction1 {
         $tipo_inscricao = Discharge::extractFrom($type,$line,'tipo_inscricao',$pad);
         $num_inscricao = Discharge::extractFrom($type,$line,'num_inscricao',$pad);
         $zeros_1 = Discharge::extractFrom($type,$line,'zeros_1',$pad);
-        $identificacao_empresa = Discharge::extractFrom($type,$line,'identificacao_empresa',$pad);
+        $beneficiaria = Discharge::extractFrom($type,$line,'beneficiaria',$pad);
         $num_participante = Discharge::extractFrom($type,$line,'num_participante',$pad);
         $zeros_2 = Discharge::extractFrom($type,$line,'zeros_2',$pad);
         $nosso_num = Discharge::extractFrom($type,$line,'nosso_num',$pad);
@@ -115,7 +115,7 @@ trait Transaction1 {
         $tipo_inscricao . 
         $num_inscricao . 
         $zeros_1 . 
-        $identificacao_empresa . 
+        $beneficiaria . 
         $num_participante . 
         $zeros_2 . 
         $nosso_num . 
@@ -197,7 +197,7 @@ trait Transaction1 {
                 'content' => 'Zeros',
                 'type' => 'Numérico',
             ],
-            'IDENTIFICACAO_EMPRESA' => [ 
+            'BENEFICIARIA' => [ 
                 'position_from' => '021',
                 'position_to' => '037',
                 'size' => '017',
@@ -543,7 +543,7 @@ trait Transaction1 {
             case 'TIPO_INSCRICAO': return substr_replace($line, $new_value, 1, 2); break;
             case 'NUM_INSCRICAO': return substr_replace($line, $new_value, 3, 14); break;
             case 'ZEROS_1': return substr_replace($line, $new_value, 17, 3); break;
-            case 'IDENTIFICACAO_EMPRESA': return substr_replace($line, $new_value, 20, 17); break;
+            case 'BENEFICIARIA': return substr_replace($line, $new_value, 20, 17); break;
             case 'NUM_PARTICIPANTE': return substr_replace($line, $new_value, 37, 25); break;
             case 'ZEROS_2': return substr_replace($line, $new_value, 62, 8); break;
             case 'NOSSO_NUM': return substr_replace($line, $new_value, 70, 12); break;
@@ -600,7 +600,7 @@ trait Transaction1 {
             case 'TIPO_INSCRICAO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'NUM_INSCRICAO': return str_pad(substr($value, 0, 14), 14, '0', STR_PAD_LEFT); break;
             case 'ZEROS_1': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO_EMPRESA': return str_pad(substr($value, 0, 17), 17, $pad_replace, STR_PAD_RIGHT); break;
+            case 'BENEFICIARIA': return str_pad(substr($value, 0, 17), 17, $pad_replace, STR_PAD_RIGHT); break;
             case 'NUM_PARTICIPANTE': return str_pad(substr($value, 0, 25), 25, $pad_replace, STR_PAD_RIGHT); break;
             case 'ZEROS_2': return str_pad(substr($value, 0, 8), 8, '0', STR_PAD_LEFT); break;
             case 'NOSSO_NUM': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
