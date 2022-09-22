@@ -6,7 +6,7 @@ use QuataInvestimentos\Bank\Common;
 
 trait Header {
 
-    public function extractFrom($line,$data,$pad=true)
+    public function extractHeaderFrom($line,$data,$pad=true)
     {
 
         switch(strtoupper($data)){
@@ -76,7 +76,7 @@ trait Header {
 
     }
 
-    public function help()
+    public function headerHelp()
     {
         $data = [
             'CNAB' => 'BRADESCO',
@@ -199,7 +199,7 @@ trait Header {
     
     }
 
-    public function replaceOn($line,$data,$new_value)
+    public function headerReplaceOn($line,$data,$new_value)
     {
 
         switch(strtoupper($data)){
@@ -224,7 +224,7 @@ trait Header {
 
     }
 
-    public function padLine($data,$value)
+    public function headerPadLine($data,$value)
     {
 
         $value = Common::cleanUp($value);

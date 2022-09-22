@@ -6,7 +6,7 @@ use QuataInvestimentos\Bank\Common;
 
 trait Transaction3 {
 
-    public function extractFrom($line,$data,$pad=true)
+    public function extractTransaction3From($line,$data,$pad=true)
     {
 
         switch(strtoupper($data)){
@@ -158,7 +158,7 @@ trait Transaction3 {
 
     }
 
-    public function help(){
+    public function transaction3Help(){
         $data = [
             'CNAB' => 'BRADESCO',
             'TYPE' => 'TIPO3',
@@ -469,7 +469,7 @@ trait Transaction3 {
         return $data;
     }
 
-    public function replaceOn($line,$data,$new_value)
+    public function transaction3ReplaceOn($line,$data,$new_value)
     {
 
         switch(strtoupper($data)){
@@ -523,7 +523,7 @@ trait Transaction3 {
 
     }
 
-    public function padLine($data,$value)
+    public function transaction3PadLine($data,$value)
     {
 
         $value = Common::cleanUp($value);

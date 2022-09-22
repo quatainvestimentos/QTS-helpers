@@ -6,7 +6,7 @@ use QuataInvestimentos\Bank\Common;
 
 trait Footer {
 
-    public function extractFrom($line,$data,$pad=true)
+    public function extractFooterFrom($line,$data,$pad=true)
     {
 
         switch(strtoupper($data)){
@@ -119,7 +119,7 @@ trait Footer {
 
     }
 
-    public function help(){
+    public function footerHelp(){
         $data = [
             'CNAB' => 'BRADESCO',
             'TYPE' => 'TRAILLER',
@@ -340,7 +340,7 @@ trait Footer {
         return $data;
     }
 
-    public function replaceOn($line,$data,$new_value)
+    public function footerReplaceOn($line,$data,$new_value)
     {
 
         switch(strtoupper($data)){
@@ -381,7 +381,7 @@ trait Footer {
 
     }
 
-    public function padLine($data,$value)
+    public function footerPadLine($data,$value)
     {
 
         $value = Common::cleanUp($value);
