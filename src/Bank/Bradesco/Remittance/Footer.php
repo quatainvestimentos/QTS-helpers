@@ -23,6 +23,21 @@ trait Footer {
 
     }
 
+    public static function extractAllFromFooter($line)
+    {
+
+        $type = 'FOOTER';
+
+        $registro = Remittance::extractFrom($type,$line,'registro', false);
+        $banco = Remittance::extractFrom($type,$line,'banco', false);
+        $sequencial = Remittance::extractFrom($type,$line,'sequencial', false);
+
+        return 
+        $registro . 
+        $banco . 
+        $sequencial;
+    }
+
     public function footerHelp()
     {
         $data = [

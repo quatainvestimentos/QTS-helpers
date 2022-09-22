@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Discharge;
+use QuataInvestimentos\Bank\Bradesco\Discharge;
 use QuataInvestimentos\Bank\Common;
 
 trait Transaction3 {
@@ -58,6 +59,102 @@ trait Transaction3 {
 
         if($pad){ return Discharge::padLine($data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromTransaction3($line,$pad=true)
+    {
+
+        $type = 'TRANSACTION3';
+
+        $registro = Discharge::extractFrom($type,$line,'registro',$pad);
+        $convenio = Discharge::extractFrom($type,$line,'convenio',$pad);
+        $nosso_num = Discharge::extractFrom($type,$line,'nosso_num',$pad);
+        $cod_calculo_rateio = Discharge::extractFrom($type,$line,'cod_calculo_rateio',$pad);
+        $tipo_valor_informado = Discharge::extractFrom($type,$line,'tipo_valor_informado',$pad);
+        $filler_1 = Discharge::extractFrom($type,$line,'filler_1',$pad);
+        $cod_banco_beneficiario_1 = Discharge::extractFrom($type,$line,'cod_banco_beneficiario_1',$pad);
+        $agencia_beneficiario_1 = Discharge::extractFrom($type,$line,'agencia_beneficiario_1',$pad);
+        $agencia_dv_beneficiario_1 = Discharge::extractFrom($type,$line,'agencia_dv_beneficiario_1',$pad);
+        $conta_corrente_beneficiario_1 = Discharge::extractFrom($type,$line,'conta_corrente_beneficiario_1',$pad);
+        $conta_corrente_dv_beneficiario_1 = Discharge::extractFrom($type,$line,'conta_corrente_dv_beneficiario_1',$pad);
+        $valor_beneficiario_1 = Discharge::extractFrom($type,$line,'valor_beneficiario_1',$pad);
+        $nome_beneficiario_1 = Discharge::extractFrom($type,$line,'nome_beneficiario_1',$pad);
+        $filler_2 = Discharge::extractFrom($type,$line,'filler_2',$pad);
+        $parcela_1 = Discharge::extractFrom($type,$line,'parcela_1',$pad);
+        $floating_beneficiario_1 = Discharge::extractFrom($type,$line,'floating_beneficiario_1',$pad);
+        $data_credito_beneficiario_1 = Discharge::extractFrom($type,$line,'data_credito_beneficiario_1',$pad);
+        $status_ocorrencia_roteiro = Discharge::extractFrom($type,$line,'status_ocorrencia_roteiro',$pad);
+        $cod_banco_beneficiario_2 = Discharge::extractFrom($type,$line,'cod_banco_beneficiario_2',$pad);
+        $agencia_beneficiario_2 = Discharge::extractFrom($type,$line,'agencia_beneficiario_2',$pad);
+        $agencia_dv_beneficiario_2 = Discharge::extractFrom($type,$line,'agencia_dv_beneficiario_2',$pad);
+        $conta_corrente_beneficiario_2 = Discharge::extractFrom($type,$line,'conta_corrente_beneficiario_2',$pad);
+        $conta_corrente_dv_beneficiario_2 = Discharge::extractFrom($type,$line,'conta_corrente_dv_beneficiario_2',$pad);
+        $valor_beneficiario_2 = Discharge::extractFrom($type,$line,'valor_beneficiario_2',$pad);
+        $nome_beneficiario_2 = Discharge::extractFrom($type,$line,'nome_beneficiario_2',$pad);
+        $filler_3 = Discharge::extractFrom($type,$line,'filler_3',$pad);
+        $parcela_2 = Discharge::extractFrom($type,$line,'parcela_2',$pad);
+        $floating_beneficiario_2 = Discharge::extractFrom($type,$line,'floating_beneficiario_2',$pad);
+        $data_credito_beneficiario_2 = Discharge::extractFrom($type,$line,'data_credito_beneficiario_2',$pad);
+        $status_ocorrencia_roteiro_2 = Discharge::extractFrom($type,$line,'status_ocorrencia_roteiro_2',$pad);
+        $cod_banco_beneficiario_3 = Discharge::extractFrom($type,$line,'cod_banco_beneficiario_3',$pad);
+        $agencia_beneficiario_3 = Discharge::extractFrom($type,$line,'agencia_beneficiario_3',$pad);
+        $agencia_dv_beneficiario_3 = Discharge::extractFrom($type,$line,'agencia_dv_beneficiario_3',$pad);
+        $conta_corrente_beneficiario_3 = Discharge::extractFrom($type,$line,'conta_corrente_beneficiario_3',$pad);
+        $conta_corrente_dv_beneficiario_3 = Discharge::extractFrom($type,$line,'conta_corrente_dv_beneficiario_3',$pad);
+        $valor_beneficiario_3 = Discharge::extractFrom($type,$line,'valor_beneficiario_3',$pad);
+        $nome_beneficiario_3 = Discharge::extractFrom($type,$line,'nome_beneficiario_3',$pad);
+        $filler_4 = Discharge::extractFrom($type,$line,'filler_4',$pad);
+        $parcela_3 = Discharge::extractFrom($type,$line,'parcela_3',$pad);
+        $floating_beneficiario_3 = Discharge::extractFrom($type,$line,'floating_beneficiario_3',$pad);
+        $data_credito_beneficiario_3 = Discharge::extractFrom($type,$line,'data_credito_beneficiario_3',$pad);
+        $stt_ocorrencia_rateio = Discharge::extractFrom($type,$line,'stt_ocorrencia_rateio',$pad);
+        $sequencial = Discharge::extractFrom($type,$line,'sequencial',$pad);
+
+        return 
+        $registro . 
+        $convenio . 
+        $nosso_num . 
+        $cod_calculo_rateio . 
+        $tipo_valor_informado . 
+        $filler_1 . 
+        $cod_banco_beneficiario_1 . 
+        $agencia_beneficiario_1 . 
+        $agencia_dv_beneficiario_1 . 
+        $conta_corrente_beneficiario_1 . 
+        $conta_corrente_dv_beneficiario_1 . 
+        $valor_beneficiario_1 . 
+        $nome_beneficiario_1 . 
+        $filler_2 . 
+        $parcela_1 . 
+        $floating_beneficiario_1 . 
+        $data_credito_beneficiario_1 . 
+        $status_ocorrencia_roteiro . 
+        $cod_banco_beneficiario_2 . 
+        $agencia_beneficiario_2 . 
+        $agencia_dv_beneficiario_2 . 
+        $conta_corrente_beneficiario_2 . 
+        $conta_corrente_dv_beneficiario_2 . 
+        $valor_beneficiario_2 . 
+        $nome_beneficiario_2 . 
+        $filler_3 . 
+        $parcela_2 . 
+        $floating_beneficiario_2 . 
+        $data_credito_beneficiario_2 . 
+        $status_ocorrencia_roteiro_2 . 
+        $cod_banco_beneficiario_3 . 
+        $agencia_beneficiario_3 . 
+        $agencia_dv_beneficiario_3 . 
+        $conta_corrente_beneficiario_3 . 
+        $conta_corrente_dv_beneficiario_3 . 
+        $valor_beneficiario_3 . 
+        $nome_beneficiario_3 . 
+        $filler_4 . 
+        $parcela_3 . 
+        $floating_beneficiario_3 . 
+        $data_credito_beneficiario_3 . 
+        $stt_ocorrencia_rateio . 
+        $sequencial;
 
     }
 

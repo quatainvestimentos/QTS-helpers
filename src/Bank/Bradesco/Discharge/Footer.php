@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Discharge;
+use QuataInvestimentos\Bank\Bradesco\Discharge;
 use QuataInvestimentos\Bank\Common;
 
 trait Footer {
@@ -9,9 +10,9 @@ trait Footer {
     {
 
         switch(strtoupper($data)){
-            case 'IDENTIFICACAO_REGISTRO': $value = substr($line, 0, 1); break;
-            case 'IDENTIFICACAO_RETORNO': $value = substr($line, 1, 1); break;
-            case 'IDENTIFICACAO_TIPO_REGISTRO': $value = substr($line, 2, 2); break;
+            case 'REGISTRO': $value = substr($line, 0, 1); break;
+            case 'RETORNO': $value = substr($line, 1, 1); break;
+            case 'TIPO_REGISTRO': $value = substr($line, 2, 2); break;
             case 'COD_BANCO': $value = substr($line, 4, 3); break;
             case 'BRANCOS_1': $value = substr($line, 7, 10); break;
             case 'QUANT_TITULO': $value = substr($line, 17, 8); break;
@@ -48,25 +49,95 @@ trait Footer {
 
     }
 
+    public static function extractAllFromFooter($line,$pad=true)
+    {
+
+        $type = 'FOOTER';
+        
+        $registro = Discharge::extractFrom($type,$line,'registro',$pad);
+        $retorno = Discharge::extractFrom($type,$line,'retorno',$pad);
+        $tipo_registro = Discharge::extractFrom($type,$line,'tipo_registro',$pad);
+        $cod_banco = Discharge::extractFrom($type,$line,'cod_banco',$pad);
+        $brancos_1 = Discharge::extractFrom($type,$line,'brancos_1',$pad);
+        $quant_titulo = Discharge::extractFrom($type,$line,'quant_titulo',$pad);
+        $val_total = Discharge::extractFrom($type,$line,'val_total',$pad);
+        $n_aviso_bancario = Discharge::extractFrom($type,$line,'n_aviso_bancario',$pad);
+        $brancos_2 = Discharge::extractFrom($type,$line,'brancos_2',$pad);
+        $cod_conta_corrente_1_beneficiario = Discharge::extractFrom($type,$line,'cod_conta_corrente_1_beneficiario',$pad);
+        $quant_reg_ocorrencia_02 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_02',$pad);
+        $valor_reg_ocorrencia_06_liquidacao = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_06_liquidacao',$pad);
+        $quant_reg_ocorrencia_06_liquidacao = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_06_liquidacao',$pad);
+        $valor_reg_ocorrencia_06 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_06',$pad);
+        $quant_reg_ocorrencia_09_10 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_09_10',$pad);
+        $valor_reg_ocorrencia_09_10 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_09_10',$pad);
+        $quant_reg_ocorrencia_13 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_13',$pad);
+        $valor_reg_ocorrencia_13 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_13',$pad);
+        $quant_reg_ocorrencia_14 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_14',$pad);
+        $valor_reg_ocorrencia_14 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_14',$pad);
+        $quant_reg_ocorrencia_12 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_12',$pad);
+        $valor_reg_ocorrencia_12 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_12',$pad);
+        $quant_reg_ocorrencia_19 = Discharge::extractFrom($type,$line,'quant_reg_ocorrencia_19',$pad);
+        $valor_reg_ocorrencia_19 = Discharge::extractFrom($type,$line,'valor_reg_ocorrencia_19',$pad);
+        $nome_2_beneficiario = Discharge::extractFrom($type,$line,'nome_2_beneficiario',$pad);
+        $brancos_3 = Discharge::extractFrom($type,$line,'brancos_3',$pad);
+        $valor_total_rateios = Discharge::extractFrom($type,$line,'valor_total_rateios',$pad);
+        $quant_total_rateios = Discharge::extractFrom($type,$line,'quant_total_rateios',$pad);
+        $brancos_4 = Discharge::extractFrom($type,$line,'brancos_4',$pad);
+        $sequencial = Discharge::extractFrom($type,$line,'sequencial',$pad);
+
+        return 
+        $registro . 
+        $retorno . 
+        $tipo_registro . 
+        $cod_banco . 
+        $brancos_1 . 
+        $quant_titulo . 
+        $val_total . 
+        $n_aviso_bancario . 
+        $brancos_2 . 
+        $cod_conta_corrente_1_beneficiario . 
+        $quant_reg_ocorrencia_02 . 
+        $valor_reg_ocorrencia_06_liquidacao . 
+        $quant_reg_ocorrencia_06_liquidacao . 
+        $valor_reg_ocorrencia_06 . 
+        $quant_reg_ocorrencia_09_10 . 
+        $valor_reg_ocorrencia_09_10 . 
+        $quant_reg_ocorrencia_13 . 
+        $valor_reg_ocorrencia_13 . 
+        $quant_reg_ocorrencia_14 . 
+        $valor_reg_ocorrencia_14 . 
+        $quant_reg_ocorrencia_12 . 
+        $valor_reg_ocorrencia_12 . 
+        $quant_reg_ocorrencia_19 . 
+        $valor_reg_ocorrencia_19 . 
+        $nome_2_beneficiario . 
+        $brancos_3 . 
+        $valor_total_rateios . 
+        $quant_total_rateios . 
+        $brancos_4 . 
+        $sequencial;
+
+    }
+
     public function help(){
         $data = [
             'CNAB' => 'BRADESCO',
             'TYPE' => 'TRAILLER',
-            'IDENTIFICACAO_REGISTRO' => [ 
+            'REGISTRO' => [ 
                 'position_from' => '001',
                 'position_to' => '001',
                 'size' => '001',
                 'content' => '9',
                 'type' => 'Numérico',
             ],
-            'IDENTIFICACAO_RETORNO' => [ 
+            'RETORNO' => [ 
                 'position_from' => '002',
                 'position_to' => '002',
                 'size' => '001',
                 'content' => '2',
                 'type' => 'Numérico',
             ],
-            'IDENTIFICACAO_TIPO_REGISTRO' => [ 
+            'TIPO_REGISTRO' => [ 
                 'position_from' => '003',
                 'position_to' => '004',
                 'size' => '002',
@@ -274,9 +345,9 @@ trait Footer {
 
         switch(strtoupper($data)){
 
-            case 'IDENTIFICACAO_REGISTRO': return substr_replace($line, $new_value, 0, 1); break;
-            case 'IDENTIFICACAO_RETORNO': return substr_replace($line, $new_value, 1, 1); break;
-            case 'IDENTIFICACAO_TIPO_REGISTRO': return substr_replace($line, $new_value, 2, 2); break;
+            case 'REGISTRO': return substr_replace($line, $new_value, 0, 1); break;
+            case 'RETORNO': return substr_replace($line, $new_value, 1, 1); break;
+            case 'TIPO_REGISTRO': return substr_replace($line, $new_value, 2, 2); break;
             case 'COD_BANCO': return substr_replace($line, $new_value, 4, 3); break;
             case 'BRANCOS_1': return substr_replace($line, $new_value, 7, 10); break;
             case 'QUANT_TITULO': return substr_replace($line, $new_value, 17, 8); break;
@@ -320,9 +391,9 @@ trait Footer {
 
         switch(strtoupper($data)){
 
-            case 'IDENTIFICACAO_REGISTRO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO_RETORNO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO_TIPO_REGISTRO': return str_pad(substr($value, 0, 2), 2, "0", STR_PAD_LEFT); break;
+            case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
+            case 'RETORNO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
+            case 'TIPO_REGISTRO': return str_pad(substr($value, 0, 2), 2, "0", STR_PAD_LEFT); break;
             case 'COD_BANCO': return str_pad(substr($value, 0, 3), 3, "0", STR_PAD_LEFT); break;
             case 'BRANCOS_1': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;
             case 'QUANT_TITULO': return str_pad(substr($value, 0, 8), 8, "0", STR_PAD_LEFT); break;

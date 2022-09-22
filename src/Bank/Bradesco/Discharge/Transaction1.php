@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Discharge;
+use QuataInvestimentos\Bank\Bradesco\Discharge;
 use QuataInvestimentos\Bank\Common;
 
 trait Transaction1 {
@@ -57,6 +58,102 @@ trait Transaction1 {
 
         if($pad){ return Discharge::padLine($data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromTransaction1($line,$pad=true)
+    {
+
+        $type = 'TRANSACTION1';
+
+        $registro = Discharge::extractFrom($type,$line,'registro',$pad);
+        $tipo_inscricao = Discharge::extractFrom($type,$line,'tipo_inscricao',$pad);
+        $num_inscricao = Discharge::extractFrom($type,$line,'num_inscricao',$pad);
+        $zeros_1 = Discharge::extractFrom($type,$line,'zeros_1',$pad);
+        $identificacao_empresa = Discharge::extractFrom($type,$line,'identificacao_empresa',$pad);
+        $num_participante = Discharge::extractFrom($type,$line,'num_participante',$pad);
+        $zeros_2 = Discharge::extractFrom($type,$line,'zeros_2',$pad);
+        $nosso_num = Discharge::extractFrom($type,$line,'nosso_num',$pad);
+        $banco_1 = Discharge::extractFrom($type,$line,'banco_1',$pad);
+        $banco_2 = Discharge::extractFrom($type,$line,'banco_2',$pad);
+        $rateio = Discharge::extractFrom($type,$line,'rateio',$pad);
+        $pagamento_parcial = Discharge::extractFrom($type,$line,'pagamento_parcial',$pad);
+        $carteira = Discharge::extractFrom($type,$line,'carteira',$pad);
+        $identificacao_ocorrencia = Discharge::extractFrom($type,$line,'identificacao_ocorrencia',$pad);
+        $data_ocorrencia = Discharge::extractFrom($type,$line,'data_ocorrencia',$pad);
+        $num_documento = Discharge::extractFrom($type,$line,'num_documento',$pad);
+        $titulo = Discharge::extractFrom($type,$line,'titulo',$pad);
+        $vencimento = Discharge::extractFrom($type,$line,'vencimento',$pad);
+        $valor_titulo = Discharge::extractFrom($type,$line,'valor_titulo',$pad);
+        $banco_cobrador = Discharge::extractFrom($type,$line,'banco_cobrador',$pad);
+        $agencia_cobradora = Discharge::extractFrom($type,$line,'agencia_cobradora',$pad);
+        $especie = Discharge::extractFrom($type,$line,'especie',$pad);
+        $despesas_1 = Discharge::extractFrom($type,$line,'despesas_1',$pad);
+        $despesas_2 = Discharge::extractFrom($type,$line,'despesas_2',$pad);
+        $juros = Discharge::extractFrom($type,$line,'juros',$pad);
+        $iof = Discharge::extractFrom($type,$line,'iof',$pad);
+        $abatimento = Discharge::extractFrom($type,$line,'abatimento',$pad);
+        $desconto = Discharge::extractFrom($type,$line,'desconto',$pad);
+        $valor_pago = Discharge::extractFrom($type,$line,'valor_pago',$pad);
+        $juros_mora = Discharge::extractFrom($type,$line,'juros_mora',$pad);
+        $outros_creditos = Discharge::extractFrom($type,$line,'outros_creditos',$pad);
+        $brancos_1 = Discharge::extractFrom($type,$line,'brancos_1',$pad);
+        $motivo_ocorrencia = Discharge::extractFrom($type,$line,'motivo_ocorrencia',$pad);
+        $data_credito = Discharge::extractFrom($type,$line,'data_credito',$pad);
+        $origem_pagamento = Discharge::extractFrom($type,$line,'origem_pagamento',$pad);
+        $brancos_2 = Discharge::extractFrom($type,$line,'brancos_2',$pad);
+        $cheque_bradesco = Discharge::extractFrom($type,$line,'cheque_bradesco',$pad);
+        $motivo_rejeicao = Discharge::extractFrom($type,$line,'motivo_rejeicao',$pad);
+        $brancos_3 = Discharge::extractFrom($type,$line,'brancos_3',$pad);
+        $num_cartorio = Discharge::extractFrom($type,$line,'num_cartorio',$pad);
+        $num_protocolo = Discharge::extractFrom($type,$line,'num_protocolo',$pad);
+        $brancos_4 = Discharge::extractFrom($type,$line,'brancos_4',$pad);
+        $sequencial = Discharge::extractFrom($type,$line,'sequencial',$pad);
+
+        return 
+        $registro . 
+        $tipo_inscricao . 
+        $num_inscricao . 
+        $zeros_1 . 
+        $identificacao_empresa . 
+        $num_participante . 
+        $zeros_2 . 
+        $nosso_num . 
+        $banco_1 . 
+        $banco_2 . 
+        $rateio . 
+        $pagamento_parcial . 
+        $carteira . 
+        $identificacao_ocorrencia . 
+        $data_ocorrencia . 
+        $num_documento . 
+        $titulo . 
+        $vencimento . 
+        $valor_titulo . 
+        $banco_cobrador . 
+        $agencia_cobradora . 
+        $especie . 
+        $despesas_1 . 
+        $despesas_2 . 
+        $juros . 
+        $iof . 
+        $abatimento . 
+        $desconto . 
+        $valor_pago . 
+        $juros_mora . 
+        $outros_creditos . 
+        $brancos_1 . 
+        $motivo_ocorrencia . 
+        $data_credito . 
+        $origem_pagamento . 
+        $brancos_2 . 
+        $cheque_bradesco . 
+        $motivo_rejeicao . 
+        $brancos_3 . 
+        $num_cartorio . 
+        $num_protocolo . 
+        $brancos_4 . 
+        $sequencial;
 
     }
 

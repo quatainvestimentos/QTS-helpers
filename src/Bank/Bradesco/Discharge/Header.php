@@ -1,6 +1,7 @@
 <?php
 
 namespace QuataInvestimentos\Bank\Bradesco\Discharge;
+use QuataInvestimentos\Bank\Bradesco\Discharge;
 use QuataInvestimentos\Bank\Common;
 
 trait Header {
@@ -30,6 +31,48 @@ trait Header {
 
         if($pad){ return Discharge::padLine($data, $value); }
         return $value;
+
+    }
+
+    public static function extractAllFromHeader($line,$pad=true)
+    {
+
+        $type = 'HEADER';
+
+        $registro = Discharge::extractFrom($type,$line,'registro',$pad);
+        $identificacao = Discharge::extractFrom($type,$line,'identificacao',$pad);
+        $retorno = Discharge::extractFrom($type,$line,'retorno',$pad);
+        $cod_servico = Discharge::extractFrom($type,$line,'cod_servico',$pad);
+        $cobranca = Discharge::extractFrom($type,$line,'cobranca',$pad);
+        $codigo_empresa = Discharge::extractFrom($type,$line,'codigo_empresa',$pad);
+        $nome_empresa = Discharge::extractFrom($type,$line,'nome_empresa',$pad);
+        $numero = Discharge::extractFrom($type,$line,'numero',$pad);
+        $banco = Discharge::extractFrom($type,$line,'banco',$pad);
+        $arquivo = Discharge::extractFrom($type,$line,'arquivo',$pad);
+        $gravacao = Discharge::extractFrom($type,$line,'gravacao',$pad);
+        $aviso_bancario = Discharge::extractFrom($type,$line,'aviso_bancario',$pad);
+        $branco_1 = Discharge::extractFrom($type,$line,'branco_1',$pad);
+        $data_credito = Discharge::extractFrom($type,$line,'data_credito',$pad);
+        $branco_2 = Discharge::extractFrom($type,$line,'branco_2',$pad);
+        $sequencial = Discharge::extractFrom($type,$line,'sequencial',$pad);
+
+        return 
+        $registro . 
+        $identificacao . 
+        $retorno . 
+        $cod_servico . 
+        $cobranca . 
+        $codigo_empresa . 
+        $nome_empresa . 
+        $numero . 
+        $banco . 
+        $arquivo . 
+        $gravacao . 
+        $aviso_bancario . 
+        $branco_1 . 
+        $data_credito . 
+        $branco_2 . 
+        $sequencial;
 
     }
 
