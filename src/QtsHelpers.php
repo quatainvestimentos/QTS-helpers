@@ -247,6 +247,11 @@ trait QtsHelpers
                 $badge = 'success';
                 break;
 
+            case 'CONSOLIDATED':
+                $string = 'Consolidado';
+                $badge = 'secondary';
+                break;
+
             /** Fundos */
             case 'MULTISETORIAL':
                 $string = 'Multisetorial';
