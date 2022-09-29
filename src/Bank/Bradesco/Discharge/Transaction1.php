@@ -17,7 +17,8 @@ trait Transaction1 {
             case 'BENEFICIARIA': $value = substr($line, 20, 17); break;
             case 'NUM_PARTICIPANTE': $value = substr($line, 37, 25); break;
             case 'ZEROS_2': $value = substr($line, 62, 8); break;
-            case 'NOSSO_NUM': $value = substr($line, 70, 12); break;
+            case 'NOSSO_NUM': $value = substr($line, 70, 11); break;
+            case 'NOSSO_NUM_DV': $value = substr($line, 81, 1); break;
             case 'BANCO_1': $value = substr($line, 82, 10); break;
             case 'BANCO_2': $value = substr($line, 92, 12); break;
             case 'RATEIO': $value = substr($line, 104, 1); break;
@@ -74,6 +75,7 @@ trait Transaction1 {
         $num_participante = Discharge::extractFrom($type,$line,'num_participante',$pad);
         $zeros_2 = Discharge::extractFrom($type,$line,'zeros_2',$pad);
         $nosso_num = Discharge::extractFrom($type,$line,'nosso_num',$pad);
+        $nosso_num_dv = Discharge::extractFrom($type,$line,'nosso_num_dv',$pad);
         $banco_1 = Discharge::extractFrom($type,$line,'banco_1',$pad);
         $banco_2 = Discharge::extractFrom($type,$line,'banco_2',$pad);
         $rateio = Discharge::extractFrom($type,$line,'rateio',$pad);
@@ -119,6 +121,7 @@ trait Transaction1 {
         $num_participante . 
         $zeros_2 . 
         $nosso_num . 
+        $nosso_num_dv . 
         $banco_1 . 
         $banco_2 . 
         $rateio . 
@@ -221,9 +224,16 @@ trait Transaction1 {
             ],
             'NOSSO_NUM' => [ 
                 'position_from' => '071',
-                'position_to' => '082',
-                'size' => '012',
+                'position_to' => '081',
+                'size' => '011',
                 'content' => 'Nº Banco',
+                'type' => 'Numérico',
+            ],
+            'NOSSO_NUM_DV' => [ 
+                'position_from' => '082',
+                'position_to' => '082',
+                'size' => '01',
+                'content' => 'Nº Banco (dv)',
                 'type' => 'Numérico',
             ],
             'BANCO_1' => [ 
@@ -546,7 +556,8 @@ trait Transaction1 {
             case 'BENEFICIARIA': return substr_replace($line, $new_value, 20, 17); break;
             case 'NUM_PARTICIPANTE': return substr_replace($line, $new_value, 37, 25); break;
             case 'ZEROS_2': return substr_replace($line, $new_value, 62, 8); break;
-            case 'NOSSO_NUM': return substr_replace($line, $new_value, 70, 12); break;
+            case 'NOSSO_NUM': return substr_replace($line, $new_value, 70, 11); break;
+            case 'NOSSO_NUM_DV': return substr_replace($line, $new_value, 81, 1); break;
             case 'BANCO_1': return substr_replace($line, $new_value, 82, 10); break;
             case 'BANCO_2': return substr_replace($line, $new_value, 92, 12); break;
             case 'RATEIO': return substr_replace($line, $new_value, 104, 1); break;
@@ -603,7 +614,8 @@ trait Transaction1 {
             case 'BENEFICIARIA': return str_pad(substr($value, 0, 17), 17, $pad_replace, STR_PAD_RIGHT); break;
             case 'NUM_PARTICIPANTE': return str_pad(substr($value, 0, 25), 25, $pad_replace, STR_PAD_RIGHT); break;
             case 'ZEROS_2': return str_pad(substr($value, 0, 8), 8, '0', STR_PAD_LEFT); break;
-            case 'NOSSO_NUM': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
+            case 'NOSSO_NUM': return str_pad(substr($value, 0, 11), 11, '0', STR_PAD_LEFT); break;
+            case 'NOSSO_NUM_DV': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
             case 'BANCO_1': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
             case 'BANCO_2': return str_pad(substr($value, 0, 12), 12, '0', STR_PAD_LEFT); break;
             case 'RATEIO': return str_pad(substr($value, 0, 1), 1,  '0', STR_PAD_RIGHT); break;

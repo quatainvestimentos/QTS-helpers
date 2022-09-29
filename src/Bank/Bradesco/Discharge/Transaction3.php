@@ -12,7 +12,8 @@ trait Transaction3 {
         switch(strtoupper($data)){
             case 'REGISTRO': $value = substr($line, 0, 1); break;
             case 'CONVENIO': $value = substr($line, 1, 16); break;
-            case 'NOSSO_NUM': $value = substr($line, 17, 12); break;
+            case 'NOSSO_NUM': $value = substr($line, 17, 11); break;
+            case 'NOSSO_NUM_DV': $value = substr($line, 28, 1); break;
             case 'COD_CALCULO_RATEIO': $value = substr($line, 29, 1); break;
             case 'TIPO_VALOR_INFORMADO': $value = substr($line, 30, 1); break;
             case 'FILLER_1': $value = substr($line, 31, 12); break;
@@ -70,6 +71,7 @@ trait Transaction3 {
         $registro = Discharge::extractFrom($type,$line,'registro',$pad);
         $convenio = Discharge::extractFrom($type,$line,'convenio',$pad);
         $nosso_num = Discharge::extractFrom($type,$line,'nosso_num',$pad);
+        $nosso_num_dv = Discharge::extractFrom($type,$line,'nosso_num_dv',$pad);
         $cod_calculo_rateio = Discharge::extractFrom($type,$line,'cod_calculo_rateio',$pad);
         $tipo_valor_informado = Discharge::extractFrom($type,$line,'tipo_valor_informado',$pad);
         $filler_1 = Discharge::extractFrom($type,$line,'filler_1',$pad);
@@ -115,6 +117,7 @@ trait Transaction3 {
         $registro . 
         $convenio . 
         $nosso_num . 
+        $nosso_num_dv . 
         $cod_calculo_rateio . 
         $tipo_valor_informado . 
         $filler_1 . 
@@ -178,8 +181,15 @@ trait Transaction3 {
             ],
             'NOSSO_NUM' => [ 
                 'position_from' => '018',
+                'position_to' => '028',
+                'size' => '011',
+                'content' => 'Número Bancário Vide Obs. Pág. 49',
+                'type' => 'Alfanumérico',
+            ],
+            'NOSSO_NUM_DV' => [ 
+                'position_from' => '029',
                 'position_to' => '029',
-                'size' => '012',
+                'size' => '01',
                 'content' => 'Número Bancário Vide Obs. Pág. 49',
                 'type' => 'Alfanumérico',
             ],
@@ -476,7 +486,8 @@ trait Transaction3 {
 
             case 'REGISTRO': return substr_replace($line, $new_value, 0, 1); break;
             case 'CONVENIO': return substr_replace($line, $new_value, 1, 16); break;
-            case 'NOSSO_NUM': return substr_replace($line, $new_value, 17, 12); break;
+            case 'NOSSO_NUM': return substr_replace($line, $new_value, 17, 11); break;
+            case 'NOSSO_NUM_DV': return substr_replace($line, $new_value, 28, 1); break;
             case 'COD_CALCULO_RATEIO': return substr_replace($line, $new_value, 29, 1); break;
             case 'TIPO_VALOR_INFORMADO': return substr_replace($line, $new_value, 30, 1); break;
             case 'FILLER_1': return substr_replace($line, $new_value, 31, 12); break;
@@ -535,7 +546,8 @@ trait Transaction3 {
 
             case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
             case 'CONVENIO': return str_pad(substr($value, 0, 16), 16, $pad_replace, STR_PAD_RIGHT); break;
-            case 'NOSSO_NUM': return str_pad(substr($value, 0, 12), 12, $pad_replace, STR_PAD_RIGHT); break;
+            case 'NOSSO_NUM': return str_pad(substr($value, 0, 11), 11, $pad_replace, STR_PAD_RIGHT); break;
+            case 'NOSSO_NUM_DV': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
             case 'COD_CALCULO_RATEIO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
             case 'TIPO_VALOR_INFORMADO': return str_pad(substr($value, 0, 1), 1, "0", STR_PAD_LEFT); break;
             case 'FILLER_1': return str_pad(substr($value, 0, 12), 12, $pad_replace, STR_PAD_RIGHT); break;
