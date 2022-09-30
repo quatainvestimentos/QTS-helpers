@@ -501,13 +501,13 @@ trait QtsHelpers
 
     public static function translate_weekday($int){
         switch($int){
-            case 0: return 'segunda feira'; break;
-            case 1: return 'terça feira'; break;
-            case 2: return 'quarta feira'; break;
-            case 3: return 'quinta feira'; break;
-            case 4: return 'sexta feira'; break;
-            case 5: return 'sábado'; break;
-            case 6: return 'domingo'; break;
+            case 1: return 'segunda feira'; break;
+            case 2: return 'terça feira'; break;
+            case 3: return 'quarta feira'; break;
+            case 4: return 'quinta feira'; break;
+            case 5: return 'sexta feira'; break;
+            case 6: return 'sábado'; break;
+            case 0: return 'domingo'; break;
             default: return 'desconhecido: ' . $int;
         }
     }
