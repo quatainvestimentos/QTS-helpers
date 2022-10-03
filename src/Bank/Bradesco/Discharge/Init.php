@@ -79,5 +79,18 @@ trait Init {
         }
         
     }
+
+    public static function translateMotivoRejeicao($type='TRANSACTION1',$ocorrencia, $rejeicao)
+    {
+
+        switch(strtoupper($type)){
+            case 'TRANSACTION1': return Transaction1::transaction1TranslateMotivoRejeicao($ocorrencia, $rejeicao); break;
+            case 'TRANSACTION3': return Transaction3::transaction3TranslateMotivoRejeicao($ocorrencia, $rejeicao); break;
+            default: return 'Tipo de linha/transação de CNAB inválido: ' . $type;
+        }
+        
+    }
+
+    
     
 }

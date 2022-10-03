@@ -702,4 +702,383 @@ trait Transaction1 {
         }
     }
 
+    public function transaction1TranslateMotivoRejeicao($ocorrencia,$rejeicao)
+    {
+
+        if($ocorrencia === '02'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '01': return 'Código do Banco Inválido';
+                case '02': return ' Pendente de Autorização (Autorização Débito Automático)';
+                case '03': return 'Pendente de Ação do Pagador (Autorização Débito Automático - Data Vencimento)';
+                case '04': return 'Código do Movimento não Permitido para a Carteira';
+                case '15': return 'Características da Cobrança Incompatíveis';
+                case '17': return 'Data de Vencimento Anterior à Data de Emissão';
+                case '21': return 'Espécie do Título Inválido';
+                case '24': return 'Data da Emissão Inválida';
+                case '27': return 'Valor/Taxa de Juros Mora Inválido';
+                case '38': return 'Prazo para Protesto/Negativação Inválido';
+                case '39': return 'Pedido para Protesto/Negativação não Permitido para o Título';
+                case '43': return 'Prazo para Baixa e Devolução Inválido';
+                case '45': return 'Nome do Pagador Inválido';
+                case '46': return 'Tipo/Num. de Inscrição do Pagador Inválidos';
+                case '47': return 'Endereço do Pagador não Informado';
+                case '48': return 'CEP Inválido';
+                case '50': return 'CEP referente a Banco Correspondente';
+                case '53': return 'Nº de Inscrição do Pagador/Avalista Inválidos (CPF/CNPJ)';
+                case '54': return 'Beneficiário Final não Informado';
+                case '67': return 'Débito Automático Agendado';
+                case '68': return 'Débito não Agendado - Erro nos Dados de Remessa';
+                case '69': return 'Débito não Agendado - Pagador não Consta no Cadastro de Autorizante';
+                case '70': return 'Débito não Agendado - Beneficiário não Autorizado pelo Pagador';
+                case '71': return 'Débito não Agendado - Beneficiário não Participa da Modalidade de Déb.Automático';
+                case '72': return 'Débito não Agendado - Código de Moeda Diferente de R$';
+                case '73': return 'Débito não Agendado - Data de Vencimento Inválida/Vencida';
+                case '75': return 'Débito não Agendado - Tipo do Número de Inscrição do Pagador Debitado Inválido';
+                case '76': return 'Pagador Eletrônico DDA';
+                case '86': return 'Seu Número do Documento Inválido';
+                case '87': return 'Título Baixado por Coobrigação e Devolvido para Carteira';
+                case '89': return 'Email Pagador não Enviado - Título com Débito Automático';
+                case '90': return 'Email Pagador não Enviado - Título de Cobrança sem Registro';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '03'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '02': return 'Código do Registro Detalhe Inválido';
+                case '03': return 'Código da Ocorrência Inválida';
+                case '04': return 'Código de Ocorrência não Permitida para a Carteira';
+                case '05': return 'Código de Ocorrência não Numérico';
+                case '07': return 'Agência/Conta/Dígito Inválido';
+                case '08': return 'Nosso Número Inválido';
+                case '09': return 'Nosso Número Duplicado';
+                case '10': return 'Carteira Inválida';
+                case '13': return 'Identificação da Emissão do Bloqueto Inválida';
+                case '16': return 'Data de Vencimento Inválida';
+                case '18': return 'Vencimento fora do Prazo de Operação';
+                case '20': return 'Valor do Título Inválido';
+                case '21': return 'Espécie do Título Inválida';
+                case '22': return 'Espécie não Permitida para a Carteira';
+                case '23': return 'Tipo Pagamento não Contratado';
+                case '24': return 'Data de Emissão Inválida';
+                case '27': return 'Valor/Taxa de Juros Mora Inválido';
+                case '28': return 'Código do Desconto Inválido';
+                case '29': return 'Valor Desconto > ou = Valor Título';
+                case '32': return 'Valor do IOF Inválido';
+                case '34': return 'Valor do Abatimento Maior ou Igual ao Valor do Título';
+                case '38': return 'Prazo para Protesto/Negativação Inválido';
+                case '39': return 'Pedido de Protesto/Negativação não Permitida para o Título';
+                case '44': return 'Código da Moeda Inválido';
+                case '45': return 'Nome do Pagador não Informado';
+                case '46': return 'Tipo/Número de Inscrição do Pagador Inválidos';
+                case '47': return 'Endereço do Pagador não Informado';
+                case '48': return 'CEP Inválido';
+                case '49': return 'CEP sem Praça de Cobrança';
+                case '50': return 'CEP Irregular - Banco Correspondente';
+                case '53': return 'Tipo/Número de Inscrição do Beneficiário Final Inválido';
+                case '54': return 'Sacador/Avalista (Beneficiário Final) não Informado';
+                case '59': return 'Valor/Percentual da Multa Inválido';
+                case '63': return 'Entrada para Título já Cadastrado';
+                case '65': return 'Limite Excedido';
+                case '66': return 'Número Autorização Inexistente';
+                case '68': return 'Débito não Agendado - Erro nos Dados de Remessa';
+                case '69': return 'Débito não Agendado - Pagador não Consta no Cadastro de Autorizante';
+                case '70': return 'Débito não Agendado - Beneficiário não Autorizado pelo Pagador';
+                case '71': return 'Débito não Agendado - Beneficiário não Participa do Débito Automático';
+                case '72': return 'Débito não Agendado - Código de Moeda Diferente de R$';
+                case '73': return 'Débito não Agendado - Data de Vencimento Inválida/Cadastro Vencido';
+                case '74': return 'Débito não Agendado - Conforme seu Pedido, Título não Registrado';
+                case '75': return 'Débito não Agendado - Tipo de Número de Inscrição do Debitado Inválido';
+                case '79': return 'Data de Juros de Mora Inválida';
+                case '80': return 'Data do Desconto Inválida';
+                case '86': return 'Seu Número Inválido';
+                case 'A3': return 'Benef. Final/ Sacador/Pagador Devem ser Iguais';
+                case 'A6': return 'Esp. BDP/Depósito e Aporte, não Aceita Pgto Parcial';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '06'){
+            switch($rejeicao){
+                case '00': return 'Crédito Disponível';
+                case '15': return 'Crédito Indisponível';
+                case '18': return 'Pagamento Parcial';
+                case '42': return 'Rateio não Efetuado, Cód. Cálculo 2 (VLR. Registro)';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '07'){
+            switch($rejeicao){
+                case 'A0': return 'Cadastro Excluído pelo Beneficiário';
+                case 'A1': return 'Cadastro Excluído pelo Pagador ';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '08'){
+            switch($rejeicao){
+                case 'C0': return 'Informações do Tipo 6 Inválidas';
+                case 'B9': return 'Cadastro Pagador não Localizado';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '09'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '10': return 'Baixa Comandada pelo Cliente';
+                case '18': return 'Pagador não Aceitou o Débito (Autorização Débito Automático)';
+                case '19': return 'Pendente de Ação do Pagador (Autorização Débito Automático)';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '10'){
+            switch($rejeicao){
+                case '00': return 'Baixado Conforme Instruções da Agência';
+                case '14': return 'Título Protestado';
+                case '16': return 'Título Baixado pelo Banco por Decurso Prazo';
+                case '20': return 'Titulo Baixado e Transferido para Desconto';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '15'){
+            switch($rejeicao){
+                case '00': return 'Crédito Disponível';
+                case '15': return 'Crédito Indisponível';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '17'){
+            switch($rejeicao){
+                case '00': return 'Crédito Disponível';
+                case '15': return 'Crédito Indisponível';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '24'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '48': return 'CEP Inválido';
+                case '49': return 'CEP sem Praça de Cobrança';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '27'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '02': return 'Código do Registro Detalhe Inválido';
+                case '04': return 'Código de Ocorrência não Permitido para a Carteira';
+                case '07': return 'Agência/Conta/Dígito Inválidos';
+                case '08': return 'Nosso Número Inválido';
+                case '09': return 'Nosso Número Duplicado';
+                case '10': return 'Carteira Inválida';
+                case '15': return 'Carteira/Agência/Conta/Nosso Número Inválidos';
+                case '16': return 'Data Vencimento Inválida';
+                case '18': return 'Vencimento Fora do Prazo de Operação';
+                case '20': return 'Valor Título Inválido';
+                case '40': return 'Título com Ordem de Protesto Emitido';
+                case '42': return 'Código para Baixa/Devolução Inválido';
+                case '45': return 'Nome do Sacado não Informado ou Inválido';
+                case '46': return 'Tipo/Número de Inscrição do Sacado Inválido';
+                case '47': return 'Endereço do Sacado não Informado';
+                case '48': return 'CEP Inválido';
+                case '60': return 'Movimento para Título não Cadastrado';
+                case '77': return 'Transferência para Desconto não Permitido para a Carteira';
+                case '85': return 'Título com Pagamento Vinculado';
+                case '86': return 'Seu Número Inválido';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '28'){
+            switch($rejeicao){
+                case '02': return 'Tarifa de Permanência Título Cadastrado (*)';
+                case '03': return 'Tarifa de Sustação/Excl Negativação (*)';
+                case '04': return 'Tarifa de Protesto/Incl Negativação (*)';
+                case '08': return 'Custas de Protesto';
+                case '12': return 'Tarifa de Registro (*)';
+                case '13': return 'Tarifa Título Pago no Bradesco (*)';
+                case '14': return 'Tarifa Título Pago Compensação (*)';
+                case '15': return 'Tarifa Título Baixado não Pago (*)';
+                case '16': return 'Tarifa Alteração de Vencimento (*)';
+                case '17': return 'Tarifa Concessão Abatimento (*)';
+                case '18': return 'Tarifa Cancelamento de Abatimento (*)';
+                case '19': return 'Tarifa Concessão Desconto (*)';
+                case '20': return 'Tarifa Cancelamento Desconto (*)';
+                case '21': return 'Tarifa Título Pago CICS (*)';
+                case '22': return 'Tarifa Título Pago Internet (*)';
+                case '23': return 'Tarifa Título Pago Term. Gerencial Serviços (*)';
+                case '24': return 'Tarifa Título Pago Pag-Contas (*)';
+                case '25': return 'Tarifa Título Pago Fone Fácil (*)';
+                case '26': return 'Tarifa Título Déb. Postagem (*)';
+                case '28': return 'Tarifa Título Pago BDN (*)';
+                case '29': return 'Tarifa Título Pago Term. Multi Função (*)';
+                case '32': return 'Tarifa Título Pago PagFor (*)';
+                case '33': return 'Tarifa Reg/Pgto - Guichê Caixa (*)';
+                case '34': return 'Tarifa Título Pago Retaguarda (*)';
+                case '35': return 'Tarifa Título Pago Subcentro (*)';
+                case '36': return 'Tarifa Título Pago Cartão de Crédito (*)';
+                case '37': return 'Tarifa Título Pago Comp Eletrônica (*)';
+                case '38': return 'Tarifa Título Baix. Pg. Cartório (*)';
+                case '39': return 'Tarifa Título Baixado Acerto Bco (*)';
+                case '40': return 'Baixa Registro em Duplicidade (*)';
+                case '41': return 'Tarifa Título Baixado Decurso Prazo (*)';
+                case '42': return 'Tarifa Título Baixado Judicialmente (*)';
+                case '43': return 'Tarifa Título Baixado via Remessa (*)';
+                case '44': return 'Tarifa Título Baixado Rastreamento (*)';
+                case '45': return 'Tarifa Título Baixado Conf. Pedido (*)';
+                case '46': return 'Tarifa Título Baixado Protestado (*)';
+                case '47': return 'Tarifa Título Baixado p/ Devolução (*)';
+                case '48': return 'Tarifa Título Baixado Franco Pagto (*)';
+                case '49': return 'Tarifa Título Baixado Sust/Ret/Cartório (*)';
+                case '50': return 'Tarifa Título Baixado Sus/Sem/Rem/Cartório (*)';
+                case '51': return 'Tarifa Título Transferido Desconto (*)';
+                case '54': return 'Tarifa Baixa por Contabilidade (*)';
+                case '55': return 'Tr. Tentativa Cons Déb Aut';
+                case '56': return 'Tr. Crédito On-Line';
+                case '57': return 'Tarifa Reg/Pagto Bradesco Expresso';
+                case '58': return 'Tarifa Emissão Papeleta';
+                case '78': return 'Tarifa Cadastro Cartela Instrução Permanente (*)';
+                case '80': return 'Tarifa Parcial Pagamento Compensação (*)';
+                case '81': return 'Tarifa Reapresentação Automática Título (*)';
+                case '82': return 'Tarifa Registro Título Déb. Automático (*)';
+                case '83': return 'Tarifa Rateio de Crédito (*)';
+                case '89': return 'Tarifa Parcial Pagamento Bradesco (*)';
+                case '96': return 'Tarifa Reg. Pagto Outras Mídias (*)';
+                case '97': return 'Tarifa Reg/Pagto - Net Empresa (*)';
+                case '98': return 'Tarifa Título Pago Vencido (*)';
+                case '99': return 'Tr.Tít. Baixado por Decurso Prazo (*)';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '29'){
+            switch($rejeicao){
+                case '78': return 'Pagador Alega que Faturamento é Indevido (*)';
+                case '95': return 'Pagador Aceita/Reconhece Faturamento (*)';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '30'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '01': return 'Código do Banco Inválido';
+                case '04': return 'Código de Ocorrência não Permitido para a Carteira';
+                case '05': return 'Código da Ocorrência não Numérico';
+                case '08': return 'Nosso Número Inválido';
+                case '15': return 'Característica da Cobrança Incompatível';
+                case '16': return 'Data de Vencimento Inválido';
+                case '17': return 'Data de Vencimento Anterior à Data de Emissão';
+                case '18': return 'Vencimento Fora do Prazo de Operação';
+                case '20': return 'Valor Título Inválido';
+                case '21': return 'Espécie Título Inválida';
+                case '22': return 'Espécie não Permitida para a Carteira';
+                case '23': return 'Tipo Pagamento não Contratado';
+                case '24': return 'Data de Emissão Inválida';
+                case '26': return 'Código de Juros de Mora Inválido (*)';
+                case '27': return 'Valor/Taxa de Juros de Mora Inválido';
+                case '28': return 'Código de Desconto Inválido';
+                case '29': return 'Valor do Desconto Maior/Igual ao Valor do Título';
+                case '30': return 'Desconto a Conceder não Confere';
+                case '31': return 'Concessão de Desconto já Existente ( Desconto Anterior )';
+                case '32': return 'Valor do IOF Inválido';
+                case '33': return 'Valor do Abatimento Inválido';
+                case '34': return 'Valor do Abatimento Maior/Igual ao Valor do Título';
+                case '36': return 'Concessão Abatimento';
+                case '38': return 'Prazo para Protesto/ Negativação Inválido';
+                case '39': return 'Pedido para Protesto/ Negativação não Permitido para o Título';
+                case '40': return 'Título com Ordem/Pedido de Protesto/Negativação Emitido';
+                case '42': return 'Código para Baixa/Devolução Inválido';
+                case '43': return 'Prazo para Baixa/Devolução Inválido';
+                case '46': return 'Tipo/Número de Inscrição do Pagador Inválidos';
+                case '48': return 'CEP Inválido';
+                case '53': return 'Tipo/Número de Inscrição do Pagador/Avalista Inválidos';
+                case '54': return 'Pagador/Avalista não Informado';
+                case '57': return 'Código da Multa Inválido';
+                case '58': return 'Data da Multa Inválida';
+                case '60': return 'Movimento para Título não Cadastrado';
+                case '79': return 'Data de Juros de Mora Inválida';
+                case '80': return 'Data do Desconto Inválida';
+                case '85': return 'Título com Pagamento Vinculado.';
+                case '88': return 'E-mail Pagador não Lido no Prazo 5 Dias';
+                case '91': return 'E-mail Pagador não Recebido';
+                case 'C0': return 'Informações do Tipo 6 Inválidas';
+                case 'C1': return 'Informações do Tipo 6 Divergentes do Cadastro';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+
+        if($ocorrencia === '32'){
+            switch($rejeicao){
+                case '00': return 'Ocorrência Aceita';
+                case '01': return 'Código do Banco Inválido';
+                case '02': return 'Código Registro Detalhe Inválido';
+                case '04': return 'Código de Ocorrência não Permitido para a Carteira';
+                case '05': return 'Código de Ocorrência não Numérico';
+                case '06': return 'Espécie BDP, não Aceita Pagamento Parcial';
+                case '07': return 'Agência/Conta/Dígito Inválidos';
+                case '08': return 'Nosso Número Inválido';
+                case '10': return 'Carteira Inválida';
+                case '15': return 'Características da Cobrança Incompatíveis';
+                case '16': return 'Data de Vencimento Inválida';
+                case '17': return 'Data de Vencimento Anterior à Data de Emissão';
+                case '18': return 'Vencimento Fora do Prazo de Operação';
+                case '20': return 'Valor do Título Inválido';
+                case '21': return 'Espécie do Título Inválida';
+                case '22': return 'Espécie não Permitida para a Carteira';
+                case '23': return 'Tipo Pagamento não Contratado';
+                case '24': return 'Data de Emissão Inválida';
+                case '26': return 'Código Juros Mora Inválido';
+                case '27': return 'Valor/Taxa Juros Mira Inválido';
+                case '28': return 'Código de Desconto Inválido';
+                case '29': return 'Valor do Desconto Maior/Igual ao Valor do Título';
+                case '30': return 'Desconto a Conceder não Confere';
+                case '31': return 'Concessão de Desconto - Já Existe Desconto Anterior';
+                case '33': return 'Valor do Abatimento Inválido';
+                case '34': return 'Valor do Abatimento Maior/Igual ao Valor do Título';
+                case '36': return 'Concessão Abatimento - Já Existe Abatimento Anterior';
+                case '38': return 'Prazo para Protesto/Negativação Inválido';
+                case '39': return 'Pedido para Protesto/Negativação não Permitido para o Título';
+                case '40': return 'Título com Ordem/Pedido de Protesto/Negativação Emitido';
+                case '41': return 'Pedido de Sustação/Excl p/ Título sem Instrução de Protesto/Negativação';
+                case '45': return 'Nome do Pagador não Informado';
+                case '46': return 'Tipo/Número de Inscrição do Pagador Inválidos';
+                case '47': return 'Endereço do Pagador não Informado';
+                case '48': return 'CEP Inválido';
+                case '50': return 'CEP referente a um Banco Correspondente';
+                case '52': return 'Unidade da Federação Inválida';
+                case '53': return 'Tipo de Inscrição do Pagador Avalista Inválidos';
+                case '60': return 'Movimento para Título não Cadastrado';
+                case '65': return 'Limite Excedido';
+                case '66': return 'Número Autorização Inexistente';
+                case '85': return 'Título com Pagamento Vinculado';
+                case '86': return 'Seu Número Inválido';
+                case '94': return 'Título Cessão Fiduciária - Instrução Não Liberada pela Agência';
+                case '97': return 'Instrução não Permitida Título Negativado';
+                case '98': return 'Inclusão Bloqueada face à Determinação Judicial';
+                case '99': return 'Telefone Beneficiário não Informado / Inconsistente';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+        
+        if($ocorrencia === '35'){
+            switch($rejeicao){
+                case '81': return 'Tentativas Esgotadas, Baixado';
+                case '82': return 'Tentativas Esgotadas, Pendente';
+                case '83': return 'Cancelado pelo Pagador e Mantido Pendente, Conforme Negociação (*)';
+                case '84': return 'Cancelado pelo Pagador e Baixado, Conforme Negociação (*)';
+                default: return 'Rejeição não encontrada: ' . $rejeicao;
+            }
+        }
+    }
+
 }
