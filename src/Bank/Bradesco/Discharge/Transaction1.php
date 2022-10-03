@@ -24,7 +24,7 @@ trait Transaction1 {
             case 'RATEIO': $value = substr($line, 104, 1); break;
             case 'PAGAMENTO_PARCIAL': $value = substr($line, 105, 2); break;
             case 'CARTEIRA': $value = substr($line, 107, 1); break;
-            case 'IDENTIFICACAO_OCORRENCIA': $value = substr($line, 108, 2); break;
+            case 'OCORRENCIA': $value = substr($line, 108, 2); break;
             case 'DATA_OCORRENCIA': $value = substr($line, 110, 6); break;
             case 'NUM_DOCUMENTO': $value = substr($line, 116, 10); break;
             case 'TITULO': $value = substr($line, 126, 20); break;
@@ -81,7 +81,7 @@ trait Transaction1 {
         $rateio = Discharge::extractFrom($type,$line,'rateio',$pad);
         $pagamento_parcial = Discharge::extractFrom($type,$line,'pagamento_parcial',$pad);
         $carteira = Discharge::extractFrom($type,$line,'carteira',$pad);
-        $identificacao_ocorrencia = Discharge::extractFrom($type,$line,'identificacao_ocorrencia',$pad);
+        $ocorrencia = Discharge::extractFrom($type,$line,'ocorrencia',$pad);
         $data_ocorrencia = Discharge::extractFrom($type,$line,'data_ocorrencia',$pad);
         $num_documento = Discharge::extractFrom($type,$line,'num_documento',$pad);
         $titulo = Discharge::extractFrom($type,$line,'titulo',$pad);
@@ -127,7 +127,7 @@ trait Transaction1 {
         $rateio . 
         $pagamento_parcial . 
         $carteira . 
-        $identificacao_ocorrencia . 
+        $ocorrencia . 
         $data_ocorrencia . 
         $num_documento . 
         $titulo . 
@@ -274,7 +274,7 @@ trait Transaction1 {
                 'content' => 'Carteira',
                 'type' => 'Numérico',
             ],
-            'IDENTIFICACAO_OCORRENCIA' => [ 
+            'OCORRENCIA' => [ 
                 'position_from' => '109',
                 'position_to' => '110',
                 'size' => '002',
@@ -563,7 +563,7 @@ trait Transaction1 {
             case 'RATEIO': return substr_replace($line, $new_value, 104, 1); break;
             case 'PAGAMENTO_PARCIAL': return substr_replace($line, $new_value, 105, 2); break;
             case 'CARTEIRA': return substr_replace($line, $new_value, 107, 1); break;
-            case 'IDENTIFICACAO_OCORRENCIA': return substr_replace($line, $new_value, 108, 2); break;
+            case 'OCORRENCIA': return substr_replace($line, $new_value, 108, 2); break;
             case 'DATA_OCORRENCIA': return substr_replace($line, $new_value, 110, 6); break;
             case 'NUM_DOCUMENTO': return substr_replace($line, $new_value, 116, 10); break;
             case 'TITULO': return substr_replace($line, $new_value, 126, 20); break;
@@ -621,7 +621,7 @@ trait Transaction1 {
             case 'RATEIO': return str_pad(substr($value, 0, 1), 1,  '0', STR_PAD_RIGHT); break;
             case 'PAGAMENTO_PARCIAL': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'CARTEIRA': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'IDENTIFICACAO_OCORRENCIA': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
+            case 'OCORRENCIA': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'DATA_OCORRENCIA': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             case 'NUM_DOCUMENTO': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;
             case 'TITULO': return str_pad(substr($value, 0, 20), 20, '0', STR_PAD_LEFT); break;
@@ -652,6 +652,53 @@ trait Transaction1 {
             case 'BRANCOS_4': return str_pad(substr($value, 0, 14), 14, $pad_replace, STR_PAD_RIGHT); break;
             case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
+        }
+    }
+
+    public function transaction1TranslateOcorrencia($ocorrencia)
+    {
+        switch($ocorrencia){
+            case '02': return 'Entrada Confirmada (verificar motivo nas posições 319 a 328)';
+            case '03': return 'Entrada Rejeitada (verificar motivo nas posições 319 a 328)';
+            case '06': return 'Liquidação Normal (sem motivo)';
+            case '07': return 'Conf. Exc. Cadastro Pagador Débito (verificar motivos nas posições 319 a 328)';
+            case '08': return 'Rej. Ped. Exc. Cadastro de Pagador Débito (verificar motivos nas posições 319 a 328)';
+            case '09': return 'Baixado Automat. via Arquivo (verificar motivo posições 319 a 328)';
+            case '10': return 'Baixado conforme instruções da Agência (verificar motivo Pos.319 a 328)';
+            case '11': return 'Em Ser - Arquivo de Títulos Pendentes';
+            case '12': return 'Abatimento Concedido';
+            case '13': return 'Abatimento Cancelado';
+            case '14': return 'Vencimento Alterado';
+            case '15': return 'Liquidação em Cartório (sem motivo)';
+            case '16': return 'Título Pago em Cheque - Vinculado';
+            case '17': return 'Liquidação após Baixa ou Título não Registrado (verificar motivo nas posições 319 a 328)';
+            case '18': return 'Acerto de Depositária';
+            case '19': return 'Confirmação Receb. Inst. de Protesto (verificar motivo pos.295 a 295)';
+            case '20': return 'Confirmação Recebimento Instrução Sustação de Protesto';
+            case '21': return 'Acerto do Controle do Participante';
+            case '22': return 'Título com Pagamento Cancelado';
+            case '23': return 'Entrada do Título em Cartório';
+            case '24': return 'Entrada Rejeitada por CEP Irregular (verificar motivo pos.319 a 328)';
+            case '25': return 'Confirmação Receb.Inst.de Protesto Falimentar (verificar pos.295 a 295)';
+            case '27': return 'Baixa Rejeitada (verificar motivo posições 319 a 328)';
+            case '28': return 'Débito de Tarifas/Custas (verificar motivo nas posições 319 a 328)';
+            case '29': return 'Ocorrências do Pagador (verificar motivo nas posições 319 a 328)';
+            case '30': return 'Alteração de Outros Dados Rejeitados (verificar motivo Pos.319 a 328)';
+            case '31': return 'Confirmado Inclusão Cadastro Pagador';
+            case '32': return 'Instrução Rejeitada (verificar motivo posições 319 a 328)';
+            case '33': return 'Confirmação Pedido Alteração Outros Dados';
+            case '34': return 'Retirado de Cartório e Manutenção Carteira';
+            case '35': return 'Cancelamento do Agendamento do Débito Automático (verificar motivos pos. 319 a 328)';
+            case '37': return 'Rejeitado Inclusão Cadastro Pagador (verificar motivos nas posições 319 a 328)';
+            case '38': return 'Confirmado Alteração Pagador';
+            case '39': return 'Rejeitado Alteração Cadastro Pagador (verificar motivos nas posições 319 a 328)';
+            case '40': return 'Estorno de Pagamento';
+            case '55': return 'Sustado Judicial';
+            case '68': return 'Acerto dos Dados do Rateio de Crédito (verificar motivo posição de status do registro Tipo 3)';
+            case '69': return 'Cancelamento de Rateio (verificar motivo posição de status do registro Tipo 3)';
+            case '73': return 'Confirmação Receb. Pedido de Negativação';
+            case '74': return 'Confir Pedido de Excl de Negat (com ou sem baixa)';
+            default: return 'Ocorrência inválida: ' . $ocorrencia;
         }
     }
 

@@ -68,5 +68,16 @@ trait Init {
         }
         
     }
+
+    public static function translateOcorrencia($type='HEADER',$ocorrencia)
+    {
+
+        switch(strtoupper($type)){
+            case 'TRANSACTION1': return Transaction1::transaction1TranslateOcorrencia($ocorrencia); break;
+            case 'TRANSACTION3': return Transaction3::transaction3TranslateOcorrencia($ocorrencia); break;
+            default: return 'Tipo de linha/transação de CNAB inválido: ' . $type;
+        }
+        
+    }
     
 }
