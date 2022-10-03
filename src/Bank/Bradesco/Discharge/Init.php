@@ -69,7 +69,7 @@ trait Init {
         
     }
 
-    public static function translateOcorrencia($type='HEADER',$ocorrencia)
+    public static function translateOcorrencia($type='TRANSACTION1',$ocorrencia)
     {
 
         switch(strtoupper($type)){
