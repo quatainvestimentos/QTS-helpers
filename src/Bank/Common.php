@@ -69,5 +69,39 @@ trait Common {
         return preg_replace('/\s+/', ' ',$string);
 
     }
+
+    public static function centsToFloat($cents)
+    {
+        return (float)number_format(($cents/100), 2, '.', '');
+    }
+
+    public static function calculateSettlements($discharge_public_url)
+    {
+
+        $handle = fopen($discharge_public_url, "r");
+
+        $total_settlements = 0;
+
+        while (($line = fgets($handle)) !== false) {
+
+            if($line[0] === '1'){
+
+                $settlement = Common::centsToFloat((int)substr($line, 254, 12));
+                $occurrence = substr($line, 108, 2);
+                
+                switch($occurrence){
+                    case '06':
+                    case '15':
+                    case '17':
+                        $total_settlements += $settlement;
+                        break;
+                }
+
+            }
+        }
+
+        return $total_settlements;
+
+    }
     
 }
