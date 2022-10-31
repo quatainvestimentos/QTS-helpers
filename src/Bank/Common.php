@@ -91,8 +91,8 @@ trait Common {
                 
                 switch($occurrence){
                     case '06':
-                    case '15':
-                    case '17':
+                    // case '15':
+                    // case '17':
                         $total_settlements += $settlement;
                         break;
                 }
