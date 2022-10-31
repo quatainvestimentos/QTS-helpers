@@ -88,11 +88,17 @@ trait Common {
 
                 $settlement = Common::centsToFloat((int)substr($line, 254, 12));
                 $occurrence = substr($line, 108, 2);
+
+                /**
+                 * 06 - liquidação normal
+                 * 15 - liquidação em cartório
+                 * 17 - liquidação após baixa
+                */
                 
                 switch($occurrence){
                     case '06':
-                    // case '15':
-                    // case '17':
+                    case '15':
+                    case '17':
                         $total_settlements += $settlement;
                         break;
                 }
