@@ -722,4 +722,26 @@ trait QtsHelpers
         return $string;
     }
 
+    public static function getBase64SizeInMb($files)
+    {
+
+        $total_size_in_mb = 0;
+
+        foreach($files as $file):
+
+            try{
+                $size_in_bytes = (int) (strlen(rtrim($file->base64, '=')) * 3 / 4);
+                $size_in_kb    = $size_in_bytes / 1024;
+                $size_in_mb    = $size_in_kb / 1024;
+        
+                $total_size_in_mb += $size_in_mb;
+            
+            } catch(Exception $e){ return 0; }
+
+        endforeach;
+
+        return $total_size_in_mb;
+        
+    }
+
 }
