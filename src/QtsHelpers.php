@@ -252,6 +252,11 @@ trait QtsHelpers
                 $badge = 'secondary';
                 break;
 
+            case 'OPENED':
+                $string = 'Aberta/ativa';
+                $badge = 'success';
+                break;
+
             /** Fundos */
             case 'MULTISETORIAL':
                 $string = 'Multisetorial';
