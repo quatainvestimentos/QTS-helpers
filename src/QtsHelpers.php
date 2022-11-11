@@ -268,6 +268,21 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
+            case 'UNIQUE_AAA':
+                $string = 'Unique AAA';
+                $badge = 'primary';
+                break;
+
+            case 'QT_UNIQUE':
+                $string = 'QT Unique';
+                $badge = 'primary';
+                break;
+
+            case 'QT_UNIQUE_PRIME':
+                $string = 'QT Unique Prime';
+                $badge = 'primary';
+                break;
+
             /** Bancos */
             case 'BRADESCO':
                 $string = 'Bradesco';
