@@ -422,6 +422,188 @@ trait QiTech
         return $string;
     }
 
+    public static function qiBindSourceSubtype($string)
+    {
+
+        switch(strtolower($string)){
+            case 'operation_disbursement':
+            case 'automatic_integrated_payment':
+            case 'deposit':
+            case 'incoming_funds_transfer_refusal':
+            case 'bank_slip_settlement': 
+            case 'electronic_funds_fee_reversal':
+            case 'repo_profit':
+            case 'operation_settling':
+            case 'bank_slip_fee_reversal':
+            case 'cetip_assignment':
+            case 'credit_operation_fee_reversal':
+            case 'internal_funds_transfer_reversal':
+            case 'financial_investments_income':
+            case 'bank_slip_settlement_incoming':
+            case 'incoming_doc':
+            case 'bank_slip_settlement_reversal':
+            case 'bank_slip_settlement_expense_reversal':
+            case 'bank_slip_settlement_incoming_reversal':
+            case 'correspondent_bank_transfer_reversal':
+            case 'credit_analysis_fee_reversal':
+            case 'doc_expense_reversal':
+            case 'incoming_doc_reversal':
+            case 'operation_disbursement_reversal':
+            case 'operation_settling_reversal':
+            case 'outgoing_doc_reversal':
+            case 'rebate_reversal':
+            case 'settlement_funds_transfer_reversal':
+            case 'siloc_incoming_funds_reversal':
+            case 'siloc_outgoing_funds_reversal':
+            case 'tax_reversal':
+            case 'trade_funds_transfer_reversal':
+            case 'rebate_tax_free':
+            case 'rebate_tax_free_reversal':
+            case 'incoming_funds_transfer_reversal':
+            case 'bank_slip_payment_reversal':
+            case 'bank_slip_settlement_deposit':
+            case 'incoming_anticipation_of_receivable':
+            case 'incoming_anticipation_of_receivable_settlement':
+            case 'incoming_anticipation_of_receivable_reversal':
+            case 'incoming_liquidation_cycle_receivable':
+            case 'incoming_liquidation_cycle_receivable_reversal':
+            case 'incoming_credit_card_settlement':
+            case 'incoming_debit_card_settlement':
+            case 'bank_slip_payment_withdrawal_reversal':
+            case 'deposit_percentage_fee_reversal':
+            case 'account_setup_fee_reversal':
+            case 'cra_expense_reversal':
+            case 'warranty_analysis_fee_reversal':
+            case 'registry_fee_reversal':
+            case 'card_purchase_reversal':
+            case 'card_withdrawal_reversal':
+            case 'card_transfer_reversal':
+            case 'card_chargeback':
+            case 'portability_settlement':
+            case 'assignment_automatic_transfer_reversal':
+            case 'incoming_pix_transfer':
+            case 'pix_fee_reversal':
+            case 'incoming_pix_transfer_reversal':
+            case 'outgoing_pix_transfer_reversal':
+            case 'pix_deposit':
+            case 'pix_withdrawal_reversal':
+            case 'pix_chargeback_withdrawal':
+            case 'incoming_pix_chargeback':
+            case 'pix_chargeback_deposit':
+            case 'pix_chargeback_withdrawal_reversal':
+            case 'outgoing_pix_chargeback_reversal':
+            case 'incoming_pix_chargeback_reversal':
+            case 'automatic_integrated_payment_reversal':
+            case 'portability_settlement_reversal':
+            case 'operation_pix_disbursement_reversal':
+            case 'receivables_inquiry_fee':
+            case 'pix_deposit_reversal':
+            case 'assignment_reversal':
+            case 'credit_operation_fee_spread_reversal':
+            case 'electronic_funds_fee_spread_reversal':
+            case 'rebate_tax_free_spread_reversal':
+            case 'birthday_withdraw_fgts_cef_settlement_reversal':
+            case 'birthday_withdraw_fgts_automatic_payment_reversal':
+            case 'birthday_withdraw_fgts_cef_fee_reversal':
+            case 'pix_chargeback_deposit_reversal':
+            case 'bank_slip_covenant_payment_reversal':
+            case 'repo_bond':
+            case 'incoming_portability_settlement':
+            case 'pi_profit':
+            case 'investment_deposit':
+            case 'gross_yield':
+            case 'incoming_c3_assignment_settlement':
+            case 'c3_assignment_settlement':
+            case 'available_yield':
+                $operation = 'CREDIT';
+                break;
+
+            case 'protest_expense':
+            case 'tax':
+            case 'electronic_funds_fee':
+            case 'credit_operation_fee':
+            case 'internal_funds_transfer':
+            case 'incoming_funds_transfer':
+            case 'outgoing_funds_transfer':
+            case 'withdrawal':
+            case 'trade_funds_transfer':
+            case 'settlement_funds_transfer':
+            case 'bank_slip_fee':
+            case 'outgoing_funds_transfer_reversal':
+            case 'withdrawal_reversal':
+            case 'slb_payment':
+            case 'repo_expense':
+            case 'monthly_account_fee':
+            case 'cetip_settling':
+            case 'monthly_account_fee_reversal':
+            case 'cetip_expense':
+            case 'correspondent_bank_transfer':
+            case 'rebate':
+            case 'credit_analysis_fee':
+            case 'outgoing_doc':
+            case 'cip_expense':
+            case 'doc_expense':
+            case 'siloc_incoming_funds':
+            case 'siloc_outgoing_funds':
+            case 'bank_slip_permanency_fee':
+            case 'bank_slip_cancel_protest_fee':
+            case 'bank_slip_protest_fee':
+            case 'bank_slip_notary_office_fee':
+            case 'bank_slip_registration_fee':
+            case 'bank_slip_extension_fee':
+            case 'bank_slip_rebate_fee':
+            case 'bank_slip_discount_fee':
+            case 'bank_slip_settlement_fee':
+            case 'bank_slip_write_off_term_fee':
+            case 'bank_slip_write_off_fee':
+            case 'bank_slip_cancel_protest_write_off_fee':
+            case 'bank_slip_notary_office_settlement_fee':
+            case 'bank_slip_payment':
+            case 'warranty_analysis_fee':
+            case 'bank_slip_payment_withdrawal':
+            case 'structuring_fee':
+            case 'bank_slip_agreement_letter_fee':
+            case 'deposit_percentage_fee':
+            case 'account_setup_fee':
+            case 'cra_expense':
+            case 'registry_fee':
+            case 'card_purchase':
+            case 'card_withdrawal':
+            case 'card_transfer':
+            case 'card_chargeback_reversal':
+            case 'outgoing_portability_settlement':
+            case 'assignment_automatic_transfer':
+            case 'pix_fee':
+            case 'outgoing_pix_transfer':
+            case 'pix_withdrawal':
+            case 'outgoing_pix_chargeback':
+            case 'operation_pix_disbursement':
+            case 'internal_pix_transfer':
+            case 'credit_operation_fee_spread':
+            case 'electronic_funds_fee_spread':
+            case 'rebate_tax_free_spread':
+            case 'birthday_withdraw_fgts_cef_settlement':
+            case 'birthday_withdraw_fgts_automatic_payment':
+            case 'birthday_withdraw_fgts_cef_fee':
+            case 'monthly_minimal':
+            case 'bank_slip_covenant_payment':
+            case 'birthday_withdraw_fgts_extraordinary_transfer':
+            case 'investment_withdraw':
+            case 'investment_iof_payment':
+            case 'investment_ir_payment':
+            case 'automatic_funds_routing':
+            case 'bank_slip_settlement_expense':
+                $operation = 'DEBIT';
+                break;
+    
+            default:
+                $operation = 'UNKNOWN';
+            
+        }
+
+        return $operation;
+    }
+
     protected static function qiGetReasons($reasons_array)
     {
         $error = '';
