@@ -693,6 +693,9 @@ trait QtsHelpers
             if(is_array($value)){
 
                 foreach($value as $v):
+
+                    if(is_array($v)){ $v = json_encode($v); }
+
                     $key_value_message += ['mensagem ' . $count => $v];
                     $count++;
                 endforeach;
