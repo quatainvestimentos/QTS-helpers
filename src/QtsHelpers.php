@@ -384,9 +384,12 @@ trait QtsHelpers
         $converted = [];            
         foreach($request->file($input_name) as $remittance):
 
+            $content = file_get_contents($remittance);
+
             $converted[] = (object)[
                 'filename' => Qts::cleanUpString($remittance->getClientOriginalName()),
-                'base64' => base64_encode(file_get_contents($remittance))
+                'base64' => base64_encode($content),
+                'mimetype' => finfo_buffer($file_info, $content, FILEINFO_MIME_TYPE)
             ];
 
         endforeach;
