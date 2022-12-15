@@ -384,6 +384,7 @@ trait QtsHelpers
         $converted = [];            
         foreach($request->file($input_name) as $remittance):
 
+            $file_info = finfo_open();
             $content = file_get_contents($remittance);
 
             $converted[] = (object)[
@@ -412,9 +413,13 @@ trait QtsHelpers
 
                     if(isset($remittance['filename']) && isset($remittance['base64'])){
         
+                        $file_info = finfo_open();
+                        $content = file_get_contents( base64_decode($remittance['base64']) );
+
                         $converted[] = (object)[
                             'filename' => Qts::cleanUpString($remittance['filename']),
                             'base64' => $remittance['base64'],
+                            'mimetype' =>finfo_buffer($file_info, $content, FILEINFO_MIME_TYPE)
                         ];     
         
                     }
