@@ -257,6 +257,16 @@ trait QtsHelpers
                 $badge = 'success';
                 break;
 
+            case 'OPEN':
+                $string = 'Em aberto';
+                $badge = 'warning';
+                break;
+
+            case 'SENT':
+                $string = 'Enviado';
+                $badge = 'success';
+                break;
+
             /** Fundos */
             case 'MULTISETORIAL':
                 $string = 'Multisetorial';
