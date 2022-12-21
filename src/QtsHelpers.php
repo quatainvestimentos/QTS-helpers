@@ -1,6 +1,7 @@
 <?php 
 
 namespace QuataInvestimentos;
+date_default_timezone_set('America/Sao_Paulo');
 
 trait QtsHelpers 
 {
