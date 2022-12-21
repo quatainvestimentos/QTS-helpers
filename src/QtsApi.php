@@ -240,6 +240,12 @@ trait QtsApi
                 $data = ['Não foi possível chamar a URL/endpoint: ' . $endpoint];
             }
 
+            if(strpos($e->getMessage(), 'SSL certificate problem: certificate has expired') !== false){
+                $guzzle_available = false;
+                # Retorna apenas esse erro
+                $data = ['O certificado SSL da URL/endpoint: ' . $endpoint . ' está expirado. Não é possível conectar com o serviço'];
+            }
+
             /**
              * Substitui o erro padrão por outros erros
              * Se existirem (validado pelo status code)
