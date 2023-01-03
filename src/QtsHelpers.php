@@ -387,7 +387,7 @@ trait QtsHelpers
         return $string;
     }
 
-    public static function convertToBase64($request, $input_name)
+    public static function convertToBase64($request, $input_name, $md5=false)
     {
 
         if( !$request->hasFile($input_name) ){ return []; }
@@ -398,8 +398,17 @@ trait QtsHelpers
             $file_info = finfo_open();
             $content = file_get_contents($remittance);
 
+            $filename = Qts::cleanUpString($remittance->getClientOriginalName());
+            
+            if(isset($md5) && $md5){
+                $original_filename = explode('.', $remittance->getClientOriginalName());
+                $count = count($original_filename);
+                $extension = $original_filename[ $count - 1];
+                $filename = md5($remittance->getClientOriginalName()) . '.' . $extension;
+            }
+
             $converted[] = (object)[
-                'filename' => Qts::cleanUpString($remittance->getClientOriginalName()),
+                'filename' => $filename,
                 'base64' => base64_encode($content),
                 'mimetype' => finfo_buffer($file_info, $content, FILEINFO_MIME_TYPE)
             ];
@@ -410,7 +419,7 @@ trait QtsHelpers
 
     }
 
-    public static function extractBase64($request, $input_name)
+    public static function extractBase64($request, $input_name, $md5=false)
     {
 
         if(!$request->has($input_name)){ return []; }
@@ -426,8 +435,17 @@ trait QtsHelpers
         
                         $file_info = finfo_open();
 
+                        $filename = Qts::cleanUpString($remittance['filename']);
+            
+                        if(isset($md5) && $md5){
+                            $original_filename = explode('.', $remittance['filename']);
+                            $count = count($original_filename);
+                            $extension = $original_filename[ $count - 1];
+                            $filename = md5(Qts::cleanUpString($remittance['filename'])) . '.' . $extension;
+                        }
+
                         $converted[] = (object)[
-                            'filename' => Qts::cleanUpString($remittance['filename']),
+                            'filename' => $filename,
                             'base64' => $remittance['base64'],
                             'mimetype' =>finfo_buffer($file_info, base64_decode($remittance['base64']), FILEINFO_MIME_TYPE)
                         ];     
