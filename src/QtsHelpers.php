@@ -410,7 +410,7 @@ trait QtsHelpers
             $converted[] = (object)[
                 'filename' => $filename,
                 'base64' => base64_encode($content),
-                'mimetype' => finfo_buffer($file_info, $content, FILEINFO_MIME_TYPE)
+                'mimetype' => $remittance->getClientMimeType()
             ];
 
         endforeach;
