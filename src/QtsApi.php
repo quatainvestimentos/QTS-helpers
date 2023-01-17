@@ -246,6 +246,12 @@ trait QtsApi
                 $data = ['O certificado SSL da URL/endpoint: ' . $endpoint . ' está expirado. Não é possível conectar com o serviço'];
             }
 
+            if(strpos($e->getMessage(), 'SSL certificate problem: unable to get local issuer certificate') !== false){
+                $guzzle_available = false;
+                # Retorna apenas esse erro
+                $data = ['O certificado SSL da URL/endpoint: ' . $endpoint . ' está expirado. Não é possível conectar com o serviço'];
+            }
+
             /**
              * Substitui o erro padrão por outros erros
              * Se existirem (validado pelo status code)
