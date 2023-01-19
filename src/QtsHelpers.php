@@ -361,6 +361,47 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
+            /** Reports */
+            case 'COMMERCIAL_REPORT':
+                $string = 'Relatório Comercial';
+                $badge = 'primary';
+                break;
+
+            case 'MIDDLE_REPORT':
+                $string = 'Relatório de Middle';
+                $badge = 'primary';
+                break;
+
+            case 'MOP_REPORT':
+                $string = 'Relatório da MOP';
+                $badge = 'primary';
+                break;
+
+            case 'GRO_REPORT':
+                $string = 'Relatório do GRO';
+                $badge = 'primary';
+                break;
+
+            case 'CHECKING_REPORT':
+                $string = 'Relatório de Checagem';
+                $badge = 'primary';
+                break;
+
+            case 'BACKOFFICE_REPORT':
+                $string = 'Relatório de Backoffice';
+                $badge = 'primary';
+                break;
+
+            case 'CREDIT_REPORT':
+                $string = 'Relatório de Crédito';
+                $badge = 'primary';
+                break;
+
+            case 'OTHER_REPORT':
+                $string = 'Outros relatórios';
+                $badge = 'primary';
+                break;
+
             /** Default */
             default:
                 $string = 'Não encontrado: ' . $string;
