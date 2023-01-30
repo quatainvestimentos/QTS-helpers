@@ -268,6 +268,46 @@ trait QtsHelpers
                 $badge = 'success';
                 break;
 
+            case 'WAITING_FOR_SUPPORT':
+                $string = 'Aguardando Suporte';
+                $badge = 'warning';
+                break;
+
+            case 'WAITING_FOR_OWNER':
+                $string = 'Aguardando Usuário(a)';
+                $badge = 'warning';
+                break;
+
+            case 'CLOSED':
+                $string = 'Encerrado';
+                $badge = 'success';
+                break;
+
+            case 'AUTO_CLOSED':
+                $string = 'Encerrado por Inatividade';
+                $badge = 'secondary';
+                break;
+
+            case 'URGENT':
+                $string = 'Urgente';
+                $badge = 'danger';
+                break;
+
+            case 'HIGH':
+                $string = 'Alta';
+                $badge = 'warning';
+                break;
+
+            case 'STANDARD':
+                $string = 'Normal';
+                $badge = 'secondary';
+                break;
+
+            case 'LOW':
+                $string = 'Baixa';
+                $badge = 'info';
+                break;
+
             /** Fundos */
             case 'MULTISETORIAL':
                 $string = 'Multisetorial';
