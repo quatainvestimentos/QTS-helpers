@@ -703,6 +703,8 @@ trait QtsHelpers
     public static function translate_crons($value){
         list($minute,$hour,$month_day,$month,$weekday) = explode(' ', $value);
         
+        $clock_minute = false;
+        
         if($minute === '*'){
             
             $minute = 'De minuto em minuto';
@@ -719,7 +721,13 @@ trait QtsHelpers
                 $minute = "Todo minuto no intervalo de {$from} a {$to} minuto(s)";
             }
 
+            if((int)$minute >= 0){
+                $clock_minute = true;
+            }
+
         }
+
+        $clock_hour = false;
 
         if($hour === '*'){
 
@@ -735,6 +743,10 @@ trait QtsHelpers
             if(strpos($hour,'-') !== false ){
                 list($from,$to) = explode('-', $hour);
                 $hour = "das {$from} a {$to} hora(s),";
+            }
+
+            if((int)$hour >= 0){
+                $clock_hour = true;
             }
 
         }
@@ -791,6 +803,11 @@ trait QtsHelpers
                 $weekday = "no intervalo de " . Qts::translate_weekday($from) . " a " . Qts::translate_weekday($to);
             }
 
+        }
+
+        if($clock_hour && $clock_minute){
+            $minute = "{$hour}h:{$minute}m";
+            $hour = '';
         }
 
         return "{$minute} {$hour} {$month_day} {$month} {$weekday}.";
