@@ -120,6 +120,13 @@ trait QtsV01
         $response = json_decode($response, true);
         $access_token = (strtoupper(env('APP_ENV')) === 'LOCAL' ? 'jD53Ktq2TNFT8Q868N4C' : $response['access_token']);
 
+        if(strtoupper(env('APP_ENV')) === 'TESTING'){
+            return (object)[
+                'status' => 401,
+                'data' => ["Ambientes de desenvolvimento (online) não podem se conectar ao QTS por estarem fora da VPN", "Para testes, utilize ambiente local"]
+            ];
+        }
+        
         return (object)[
             'status' => 200,
             'data' => (object)['access_token' => $access_token]
