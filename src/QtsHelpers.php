@@ -299,7 +299,7 @@ trait QtsHelpers
                 break;
 
             case 'STANDARD':
-                $string = 'Normal';
+                $string = 'Média';
                 $badge = 'secondary';
                 break;
 
