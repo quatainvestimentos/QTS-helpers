@@ -952,4 +952,34 @@ trait QtsHelpers
         
     }
 
+    public static function getExcept($data, $except_array)
+    {
+
+        $except_array = array_map(fn ($str) => strtoupper(trim($str)), $except_array);
+
+        $new_data = [];
+        foreach($data as $key => $value):
+            if(!in_array(strtoupper($key), $except_array)){
+                $new_data += [strtolower($key) => $value];
+            }
+        endforeach;
+        $data = (object)$new_data;
+        return $data;
+    }
+
+    public static function getOnly($data, $only_array)
+    {
+
+        $only_array = array_map(fn ($str) => strtoupper(trim($str)), $only_array);
+
+        $new_data = [];
+        foreach($data as $key => $value):
+            if(in_array(strtoupper($key), $only_array)){
+                $new_data += [strtolower($key) => $value];
+            }
+        endforeach;
+        $data = (object)$new_data;
+        return $data;
+    }
+
 }

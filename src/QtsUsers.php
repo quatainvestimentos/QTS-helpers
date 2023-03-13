@@ -50,6 +50,36 @@ trait QtsUsers
 
     }
 
+    public static function getUserData($env, $api_key, $select='*')
+    {
+
+         $results = Qts::fetch(Qts::getEndpoint($env) . 'users/' . $api_key, 'GET', [
+            'client-secret' => env('CLIENT_SECRET')
+        ]);
+
+        $user = (isset($results->data->results) && $results->data->results ? $results->data->results : []);
+
+        if(!isset($results->status) || $results->status >= 400){
+            return (object)['status' => $results->status, 'data' =>$results->data ];
+        }
+
+        $new_data = [];
+        if($select !== '*'){
+            
+            $get_only = explode(',', $select);
+            $get_only = array_map(fn ($str) => strtoupper(trim($str)), $get_only);
+
+            foreach($user as $key => $value):
+                if(in_array(strtoupper($key), $get_only)){
+                    $new_data += [strtolower($key) => $value];
+                }
+            endforeach;
+            $user = (object)$new_data;
+        }
+
+        return (object)['status' => 201, 'data' => $user];
+    }
+
     public static function filterPerson($key, $object)
     {
         foreach($object as $person):
