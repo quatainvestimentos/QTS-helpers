@@ -413,8 +413,8 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
-            case 'Tecnologia':
-                $string = 'Cliente';
+            case 'DEVELOPER':
+                $string = 'Tecnologia';
                 $badge = 'primary';
                 break;
 
