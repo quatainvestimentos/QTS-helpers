@@ -29,4 +29,8 @@ class Qts {
     RemittanceController,
     UploadController,
     DischargeController;
+
+    public static function NotificationController(){
+        return new NotificationController();
+    }
 }
