@@ -30,7 +30,7 @@ class Qts {
     UploadController,
     DischargeController;
 
-    public static function NotificationController(){
+    public static function notify(){
         return new NotificationController();
     }
 }
