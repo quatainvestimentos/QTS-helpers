@@ -401,44 +401,60 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
-            /** Reports */
-            case 'COMMERCIAL_REPORT':
-                $string = 'Relatório Comercial';
+            /** Reports/Roles */
+            
+            case 'ADMIN':
+                $string = 'Administrador(a)';
                 $badge = 'primary';
                 break;
 
-            case 'MIDDLE_REPORT':
-                $string = 'Relatório de Middle';
+            case 'CUSTOMER':
+                $string = 'Cliente';
                 $badge = 'primary';
                 break;
 
-            case 'MOP_REPORT':
-                $string = 'Relatório da MOP';
+            case 'Tecnologia':
+                $string = 'Cliente';
                 $badge = 'primary';
                 break;
 
-            case 'GRO_REPORT':
-                $string = 'Relatório do GRO';
+            case 'COMMERCIAL':
+                $string = 'Comercial';
                 $badge = 'primary';
                 break;
 
-            case 'CHECKING_REPORT':
-                $string = 'Relatório de Checagem';
+            case 'MIDDLE':
+                $string = 'Middle Office';
                 $badge = 'primary';
                 break;
 
-            case 'BACKOFFICE_REPORT':
-                $string = 'Relatório de Backoffice';
+            case 'MOP':
+                $string = 'Mesa de Operações';
                 $badge = 'primary';
                 break;
 
-            case 'CREDIT_REPORT':
-                $string = 'Relatório de Crédito';
+            case 'GRO':
+                $string = 'GRO';
                 $badge = 'primary';
                 break;
 
-            case 'OTHER_REPORT':
-                $string = 'Outros relatórios';
+            case 'CHECKING':
+                $string = 'Checagem';
+                $badge = 'primary';
+                break;
+
+            case 'BACKOFFICE':
+                $string = 'Backoffice';
+                $badge = 'primary';
+                break;
+
+            case 'CREDIT':
+                $string = 'Crédito';
+                $badge = 'primary';
+                break;
+
+            case 'OTHER':
+                $string = 'Outros';
                 $badge = 'primary';
                 break;
 
