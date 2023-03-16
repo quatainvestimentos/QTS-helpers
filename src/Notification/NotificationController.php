@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Storage;
  */
 
  use Illuminate\Support\Facades\Notification;
- use GeneralEmailNotification;
- use GeneralTeamsNotification;
- use GeneralTeamsErrorNotification;
+ use QuataInvestimentos\Notification\GeneralEmailNotification;
+ use QuataInvestimentos\Notification\GeneralTeamsNotification;
+ use QuataInvestimentos\Notification\GeneralTeamsErrorNotification;
 
  class NotificationController extends Controller
  {

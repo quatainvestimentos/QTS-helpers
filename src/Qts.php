@@ -7,6 +7,7 @@ use QuataInvestimentos\QtsHelpers;
 use QuataInvestimentos\QtsUsers;
 use QuataInvestimentos\QtsEs512;
 use QuataInvestimentos\QiTech;
+use QuataInvestimentos\Notification\NotificationController;
 
 /**
  * V01 Integration
