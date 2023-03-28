@@ -469,6 +469,78 @@ trait QtsHelpers
 
     }
 
+    public static function translateDocument(String $string)
+    {
+
+        if(strpos($string, '/')!==false){
+            $sanitize = explode('/', $string);
+            $string = $sanitize[(count($sanitize)-1)];
+            list($string, $extension) = explode('.', $string);
+        }
+
+        switch(strtoupper($string)){
+            case 'ULTIMO_BALANCO_PATRIMONIAL':
+                $string = 'Último Balanço Patrimonial';
+                break;
+            case 'CARTAO_CNPJ':
+                $string = 'Cartão CNPJ';
+                break;
+            case 'DOCUMENTOS_PESSOAIS_ACIONISTAS':
+                $string = 'Documentos Pessoais dos(as) Acionistas';
+                break;
+            case 'CERTIDAO_NEGATIVA_DEBITOS':
+                $string = 'Certidão Negativa de Débitos';
+                break;
+            case 'CERTIFICADO_REGULARIDADE_FGTS_CRF':
+                $string = 'Certificado de Regularidade do FGTS/CRF';
+                break;
+            case 'DOCUMENTOS_SOCIETARIOS_ATUALIZADOS':
+                $string = 'Documentos Societários Atualizados';
+                break;
+            case 'POLITICA_DILIGENCIA_FORNECEDORES':
+                $string = 'Política de Diligência dos Fornecedores';
+                break;
+            case 'DOCUMENTO_REPRESENTANTES_ASSINATURA_DIGITAL':
+                $string = 'Documento(s) do(s) Representante(s) com assinatura digital';
+                break;
+            case 'CERTIDAO_JUSTICA_TRABALHO':
+                $string = 'Certidão da Justiça do Trabalho';
+                break;
+            case 'ATA_ELEICAO_JUCESP':
+                $string = 'Ata de Eleição da JUCESP';
+                break;
+            case 'CONTRATO_SOCIAL':
+                $string = 'Contrato Social';
+                break;
+            case 'DOCUMENTOS_PESSOAIS':
+                $string = 'Documentos Pessoais'; 
+                break;
+            case 'PROCURACAO':
+                $string = 'Procuração';
+                break;
+            case 'ULTIMA_ALTERACAO_CONTRATUAL_JUCESP':  
+                $string = 'Última Alteração Contratual na JUCESP';
+                break;
+            case 'COMPROVANTE_RESIDENCIA':  
+                $string = 'Comprovante de Residência';
+                break;
+            case 'DEVEDOR_SOLIDARIO_PJ':
+                $string = 'Devedor Solidário PJ';
+                break;
+            case 'DEVEDOR_SOLIDARIO_PF':
+                $string = 'Devedor Solidário PF';
+                break;
+            case 'DOCUMENTO_SOCIO_PJ':
+                $string = 'Documento Sócio(a) PJ';
+                break;
+            default: 
+                $string = 'Desconhecido: ' . $string;
+        }
+
+        return $string;
+
+    }
+
     public static function date(String $datetime, String $format='d/m/Y H:i')
     {
 
