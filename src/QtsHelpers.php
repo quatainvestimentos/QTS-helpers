@@ -401,44 +401,60 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
-            /** Reports */
-            case 'COMMERCIAL_REPORT':
-                $string = 'Relatório Comercial';
+            /** Reports/Roles */
+            
+            case 'ADMIN':
+                $string = 'Administrador(a)';
                 $badge = 'primary';
                 break;
 
-            case 'MIDDLE_REPORT':
-                $string = 'Relatório de Middle';
+            case 'CUSTOMER':
+                $string = 'Cliente';
                 $badge = 'primary';
                 break;
 
-            case 'MOP_REPORT':
-                $string = 'Relatório da MOP';
+            case 'DEVELOPER':
+                $string = 'Tecnologia';
                 $badge = 'primary';
                 break;
 
-            case 'GRO_REPORT':
-                $string = 'Relatório do GRO';
+            case 'COMMERCIAL':
+                $string = 'Comercial';
                 $badge = 'primary';
                 break;
 
-            case 'CHECKING_REPORT':
-                $string = 'Relatório de Checagem';
+            case 'MIDDLE':
+                $string = 'Middle Office';
                 $badge = 'primary';
                 break;
 
-            case 'BACKOFFICE_REPORT':
-                $string = 'Relatório de Backoffice';
+            case 'MOP':
+                $string = 'Mesa de Operações';
                 $badge = 'primary';
                 break;
 
-            case 'CREDIT_REPORT':
-                $string = 'Relatório de Crédito';
+            case 'GRO':
+                $string = 'GRO';
                 $badge = 'primary';
                 break;
 
-            case 'OTHER_REPORT':
-                $string = 'Outros relatórios';
+            case 'CHECKING':
+                $string = 'Checagem';
+                $badge = 'primary';
+                break;
+
+            case 'BACKOFFICE':
+                $string = 'Backoffice';
+                $badge = 'primary';
+                break;
+
+            case 'CREDIT':
+                $string = 'Crédito';
+                $badge = 'primary';
+                break;
+
+            case 'OTHER':
+                $string = 'Outros';
                 $badge = 'primary';
                 break;
 
@@ -449,6 +465,78 @@ trait QtsHelpers
         }
 
         if($get_badge){ return $badge; }
+        return $string;
+
+    }
+
+    public static function translateDocument(String $string)
+    {
+
+        if(strpos($string, '/')!==false){
+            $sanitize = explode('/', $string);
+            $string = $sanitize[(count($sanitize)-1)];
+            list($string, $extension) = explode('.', $string);
+        }
+
+        switch(strtoupper($string)){
+            case 'ULTIMO_BALANCO_PATRIMONIAL':
+                $string = 'Último Balanço Patrimonial';
+                break;
+            case 'CARTAO_CNPJ':
+                $string = 'Cartão CNPJ';
+                break;
+            case 'DOCUMENTOS_PESSOAIS_ACIONISTAS':
+                $string = 'Documentos Pessoais dos(as) Acionistas';
+                break;
+            case 'CERTIDAO_NEGATIVA_DEBITOS':
+                $string = 'Certidão Negativa de Débitos';
+                break;
+            case 'CERTIFICADO_REGULARIDADE_FGTS_CRF':
+                $string = 'Certificado de Regularidade do FGTS/CRF';
+                break;
+            case 'DOCUMENTOS_SOCIETARIOS_ATUALIZADOS':
+                $string = 'Documentos Societários Atualizados';
+                break;
+            case 'POLITICA_DILIGENCIA_FORNECEDORES':
+                $string = 'Política de Diligência dos Fornecedores';
+                break;
+            case 'DOCUMENTO_REPRESENTANTES_ASSINATURA_DIGITAL':
+                $string = 'Documento(s) do(s) Representante(s) com assinatura digital';
+                break;
+            case 'CERTIDAO_JUSTICA_TRABALHO':
+                $string = 'Certidão da Justiça do Trabalho';
+                break;
+            case 'ATA_ELEICAO_JUCESP':
+                $string = 'Ata de Eleição da JUCESP';
+                break;
+            case 'CONTRATO_SOCIAL':
+                $string = 'Contrato Social';
+                break;
+            case 'DOCUMENTOS_PESSOAIS':
+                $string = 'Documentos Pessoais'; 
+                break;
+            case 'PROCURACAO':
+                $string = 'Procuração';
+                break;
+            case 'ULTIMA_ALTERACAO_CONTRATUAL_JUCESP':  
+                $string = 'Última Alteração Contratual na JUCESP';
+                break;
+            case 'COMPROVANTE_RESIDENCIA':  
+                $string = 'Comprovante de Residência';
+                break;
+            case 'DEVEDOR_SOLIDARIO_PJ':
+                $string = 'Devedor Solidário PJ';
+                break;
+            case 'DEVEDOR_SOLIDARIO_PF':
+                $string = 'Devedor Solidário PF';
+                break;
+            case 'DOCUMENTO_SOCIO_PJ':
+                $string = 'Documento Sócio(a) PJ';
+                break;
+            default: 
+                $string = 'Desconhecido: ' . $string;
+        }
+
         return $string;
 
     }
