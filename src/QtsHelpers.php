@@ -183,6 +183,11 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'ACCEPTED':
+                $string = 'Aceito';
+                $badge = 'primary';
+                break;
+
             case 'PROCESSED':
                 $string = 'Processado';
                 $badge = 'success';
