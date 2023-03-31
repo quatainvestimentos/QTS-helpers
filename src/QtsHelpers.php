@@ -1075,4 +1075,8 @@ trait QtsHelpers
         return $data;
     }
 
+    public static function extractNumbers($string) {
+        return filter_var($string, FILTER_SANITIZE_NUMBER_INT);
+    }
+
 }
