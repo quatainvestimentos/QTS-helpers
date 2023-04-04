@@ -93,4 +93,27 @@ trait QtsUsers
 
     }
 
+    public static function filterByMatchingKeys($user_api_key, $ein, $object)
+    {
+
+        foreach($object as $person):
+
+            if(!isset($person->user_api_key)){ continue; }
+            if(!isset($person->ein)){ continue; }
+
+            if(
+                $person->user_api_key === $user_api_key && 
+                $person->ein === $ein
+            ){
+                
+                return $person;
+                break;
+                
+            }
+        endforeach;
+
+        return (object)[];
+
+    }
+
 }
