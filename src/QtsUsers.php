@@ -116,4 +116,10 @@ trait QtsUsers
 
     }
 
+    public static function extractFilename($string) {
+        $tokens = explode('/', $string);
+        $total_tokens = count($tokens);
+        return $tokens[ $total_tokens - 1];
+    }
+
 }
