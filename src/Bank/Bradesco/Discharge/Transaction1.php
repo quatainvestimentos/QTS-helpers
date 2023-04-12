@@ -600,13 +600,22 @@ trait Transaction1 {
 
     public function transaction1PadLine($data,$value)
     {
+        $label = strtoupper($data);
+        if( ($label == 'VALOR_TITULO') OR ($label == 'VALOR_PAGO') ){
+            if (is_float($value)) {
+                $value = number_format($value, 2, '.', '') . (strpos($value, '.') === false ? '.00' : (substr($value, -2) == '.0' ? '0' : ''));
+            } else {
+                $value = number_format($value, 2, '.', '');
+            }
+            $value = intval(str_replace('.', '', strval($value)));
+        }
 
         $value = Common::cleanUp($value);
         $value = Common::removeExtraSpaces($value);
 
         $pad_replace = ' ';
 
-        switch(strtoupper($data)){
+        switch($label){
             case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
             case 'TIPO_INSCRICAO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'NUM_INSCRICAO': return str_pad(substr($value, 0, 14), 14, '0', STR_PAD_LEFT); break;
