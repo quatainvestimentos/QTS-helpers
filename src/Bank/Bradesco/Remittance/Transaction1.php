@@ -23,7 +23,7 @@ trait Transaction1 {
             case 'PERCENTUAL_MULTA': $value = substr($line, 66, 4); break;
             case 'NOSSO_NUM': $value = substr($line, 70, 11); break;
             case 'NOSSO_NUM_DV': $value = substr($line, 81, 1); break;
-            case 'DESCONTO_DIA': $value = substr($line, 82, 10); break;
+            case 'DESCONTO_DIA_CENTAVOS': $value = substr($line, 82, 10); break;
             case 'TIPO_EMISSAO': $value = substr($line, 92, 1); break;
             case 'DEBITO_AUTOMATICO': $value = substr($line, 93, 1); break;
             case 'OPERACAO_BANCO': $value = substr($line, 94, 10); break;
@@ -82,7 +82,7 @@ trait Transaction1 {
         $percentual_multa = Remittance::extractFrom($type,$line,'percentual_multa',$pad);
         $nosso_num = Remittance::extractFrom($type,$line,'nosso_num',$pad);
         $nosso_num_dv = Remittance::extractFrom($type,$line,'nosso_num_dv',$pad);
-        $desconto_dia = Remittance::extractFrom($type,$line,'desconto_dia',$pad);
+        $desconto_dia = Remittance::extractFrom($type,$line,'desconto_dia_centavos',$pad);
         $tipo_emissao = Remittance::extractFrom($type,$line,'tipo_emissao',$pad);
         $debito_automatico = Remittance::extractFrom($type,$line,'debito_automatico',$pad);
         $operacao_banco = Remittance::extractFrom($type,$line,'operacao_banco',$pad);
@@ -261,7 +261,7 @@ trait Transaction1 {
                 'content' => 'Digito N/N',
                 'type' => 'Alfanumérico',
             ],
-            'DESCONTO_DIA' => [ 
+            'DESCONTO_DIA_CENTAVOS' => [ 
                 'position_from' => '083',
                 'position_to' => '092',
                 'size' => '010',
@@ -559,7 +559,7 @@ trait Transaction1 {
             case 'PERCENTUAL_MULTA': return substr_replace($line, $new_value, 66, 4); break;
             case 'NOSSO_NUM': return substr_replace($line, $new_value, 70, 11); break;
             case 'NOSSO_NUM_DV': return substr_replace($line, $new_value, 81, 1); break;
-            case 'DESCONTO_DIA': return substr_replace($line, $new_value, 82, 10); break;
+            case 'DESCONTO_DIA_CENTAVOS': return substr_replace($line, $new_value, 82, 10); break;
             case 'TIPO_EMISSAO': return substr_replace($line, $new_value, 92, 1); break;
             case 'DEBITO_AUTOMATICO': return substr_replace($line, $new_value, 93, 1); break;
             case 'OPERACAO_BANCO': return substr_replace($line, $new_value, 94, 10); break;
@@ -619,7 +619,7 @@ trait Transaction1 {
             case 'PERCENTUAL_MULTA': return str_pad(substr($value, 0, 4), 4, '0', STR_PAD_LEFT); break;
             case 'NOSSO_NUM': return str_pad(substr($value, 0, 11), 11, '0', STR_PAD_LEFT); break;
             case 'NOSSO_NUM_DV': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'DESCONTO_DIA': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
+            case 'DESCONTO_DIA_CENTAVOS': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
             case 'TIPO_EMISSAO': return str_pad(substr($value, 0, 1), 1, '1', STR_PAD_LEFT); break;
             case 'DEBITO_AUTOMATICO': return str_pad(substr($value, 0, 1), 1, '1', STR_PAD_LEFT); break;
             case 'OPERACAO_BANCO': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;

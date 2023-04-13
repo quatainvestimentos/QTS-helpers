@@ -140,21 +140,21 @@ trait Transaction2 {
                 'content' => 'Mensagem',
                 'type' => 'Alfanumérico',
             ],
-            'DATA_LIMITE_DESCONTO_2' => [ 
+            'DATA_LIMITE_DESCONTO' => [ 
                 'position_from' => '322',
                 'position_to' => '327',
                 'size' => '006',
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
             ],
-            'VALOR_DESCONTO_1' => [ 
+            'VALOR_DESCONTO_CENTAVOS' => [ 
                 'position_from' => '328',
                 'position_to' => '340',
                 'size' => '013',
                 'content' => 'Valor Desconto',
                 'type' => 'Numérico',
             ],
-            'DATA_LIMITE_DESCONTO_3' => [ 
+            'DATA_LIMITE_DESCONTO_2' => [ 
                 'position_from' => '341',
                 'position_to' => '346',
                 'size' => '006',
