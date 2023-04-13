@@ -29,19 +29,19 @@ trait Transaction1 {
             case 'NUM_DOCUMENTO': $value = substr($line, 116, 10); break;
             case 'TITULO': $value = substr($line, 126, 20); break;
             case 'VENCIMENTO': $value = substr($line, 146, 6); break;
-            case 'VALOR_TITULO': $value = substr($line, 152, 13); break;
+            case 'VALOR_TITULO_CENTAVOS': $value = substr($line, 152, 13); break;
             case 'BANCO_COBRADOR': $value = substr($line, 165, 3); break;
             case 'AGENCIA_COBRADORA': $value = substr($line, 168, 5); break;
             case 'ESPECIE': $value = substr($line, 173, 2); break;
-            case 'DESPESAS_1': $value = substr($line, 175, 13); break;
-            case 'DESPESAS_2': $value = substr($line, 188, 13); break;
-            case 'JUROS': $value = substr($line, 201, 13); break;
-            case 'IOF': $value = substr($line, 214, 13); break;
-            case 'ABATIMENTO': $value = substr($line, 227, 13); break;
-            case 'DESCONTO': $value = substr($line, 240, 13); break;
-            case 'VALOR_PAGO': $value = substr($line, 253, 13); break;
-            case 'JUROS_MORA': $value = substr($line, 266, 13); break;
-            case 'OUTROS_CREDITOS': $value = substr($line, 279, 13); break;
+            case 'DESPESAS_1_CENTAVOS': $value = substr($line, 175, 13); break;
+            case 'DESPESAS_2_CENTAVOS': $value = substr($line, 188, 13); break;
+            case 'JUROS_CENTAVOS': $value = substr($line, 201, 13); break;
+            case 'IOF_CENTAVOS': $value = substr($line, 214, 13); break;
+            case 'ABATIMENTO_CENTAVOS': $value = substr($line, 227, 13); break;
+            case 'DESCONTO_CENTAVOS': $value = substr($line, 240, 13); break;
+            case 'VALOR_PAGO_CENTAVOS': $value = substr($line, 253, 13); break;
+            case 'JUROS_MORA_CENTAVOS': $value = substr($line, 266, 13); break;
+            case 'OUTROS_CREDITOS_CENTAVOS': $value = substr($line, 279, 13); break;
             case 'BRANCOS_1': $value = substr($line, 292, 2); break;
             case 'MOTIVO_OCORRENCIA': $value = substr($line, 294, 1); break;
             case 'DATA_CREDITO': $value = substr($line, 295, 6); break;
@@ -86,19 +86,19 @@ trait Transaction1 {
         $num_documento = Discharge::extractFrom($type,$line,'num_documento',$pad);
         $titulo = Discharge::extractFrom($type,$line,'titulo',$pad);
         $vencimento = Discharge::extractFrom($type,$line,'vencimento',$pad);
-        $valor_titulo = Discharge::extractFrom($type,$line,'valor_titulo',$pad);
+        $valor_titulo = Discharge::extractFrom($type,$line,'valor_titulo_centavos',$pad);
         $banco_cobrador = Discharge::extractFrom($type,$line,'banco_cobrador',$pad);
         $agencia_cobradora = Discharge::extractFrom($type,$line,'agencia_cobradora',$pad);
         $especie = Discharge::extractFrom($type,$line,'especie',$pad);
-        $despesas_1 = Discharge::extractFrom($type,$line,'despesas_1',$pad);
-        $despesas_2 = Discharge::extractFrom($type,$line,'despesas_2',$pad);
-        $juros = Discharge::extractFrom($type,$line,'juros',$pad);
-        $iof = Discharge::extractFrom($type,$line,'iof',$pad);
-        $abatimento = Discharge::extractFrom($type,$line,'abatimento',$pad);
-        $desconto = Discharge::extractFrom($type,$line,'desconto',$pad);
-        $valor_pago = Discharge::extractFrom($type,$line,'valor_pago',$pad);
-        $juros_mora = Discharge::extractFrom($type,$line,'juros_mora',$pad);
-        $outros_creditos = Discharge::extractFrom($type,$line,'outros_creditos',$pad);
+        $despesas_1 = Discharge::extractFrom($type,$line,'despesas_1_centavos',$pad);
+        $despesas_2 = Discharge::extractFrom($type,$line,'despesas_2_centavos',$pad);
+        $juros = Discharge::extractFrom($type,$line,'juros_centavos',$pad);
+        $iof = Discharge::extractFrom($type,$line,'iof_centavos',$pad);
+        $abatimento = Discharge::extractFrom($type,$line,'abatimento_centavos',$pad);
+        $desconto = Discharge::extractFrom($type,$line,'desconto_centavos',$pad);
+        $valor_pago = Discharge::extractFrom($type,$line,'valor_pago_centavos',$pad);
+        $juros_mora = Discharge::extractFrom($type,$line,'juros_mora_centavos',$pad);
+        $outros_creditos = Discharge::extractFrom($type,$line,'outros_creditos_centavos',$pad);
         $brancos_1 = Discharge::extractFrom($type,$line,'brancos_1',$pad);
         $motivo_ocorrencia = Discharge::extractFrom($type,$line,'motivo_ocorrencia',$pad);
         $data_credito = Discharge::extractFrom($type,$line,'data_credito',$pad);
@@ -356,7 +356,7 @@ trait Transaction1 {
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
             ],
-            'VALOR_TITULO' => [ 
+            'VALOR_TITULO_CENTAVOS' => [ 
                 'position_from' => '153',
                 'position_to' => '165',
                 'size' => '013',
@@ -384,7 +384,7 @@ trait Transaction1 {
                 'content' => 'Branco',
                 'type' => 'Alfanumérico',
             ],
-            'DESPESAS_1' => [ 
+            'DESPESAS_1_CENTAVOS' => [ 
                 'position_from' => '176',
                 'position_to' => '188',
                 'size' => '013',
@@ -397,56 +397,56 @@ trait Transaction1 {
                 ],
                 'type' => 'Numérico',
             ],
-            'DESPESAS_2' => [ 
+            'DESPESAS_2_CENTAVOS' => [ 
                 'position_from' => '189',
                 'position_to' => '201',
                 'size' => '013',
                 'content' => 'Valor outras despesas custas de Protesto',
                 'type' => 'Numérico',
             ],
-            'JUROS' => [ 
+            'JUROS_CENTAVOS' => [ 
                 'position_from' => '202',
                 'position_to' => '214',
                 'size' => '013',
                 'content' => 'Será informado  Com zeros',
                 'type' => 'Numérico',
             ],
-            'IOF' => [ 
+            'IOF_CENTAVOS' => [ 
                 'position_from' => '215',
                 'position_to' => '227',
                 'size' => '013',
                 'content' => 'Valor do IOF',
                 'type' => 'Numérico',
             ],
-            'ABATIMENTO' => [ 
+            'ABATIMENTO_CENTAVOS' => [ 
                 'position_from' => '228',
                 'position_to' => '240',
                 'size' => '013',
                 'content' => 'Valor abatimento concedido',
                 'type' => 'Numérico',
             ],
-            'DESCONTO' => [ 
+            'DESCONTO_CENTAVOS' => [ 
                 'position_from' => '241',
                 'position_to' => '253',
                 'size' => '013',
                 'content' => 'Valor desconto concedido',
                 'type' => 'Numérico',
             ],
-            'VALOR_PAGO' => [ 
+            'VALOR_PAGO_CENTAVOS' => [ 
                 'position_from' => '254',
                 'position_to' => '266',
                 'size' => '013',
                 'content' => 'Valor Pago',
                 'type' => 'Numérico',
             ],
-            'JUROS_MORA' => [ 
+            'JUROS_MORA_CENTAVOS' => [ 
                 'position_from' => '267',
                 'position_to' => '279',
                 'size' => '013',
                 'content' => 'Juros de Mora',
                 'type' => 'Numérico',
             ],
-            'OUTROS_CREDITOS' => [ 
+            'OUTROS_CREDITOS_CENTAVOS' => [ 
                 'position_from' => '280',
                 'position_to' => '292',
                 'size' => '013',
@@ -568,19 +568,19 @@ trait Transaction1 {
             case 'NUM_DOCUMENTO': return substr_replace($line, $new_value, 116, 10); break;
             case 'TITULO': return substr_replace($line, $new_value, 126, 20); break;
             case 'VENCIMENTO': return substr_replace($line, $new_value, 146, 6); break;
-            case 'VALOR_TITULO': return substr_replace($line, $new_value, 152, 13); break;
+            case 'VALOR_TITULO_CENTAVOS': return substr_replace($line, $new_value, 152, 13); break;
             case 'BANCO_COBRADOR': return substr_replace($line, $new_value, 165, 3); break;
             case 'AGENCIA_COBRADORA': return substr_replace($line, $new_value, 168, 5); break;
             case 'ESPECIE': return substr_replace($line, $new_value, 173, 2); break;
-            case 'DESPESAS_1': return substr_replace($line, $new_value, 175, 13); break;
-            case 'DESPESAS_2': return substr_replace($line, $new_value, 188, 13); break;
-            case 'JUROS': return substr_replace($line, $new_value, 201, 13); break;
-            case 'IOF': return substr_replace($line, $new_value, 214, 13); break;
-            case 'ABATIMENTO': return substr_replace($line, $new_value, 227, 13); break;
-            case 'DESCONTO': return substr_replace($line, $new_value, 240, 13); break;
-            case 'VALOR_PAGO': return substr_replace($line, $new_value, 253, 13); break;
-            case 'JUROS_MORA': return substr_replace($line, $new_value, 266, 13); break;
-            case 'OUTROS_CREDITOS': return substr_replace($line, $new_value, 279, 13); break;
+            case 'DESPESAS_1_CENTAVOS': return substr_replace($line, $new_value, 175, 13); break;
+            case 'DESPESAS_2_CENTAVOS': return substr_replace($line, $new_value, 188, 13); break;
+            case 'JUROS_CENTAVOS': return substr_replace($line, $new_value, 201, 13); break;
+            case 'IOF_CENTAVOS': return substr_replace($line, $new_value, 214, 13); break;
+            case 'ABATIMENTO_CENTAVOS': return substr_replace($line, $new_value, 227, 13); break;
+            case 'DESCONTO_CENTAVOS': return substr_replace($line, $new_value, 240, 13); break;
+            case 'VALOR_PAGO_CENTAVOS': return substr_replace($line, $new_value, 253, 13); break;
+            case 'JUROS_MORA_CENTAVOS': return substr_replace($line, $new_value, 266, 13); break;
+            case 'OUTROS_CREDITOS_CENTAVOS': return substr_replace($line, $new_value, 279, 13); break;
             case 'BRANCOS_1': return substr_replace($line, $new_value, 292, 2); break;
             case 'MOTIVO_OCORRENCIA': return substr_replace($line, $new_value, 294, 1); break;
             case 'DATA_CREDITO': return substr_replace($line, $new_value, 295, 6); break;
@@ -626,19 +626,19 @@ trait Transaction1 {
             case 'NUM_DOCUMENTO': return str_pad(substr($value, 0, 10), 10, $pad_replace, STR_PAD_RIGHT); break;
             case 'TITULO': return str_pad(substr($value, 0, 20), 20, '0', STR_PAD_LEFT); break;
             case 'VENCIMENTO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR_TITULO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_TITULO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'BANCO_COBRADOR': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             case 'AGENCIA_COBRADORA': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
             case 'ESPECIE': return str_pad(substr($value, 0, 2), 2, $pad_replace, STR_PAD_RIGHT); break;
-            case 'DESPESAS_1': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'DESPESAS_2': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'JUROS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'IOF': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'ABATIMENTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'DESCONTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'VALOR_PAGO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'JUROS_MORA': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'OUTROS_CREDITOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'DESPESAS_1_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'DESPESAS_2_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'JUROS_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'IOF_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'ABATIMENTO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'DESCONTO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_PAGO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'JUROS_MORA_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'OUTROS_CREDITOS_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'BRANCOS_1': return str_pad(substr($value, 0, 2), 2, $pad_replace, STR_PAD_RIGHT); break;
             case 'MOTIVO_OCORRENCIA': return str_pad(substr($value, 0, 1), 1, $pad_replace, STR_PAD_RIGHT); break;
             case 'DATA_CREDITO':return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;

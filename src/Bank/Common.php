@@ -75,6 +75,11 @@ trait Common {
         return (float)number_format(($cents/100), 2, '.', '');
     }
 
+    public static function floatToCents($float)
+    {
+        return str_replace('.', '', sprintf('%.2f', $number));
+    }
+
     public static function calculateSettlements($discharge_public_url)
     {
 

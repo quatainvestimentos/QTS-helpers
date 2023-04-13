@@ -16,9 +16,9 @@ trait Transaction2 {
             case 'MENSAGEM_3': $value = substr($line, 161, 80); break;
             case 'MENSAGEM_4': $value = substr($line, 241, 80); break;
             case 'DATA_LIMITE_DESCONTO': $value = substr($line, 321, 6); break;
-            case 'VALOR_DESCONTO': $value = substr($line, 327, 13); break;
+            case 'VALOR_DESCONTO_CENTAVOS': $value = substr($line, 327, 13); break;
             case 'DATA_LIMITE_DESCONTO_2': $value = substr($line, 340, 6); break;
-            case 'VALOR_DESCONTO_2': $value = substr($line, 346, 13); break;
+            case 'VALOR_DESCONTO_2_CENTAVOS': $value = substr($line, 346, 13); break;
             case 'RESERVA': $value = substr($line, 359, 7); break;
             case 'CARTEIRA': $value = substr($line, 366, 3); break;
             case 'AGENCIA': $value = substr($line, 369, 5); break;
@@ -40,9 +40,9 @@ trait Transaction2 {
 
         switch(strtoupper($data)){
             case 'DATA_LIMITE_DESCONTO':
-            case 'VALOR_DESCONTO':
+            case 'VALOR_DESCONTO_CENTAVOS':
             case 'DATA_LIMITE_DESCONTO_2':
-            case 'VALOR_DESCONTO_2': 
+            case 'VALOR_DESCONTO_2_CENTAVOS': 
                 $check_required_fields = true;
                 break;
         }
@@ -68,9 +68,9 @@ trait Transaction2 {
         $mensagem_3 = Remittance::extractFrom($type,$line,'mensagem_3', $pad);
         $mensagem_4 = Remittance::extractFrom($type,$line,'mensagem_4', $pad);
         $data_limite_desconto = Remittance::extractFrom($type,$line,'data_limite_desconto', $pad);
-        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto', $pad);
+        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto_centavos', $pad);
         $data_limite_desconto_2 = Remittance::extractFrom($type,$line,'data_limite_desconto_2', $pad);
-        $valor_desconto_2 = Remittance::extractFrom($type,$line,'valor_desconto_2', $pad);
+        $valor_desconto_2 = Remittance::extractFrom($type,$line,'valor_desconto_2_centavos', $pad);
         $reserva = Remittance::extractFrom($type,$line,'reserva', $pad);
         $carteira = Remittance::extractFrom($type,$line,'carteira', $pad);
         $agencia = Remittance::extractFrom($type,$line,'agencia', $pad);
@@ -161,7 +161,7 @@ trait Transaction2 {
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
             ],
-            'VALOR_DESCONTO_2' => [ 
+            'VALOR_DESCONTO_2_CENTAVOS' => [ 
                 'position_from' => '347',
                 'position_to' => '359',
                 'size' => '013',
@@ -239,9 +239,9 @@ trait Transaction2 {
             case 'MENSAGEM_3': return substr_replace($line, $new_value, 161, 80); break;
             case 'MENSAGEM_4': return substr_replace($line, $new_value, 241, 80); break;
             case 'DATA_LIMITE_DESCONTO': return substr_replace($line, $new_value, 321, 6); break;
-            case 'VALOR_DESCONTO': return substr_replace($line, $new_value, 327, 13); break;
+            case 'VALOR_DESCONTO_CENTAVOS': return substr_replace($line, $new_value, 327, 13); break;
             case 'DATA_LIMITE_DESCONTO_2': return substr_replace($line, $new_value, 340, 6); break;
-            case 'VALOR_DESCONTO_2': return substr_replace($line, $new_value, 346, 13); break;
+            case 'VALOR_DESCONTO_2_CENTAVOS': return substr_replace($line, $new_value, 346, 13); break;
             case 'RESERVA': return substr_replace($line, $new_value, 359, 7); break;
             case 'CARTEIRA': return substr_replace($line, $new_value, 366, 3); break;
             case 'AGENCIA': return substr_replace($line, $new_value, 369, 5); break;
@@ -271,9 +271,9 @@ trait Transaction2 {
             case 'MENSAGEM_3': return str_pad(substr($value, 0, 80), 80, $pad_replace, STR_PAD_RIGHT); break;
             case 'MENSAGEM_4': return str_pad(substr($value, 0, 80), 80, $pad_replace, STR_PAD_RIGHT); break;
             case 'DATA_LIMITE_DESCONTO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR_DESCONTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_DESCONTO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'DATA_LIMITE_DESCONTO_2': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR_DESCONTO_2': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_DESCONTO_2_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'RESERVA': return str_pad(substr($value, 0, 7), 7, $pad_replace, STR_PAD_RIGHT); break;
             case 'CARTEIRA': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             case 'AGENCIA': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;

@@ -32,8 +32,8 @@ trait Transaction1 {
             case 'QTD_PAGAMENTOS': $value = substr($line, 106, 2); break;
             case 'INSTRUCAO': $value = substr($line, 108, 2); break;
             case 'S_DOCUMENTO': $value = substr($line, 110, 10); break;
-            case 'VENCIMENTO': $value = substr($line, 120, 6); break;
-            case 'VALOR': $value = substr($line, 126, 13); break;
+            case 'VENCIMENTO_CENTAVOS': $value = substr($line, 120, 6); break;
+            case 'VALOR_CENTAVOS': $value = substr($line, 126, 13); break;
             case 'BANCO_COBRANCA': $value = substr($line, 139, 3); break;
             case 'AGENCIA_DEPOSITARIA': $value = substr($line, 142, 5); break;
             case 'ESPECIE_TITULO': $value = substr($line, 147, 2); break;
@@ -41,11 +41,11 @@ trait Transaction1 {
             case 'EMISSAO': $value = substr($line, 150, 6); break;
             case 'INSTRUCAO_1': $value = substr($line, 156, 2); break;
             case 'INSTRUCAO_2': $value = substr($line, 158, 2); break;
-            case 'VALOR_DIA_ATRASO': $value = substr($line, 160, 13); break;
+            case 'VALOR_DIA_ATRASO_CENTAVOS': $value = substr($line, 160, 13); break;
             case 'DATA_LIMITE_DESCONTO': $value = substr($line, 173, 6); break;
-            case 'VALOR_DESCONTO': $value = substr($line, 179, 13); break;
-            case 'VALOR_IOF': $value = substr($line, 192, 13); break;
-            case 'VALOR_ABATIMENTO': $value = substr($line, 205, 13); break;
+            case 'VALOR_DESCONTO_CENTAVOS': $value = substr($line, 179, 13); break;
+            case 'VALOR_IOF_CENTAVOS': $value = substr($line, 192, 13); break;
+            case 'VALOR_ABATIMENTO_CENTAVOS': $value = substr($line, 205, 13); break;
             case 'TIPO_INSCRICAO': $value = substr($line, 218, 2); break;
             case 'SACADO_INSCRICAO': $value = substr($line, 220, 14); break;
             case 'SACADO_NOME': $value = substr($line, 234, 40); break;
@@ -91,8 +91,8 @@ trait Transaction1 {
         $qtd_pagamentos = Remittance::extractFrom($type,$line,'qtd_pagamentos',$pad);
         $instrucao = Remittance::extractFrom($type,$line,'instrucao',$pad);
         $s_documento = Remittance::extractFrom($type,$line,'s_documento',$pad);
-        $vencimento = Remittance::extractFrom($type,$line,'vencimento',$pad);
-        $valor = Remittance::extractFrom($type,$line,'valor',$pad);
+        $vencimento = Remittance::extractFrom($type,$line,'vencimento_centavos',$pad);
+        $valor = Remittance::extractFrom($type,$line,'valor_centavos',$pad);
         $banco_cobranca = Remittance::extractFrom($type,$line,'banco_cobranca',$pad);
         $agencia_depositaria = Remittance::extractFrom($type,$line,'agencia_depositaria',$pad);
         $especie_titulo = Remittance::extractFrom($type,$line,'especie_titulo',$pad);
@@ -100,11 +100,11 @@ trait Transaction1 {
         $emissao = Remittance::extractFrom($type,$line,'emissao',$pad);
         $instrucao_1 = Remittance::extractFrom($type,$line,'instrucao_1',$pad);
         $instrucao_2 = Remittance::extractFrom($type,$line,'instrucao_2',$pad);
-        $valor_dia_atraso = Remittance::extractFrom($type,$line,'valor_dia_atraso',$pad);
+        $valor_dia_atraso = Remittance::extractFrom($type,$line,'valor_dia_atraso_centavos',$pad);
         $data_limite_desconto = Remittance::extractFrom($type,$line,'data_limite_desconto',$pad);
-        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto',$pad);
-        $valor_iof = Remittance::extractFrom($type,$line,'valor_iof',$pad);
-        $valor_abatimento = Remittance::extractFrom($type,$line,'valor_abatimento',$pad);
+        $valor_desconto = Remittance::extractFrom($type,$line,'valor_desconto_centavos',$pad);
+        $valor_iof = Remittance::extractFrom($type,$line,'valor_iof_centavos',$pad);
+        $valor_abatimento = Remittance::extractFrom($type,$line,'valor_abatimento_centavos',$pad);
         $tipo_inscricao = Remittance::extractFrom($type,$line,'tipo_inscricao',$pad);
         $sacado_inscricao = Remittance::extractFrom($type,$line,'sacado_inscricao',$pad);
         $sacado_nome = Remittance::extractFrom($type,$line,'sacado_nome',$pad);
@@ -354,14 +354,14 @@ trait Transaction1 {
                 'content' => 'Documento',
                 'type' => 'Alfanumérico',
             ],
-            'VENCIMENTO' => [ 
+            'VENCIMENTO_CENTAVOS' => [ 
                 'position_from' => '121',
                 'position_to' => '126',
                 'size' => '006',
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
             ],
-            'VALOR' => [ 
+            'VALOR_CENTAVOS' => [ 
                 'position_from' => '127',
                 'position_to' => '139',
                 'size' => '013',
@@ -432,7 +432,7 @@ trait Transaction1 {
                 'content' => 'Campo destinado para pré-determinar o protesto do título ou a baixa por decurso de prazo, quando do registro. Não havendo interesse, preencher com zeros',
                 'type' => 'Numérico',
             ],
-            'VALOR_DIA_ATRASO' => [ 
+            'VALOR_DIA_ATRASO_CENTAVOS' => [ 
                 'position_from' => '161',
                 'position_to' => '173',
                 'size' => '013',
@@ -446,21 +446,21 @@ trait Transaction1 {
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
             ],
-            'VALOR_DESCONTO' => [ 
+            'VALOR_DESCONTO_CENTAVOS' => [ 
                 'position_from' => '180',
                 'position_to' => '192',
                 'size' => '013',
                 'content' => 'Valor Desconto',
                 'type' => 'Numérico',
             ],
-            'VALOR_IOF' => [ 
+            'VALOR_IOF_CENTAVOS' => [ 
                 'position_from' => '193',
                 'position_to' => '205',
                 'size' => '013',
                 'content' => 'Valor Desconto',
                 'type' => 'Numérico',
             ],
-            'VALOR_ABATIMENTO' => [ 
+            'VALOR_ABATIMENTO_CENTAVOS' => [ 
                 'position_from' => '206',
                 'position_to' => '218',
                 'size' => '013',
@@ -568,8 +568,8 @@ trait Transaction1 {
             case 'QTD_PAGAMENTOS': return substr_replace($line, $new_value, 106, 2); break;
             case 'INSTRUCAO': return substr_replace($line, $new_value, 108, 2); break;
             case 'S_DOCUMENTO': return substr_replace($line, $new_value, 110, 10); break;
-            case 'VENCIMENTO': return substr_replace($line, $new_value, 120, 6); break;
-            case 'VALOR': return substr_replace($line, $new_value, 126, 13); break;
+            case 'VENCIMENTO_CENTAVOS': return substr_replace($line, $new_value, 120, 6); break;
+            case 'VALOR_CENTAVOS': return substr_replace($line, $new_value, 126, 13); break;
             case 'BANCO_COBRANCA': return substr_replace($line, $new_value, 139, 3); break;
             case 'AGENCIA_DEPOSITARIA': return substr_replace($line, $new_value, 142, 5); break;
             case 'ESPECIE_TITULO': return substr_replace($line, $new_value, 147, 2); break;
@@ -577,11 +577,11 @@ trait Transaction1 {
             case 'EMISSAO': return substr_replace($line, $new_value, 150, 6); break;
             case 'INSTRUCAO_1': return substr_replace($line, $new_value, 156, 2); break;
             case 'INSTRUCAO_2': return substr_replace($line, $new_value, 158, 2); break;
-            case 'VALOR_DIA_ATRASO': return substr_replace($line, $new_value, 160, 13); break;
+            case 'VALOR_DIA_ATRASO_CENTAVOS': return substr_replace($line, $new_value, 160, 13); break;
             case 'DATA_LIMITE_DESCONTO': return substr_replace($line, $new_value, 173, 6); break;
-            case 'VALOR_DESCONTO': return substr_replace($line, $new_value, 179, 13); break;
-            case 'VALOR_IOF': return substr_replace($line, $new_value, 192, 13); break;
-            case 'VALOR_ABATIMENTO': return substr_replace($line, $new_value, 205, 13); break;
+            case 'VALOR_DESCONTO_CENTAVOS': return substr_replace($line, $new_value, 179, 13); break;
+            case 'VALOR_IOF_CENTAVOS': return substr_replace($line, $new_value, 192, 13); break;
+            case 'VALOR_ABATIMENTO_CENTAVOS': return substr_replace($line, $new_value, 205, 13); break;
             case 'TIPO_INSCRICAO': return substr_replace($line, $new_value, 218, 2); break;
             case 'SACADO_INSCRICAO': return substr_replace($line, $new_value, 220, 14); break;
             case 'SACADO_NOME': return substr_replace($line, $new_value, 234, 40); break;
@@ -628,8 +628,8 @@ trait Transaction1 {
             case 'QTD_PAGAMENTOS': return str_pad(substr($value, 0, 2), 2, $pad_replace, STR_PAD_RIGHT); break;
             case 'INSTRUCAO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'S_DOCUMENTO': return str_pad(substr($value, 0, 10), 10, '0', STR_PAD_LEFT); break;
-            case 'VENCIMENTO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VENCIMENTO_CENTAVOS': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
+            case 'VALOR_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'BANCO_COBRANCA': return str_pad(substr($value, 0, 3), 3, '0', STR_PAD_LEFT); break;
             case 'AGENCIA_DEPOSITARIA': return str_pad(substr($value, 0, 5), 5, '0', STR_PAD_LEFT); break;
             case 'ESPECIE_TITULO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
@@ -637,11 +637,11 @@ trait Transaction1 {
             case 'EMISSAO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             case 'INSTRUCAO_1': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'INSTRUCAO_2': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
-            case 'VALOR_DIA_ATRASO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_DIA_ATRASO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'DATA_LIMITE_DESCONTO': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
-            case 'VALOR_DESCONTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'VALOR_IOF': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
-            case 'VALOR_ABATIMENTO': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_DESCONTO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_IOF_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
+            case 'VALOR_ABATIMENTO_CENTAVOS': return str_pad(substr($value, 0, 13), 13, '0', STR_PAD_LEFT); break;
             case 'TIPO_INSCRICAO': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
             case 'SACADO_INSCRICAO': return str_pad(substr($value, 0, 14), 14, $pad_replace, STR_PAD_RIGHT); break;
             case 'SACADO_NOME': return str_pad(substr($value, 0, 40), 40, $pad_replace, STR_PAD_RIGHT); break;
