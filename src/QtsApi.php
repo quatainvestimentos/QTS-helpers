@@ -9,7 +9,7 @@ trait QtsApi
     {
 
         if(!isset($headers['token']) && !isset($headers['client-secret'])){
-            return (object)['status' => 500, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
+            return (object)['status' => 405, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
         }
 
         $params = [
@@ -56,7 +56,7 @@ trait QtsApi
     {
 
         if(!isset($headers['token']) && !isset($headers['client-secret'])){
-            return (object)['status' => 500, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
+            return (object)['status' => 405, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
         }
 
         $params = [
@@ -160,7 +160,7 @@ trait QtsApi
     {
 
         if(!isset($headers['token']) && !isset($headers['client-secret'])){
-            return (object)['status' => 500, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
+            return (object)['status' => 405, 'data' => [['Favor informar o token ou client secret para fazer conexões com a API']]];
         }
 
         $params = [
@@ -289,7 +289,7 @@ trait QtsApi
                 Qts::fetchError($endpoint, $params, $data, $payload['errors']);
             }
 
-            return (object)['status' => 500, 'data' => $data];
+            return (object)['status' => (isset($status_code) && $status_code ? $status_code : 500), 'data' => $data];
             
         }
 
