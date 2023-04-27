@@ -462,6 +462,45 @@ trait QtsHelpers
                 $string = 'Outros';
                 $badge = 'primary';
                 break;
+            
+            /**
+             * Report Outputs
+             */
+                
+            case 'TABLE':
+                $string = 'Tabela';
+                $badge = 'primary';
+                break;
+
+            case 'DOWNLOAD':
+                $string = 'Download';
+                $badge = 'success';
+                break;
+
+            case 'LINE_CHART':
+                $string = 'Gráfico de Linha';
+                $badge = 'danger';
+                break;
+
+            case 'BAR_CHART':
+                $string = 'Gráfico de Barras';
+                $badge = 'danger';
+                break;
+
+            case 'HISTOGRAM_CHART':
+                $string = 'Histograma';
+                $badge = 'danger';
+                break;
+
+            case 'PIE_CHART':
+                $string = 'Gráfico de Pizza';
+                $badge = 'danger';
+                break;
+
+            case 'SCREEN_DATA_CHART':
+                $string = 'Painel (Label + Total)';
+                $badge = 'danger';
+                break;
 
             /** Default */
             default:
