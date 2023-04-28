@@ -22,7 +22,7 @@ trait QtsIndexer
  
         $taxa = str_replace(' ', '', (string)$taxa);
         $taxa = str_replace('\n', '', (string)$taxa);
-        if(!is_numeric($taxa)){
+        if(ctype_digit($taxa)){
             return (object)[
                 'status' => 422,
                 'data' => $taxa.' (API Cetip retornou valor inesperado)'
