@@ -107,8 +107,16 @@ trait QtsV01
 
         } catch (\Exception $e){
 
-            $exception = ($e->getMessage() ? $e->getMessage() : null);
-            $data = ($exception ? $exception : json_decode($e->getResponse()->getBody()->getContents(), true));
+            if(strpos($e->getMessage(), '401 Unauthorized') !== false){
+                $guzzle_available = false;
+                # Retorna apenas esse erro
+                $data = ['Não autorizado. Favor validar/enviar token e client_secret antes de fazer requisições na API'];
+            }
+
+            if(!isset($data)){
+                $exception = ($e->getMessage() ? $e->getMessage() : null);
+                $data = ($exception ? $exception : json_decode($e->getResponse()->getBody()->getContents(), true));
+            }
 
             return (object)[
                 'status' => 401,
