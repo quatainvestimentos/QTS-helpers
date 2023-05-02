@@ -342,6 +342,11 @@ trait QtsHelpers
                 $badge = 'info';
                 break;
 
+            case 'APPROVED':
+                $string = 'Aprovado/homologado';
+                $badge = 'primary';
+                break;
+
             /** Fundos */
             case 'MULTISETORIAL':
                 $string = 'Multisetorial';
