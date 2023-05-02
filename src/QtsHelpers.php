@@ -170,7 +170,36 @@ trait QtsHelpers
                 $string = 'Conta Livre Movimentação';
                 $badge = '';
                 break;
-                
+
+            case 'CNAB_444':
+                $string = 'CNAB 444 - Oficial';
+                $badge = '';
+                break;
+
+            case 'CNAB_400':
+                $string = 'CNAB 400 - Necessita aprovação';
+                $badge = '';
+                break;
+            
+            case 'CNAB_XML':
+                $string = 'XML - Apenas emissão banco cobrador';
+                $badge = '';
+                break;
+
+            case 'QI_TECH_SCHEME':
+                $string = 'Boletos Qi Tech';
+                $badge = '';
+                break;
+
+            case 'QI_TECH_BRADESCO_SCHEME':
+                $string = 'Boletos Bradesco, mas homologado na conta escrow Qi Tech';
+                $badge = '';
+                break;
+
+            case 'BRADESCO_SCHEME':
+                $string = 'Boletos Bradesco, não aceita Qi Tech de forma alguma. Sujeito a aprovação';
+                $badge = '';
+                break;
 
             /** Status */
             case 'RECEIVED':
