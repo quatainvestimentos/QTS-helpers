@@ -228,6 +228,12 @@ trait QtsApi
                 $data = ['A requisição foi encerrada devido ao tempo lento de resposta da API, configurado em ' . $params['timeout'] . ' segundo(s)'];
             }
 
+            if(strpos($e->getMessage(), 'Resolving timed out after') !== false){
+                $guzzle_available = false;
+                # Retorna apenas esse erro
+                $data = ['O servidor destino não respondeu e devolveu um erro de timeout, configurado para estourar em ' . $params['timeout'] . ' segundo(s)'];
+            }
+
             if(strpos($e->getMessage(), '401 Unauthorized') !== false){
                 $guzzle_available = false;
                 # Retorna apenas esse erro
