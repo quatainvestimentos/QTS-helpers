@@ -521,6 +521,11 @@ trait QtsHelpers
                 $badge = 'danger';
                 break;
 
+            case 'GROUPED_BAR_CHART':
+                $string = 'Gráfico de Barras Agrupadas';
+                $badge = 'danger';
+                break;
+
             case 'HISTOGRAM_CHART':
                 $string = 'Histograma';
                 $badge = 'danger';
