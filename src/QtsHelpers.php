@@ -496,6 +496,31 @@ trait QtsHelpers
                 $string = 'Outros';
                 $badge = 'primary';
                 break;
+
+            case 'LEADER':
+                $string = 'Líder/gestor(a)';
+                $badge = 'primary';
+                break;
+
+            case 'ASSISTANT':
+                $string = 'Assistente';
+                $badge = 'primary';
+                break;
+        
+            case 'COORDINATOR':
+                $string = 'Coordenador(a)';
+                $badge = 'primary';
+                break;
+
+            case 'MANAGER':
+                $string = 'Gerente';
+                $badge = 'primary';
+                break;
+
+            case 'OPERATOR':
+                $string = 'Operador(a)';
+                $badge = 'primary';
+                break;
             
             /**
              * Report Outputs
