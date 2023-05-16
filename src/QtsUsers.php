@@ -122,4 +122,25 @@ trait QtsUsers
         return $tokens[ $total_tokens - 1];
     }
 
+    public static function cachedUsersFrom($role)
+    {
+
+        $results = Qts::cachedUsers();
+        if(isset($results->status) && $results->status !== 200){
+            return (object)['status' => 404, 'data' => $results->data];
+        }
+
+        $role = md5(strtoupper($role));
+        $filtered = [];
+
+        foreach($results->data as $d):
+            if($d->access_role === $role){
+                $filtered[] = $d;
+            }
+        endforeach;
+
+        return (object)['status' => 200, 'data' => $filtered];
+
+    }
+
 }
