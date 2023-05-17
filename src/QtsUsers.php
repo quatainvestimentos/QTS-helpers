@@ -102,8 +102,8 @@ trait QtsUsers
             if(!isset($person->ein)){ continue; }
 
             if(
-                $person->user_api_key === $user_api_key && 
-                $person->ein === $ein
+                (string)$person->user_api_key === (string)$user_api_key && 
+                (string)$person->ein === (string)$ein
             ){
                 
                 return $person;
