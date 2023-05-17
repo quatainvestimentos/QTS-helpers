@@ -203,4 +203,15 @@ trait QtsV01
         }
     }
 
+    public static function bindNmOperationAttribute($id)
+    {
+        switch($id){
+            case 1: return 'NOT_APPLICABLE'; break;
+            case 2: return 'PULVERIZED'; break;
+            case 3: return 'INTERCOMPANY'; break;
+            case 4: return 'CONFIDENTIAL_FACTORING'; break;
+            default: return 'OTHER';
+        }
+    }
+
 }
