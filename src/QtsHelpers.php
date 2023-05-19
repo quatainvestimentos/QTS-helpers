@@ -79,6 +79,11 @@ trait QtsHelpers
                 $string = 'Finnet';
                 $badge = 'danger';
                 break;
+            
+            case 'CREDTEM':
+                $string = 'Credtem Capital';
+                $badge = 'danger';
+                break;
 
             case 'QTS':
                 $string = 'QTS';
