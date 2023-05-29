@@ -625,17 +625,11 @@ trait QtsHelpers
             case 'CONTRATO_SOCIAL':
                 $string = 'Contrato Social';
                 break;
-            case 'DOCUMENTOS_PESSOAIS':
-                $string = 'Documentos Pessoais'; 
-                break;
             case 'PROCURACAO':
                 $string = 'Procuração';
                 break;
             case 'ULTIMA_ALTERACAO_CONTRATUAL_JUCESP':  
                 $string = 'Última Alteração Contratual na JUCESP';
-                break;
-            case 'COMPROVANTE_RESIDENCIA':  
-                $string = 'Comprovante de Residência';
                 break;
             case 'DEVEDOR_SOLIDARIO_PJ':
                 $string = 'Devedor Solidário PJ';
@@ -646,6 +640,34 @@ trait QtsHelpers
             case 'DOCUMENTO_SOCIO_PJ':
                 $string = 'Documento Sócio(a) PJ';
                 break;
+            case 'CONTRATO_SOCIAL_3_ANOS': 
+                $string = 'Contrato Social (mais de 3 anos)';
+                break;
+            case 'CPF': 
+                $string = 'CPF';
+                break;
+            case 'RG': 
+                $string = 'RG';
+                break;
+            case 'CNH': 
+                $string = 'Habilitação (CNH)';
+                break;
+            case 'COMPROVANTE_RESIDENCIA': 
+                $string = 'Comprovante de Residência';
+                break;
+            case 'DOCUMENTOS_PESSOAIS': 
+                $string = 'Documentos Pessoais (geral)';
+                break;
+            case 'DECLARACAO_SIMPLIFICADA': 
+                $string = 'Declaração Simplificada';
+                break;
+            case 'CERTIDAO_ESTADO_CIVIL': 
+                $string = 'Certidão de Estado Civil';
+                break;
+            case 'DRE': 
+                $string = 'DRE';
+                break;
+
             default: 
                 $string = 'Desconhecido: ' . $string;
         }
