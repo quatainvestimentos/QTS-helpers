@@ -497,6 +497,26 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
+            case 'DIGITAL':
+                $string = 'Digital';
+                $badge = 'primary';
+                break;
+            
+            case 'FINANCIAL':
+                $string = 'Financeiro';
+                $badge = 'primary';
+                break;
+
+            case 'LEGAL':
+                $string = 'Jurídico';
+                $badge = 'primary';
+                break;
+            
+            case 'HUMAN_RESOURCES':
+                $string = 'Pessoas e Cultura';
+                $badge = 'primary';
+                break;
+
             case 'OTHER':
                 $string = 'Outros';
                 $badge = 'primary';
