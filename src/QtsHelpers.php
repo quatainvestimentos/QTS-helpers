@@ -546,6 +546,79 @@ trait QtsHelpers
                 $string = 'Operador(a)';
                 $badge = 'primary';
                 break;
+
+            /**
+             * Heritage
+             */
+
+            case 'FACILITIES': 
+                $string = 'Equipamentos/instalações';
+                $badge = 'primary';
+                break;
+
+            case 'FURNITURE':
+                $string = 'Mobiliário';
+                $badge = 'primary';
+                break;
+
+            case 'PRINTERS':
+                $string = 'Impressoras';
+                $badge = 'primary';
+                break;
+                
+            case 'UTENSILS':
+                $string = 'Utensílios';
+                $badge = 'primary';
+                break;
+
+            case 'TOOLS': 
+                $string = 'Ferramentas';
+                $badge = 'primary';
+                break;
+
+            case 'COMMUNICATION':
+                $string = 'Comunicações';
+                $badge = 'primary';
+                break;
+
+            case 'COMPUTERS_AND_PERIPHERAL':
+                $string = 'Computadores e periféricos';
+                $badge = 'primary';
+                break;
+
+            case 'ELECTRONICS':
+                $string = 'Eletrônicos';
+                $badge = 'primary';
+                break;
+
+            /**
+             * Quality
+             */
+
+            case 'EXCELENT':
+                $string = 'Excelente/novo';
+                $badge = 'primary';
+                break;
+
+            case 'GOOD':
+                $string = 'Bom estado';
+                $badge = 'primary';
+                break;
+
+            case 'REGULAR':
+                $string = 'Normal';
+                $badge = 'warning';
+                break;
+
+            case 'POOR':
+                $string = 'Ruim';
+                $badge = 'secondary';
+                break;
+
+            case 'DAMAGED':
+                $string = 'Danificado';
+                $badge = 'danger';
+                break;
             
             /**
              * Report Outputs
@@ -694,6 +767,11 @@ trait QtsHelpers
 
         return $string;
 
+    }
+
+    public static function floatToBrl($float)
+    {
+        return 'R$ ' . number_format($float, '2', ',', '.');
     }
 
     public static function date(String $datetime, String $format='d/m/Y H:i')
