@@ -6,36 +6,37 @@ date_default_timezone_set('America/Sao_Paulo');
 trait QtsIndexer 
 {
 
-    public static function getCDI($date = null) {
-        if(!$date){ $date = date('Y-m-d'); }
-
+    public static function getCDI($date=null) {
+        
+        if(!$date){ $date = date('Ymd', strtotime('yesterday')); }
         $date = date('Ymd', strtotime($date));
 
         try {
-            $taxa = file_get_contents("ftp://ftp.cetip.com.br/MediaCDI/$date.txt");
+            
+            $cdi = file_get_contents("ftp://ftp.cetip.com.br/MediaCDI/20230623.txt");
+        
         } catch (\Exception $e) {
+
             return (object)[
                 'status' => 422,
                 'data' => $e->getMessage()
             ];
+
         }
- 
-        $taxa = str_replace(' ', '', (string)$taxa);
-        $taxa = str_replace('\n', '', (string)$taxa);
-        if(!is_numeric($taxa)){
-            return (object)[
-                'status' => 422,
-                'data' => $taxa.' (API Cetip retornou valor inesperado)'
-            ];
-        }
-        $taxa = floatval($taxa);
-        $dailyCdi = round( ((( pow((($taxa / 10000) + 1), (1 / 252))) - 1) * 100), 8);
-        $monthlyCdi = round( ((( pow((($taxa / 10000) + 1), (1 / 12))) - 1) * 100), 8);
-        $taxa = (float)number_format($taxa/100,2);
+
+        $cdi = (int)$cdi;
+        $daily = round( ((( pow((($cdi / 10000) + 1), (1 / 252))) - 1) * 100), 8);
+        $monthly = round( ((( pow((($cdi / 10000) + 1), (1 / 12))) - 1) * 100), 8);
+
         return (object)[
             'status' => 200,
-            'data' => ['taxa' => $taxa, 'daily' => $dailyCdi, 'monthy' => $monthlyCdi]
+            'data' => (object)[
+                'cdi' => (float)number_format($cdi/100,2), 
+                'daily' => $daily, 
+                'monthy' => $monthly
+            ]
         ];
+        
     }
 
 }
