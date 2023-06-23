@@ -1307,4 +1307,12 @@ trait QtsHelpers
         return filter_var($string, FILTER_SANITIZE_NUMBER_INT);
     }
 
+    public static function getApiResults($data)
+    {
+
+        return json_decode($data->getContent(), false)->results;
+
+    }
+    
+
 }
