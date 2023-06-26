@@ -93,6 +93,22 @@ trait QtsUsers
 
     }
 
+    public static function filterPersonBy($key, $value, $object)
+    {
+        foreach($object as $person):
+
+            $person = (array)$person;
+
+            if($person[$key] === $value){
+                return (object)$person;
+                break;
+            }
+        endforeach;
+
+        return (object)[];
+
+    }
+
     public static function filterByMatchingKeys($user_api_key, $ein, $object)
     {
 
