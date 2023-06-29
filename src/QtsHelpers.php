@@ -644,6 +644,11 @@ trait QtsHelpers
                 $badge = 'success';
                 break;
 
+            case 'LAMBDA':
+                $string = 'AWS Lambda';
+                $badge = 'success';
+                break;
+
             case 'LINE_CHART':
                 $string = 'Gráfico de Linha';
                 $badge = 'danger';
