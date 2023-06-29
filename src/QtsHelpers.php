@@ -1314,7 +1314,9 @@ trait QtsHelpers
     }
 
     public static function extractNumbers($string) {
-        return preg_replace('/[^0-9\-]/', '', $string);
+
+        return preg_replace('/[^0-9]/', '', $string);
+    
     }
 
     public static function getApiResults($data)
