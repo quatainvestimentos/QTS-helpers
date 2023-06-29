@@ -5,7 +5,7 @@ namespace QuataInvestimentos;
 trait LambdaApi 
 {
 
-    public static function fetch($endpoint,$method='GET',$headers=[],$payload=[])
+    public static function lambdaFetch($endpoint,$method='GET',$headers=[],$payload=[])
     {
 
         if(!isset($headers['x-api-key'])){
