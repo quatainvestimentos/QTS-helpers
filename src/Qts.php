@@ -8,6 +8,7 @@ use QuataInvestimentos\QtsIndexer;
 use QuataInvestimentos\QtsUsers;
 use QuataInvestimentos\QtsEs512;
 use QuataInvestimentos\QiTech;
+use QuataInvestimentos\LambdaApi;
 
 /**
  * V01 Integration
@@ -25,6 +26,7 @@ class Qts {
     QtsUsers,
     QtsEs512,
     QiTech,
+    LambdaApi,
     QtsV01,
     QtsIndexer,
     InstructionController,
