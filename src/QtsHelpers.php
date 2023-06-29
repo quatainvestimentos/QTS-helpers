@@ -217,6 +217,16 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'VALID':
+                $string = 'Válido';
+                $badge = 'success';
+                break;
+
+            case 'INVALID':
+                $string = 'Inválido';
+                $badge = 'danger';
+                break;
+
             case 'ACCEPTED':
                 $string = 'Aceito';
                 $badge = 'primary';
@@ -1304,7 +1314,7 @@ trait QtsHelpers
     }
 
     public static function extractNumbers($string) {
-        return filter_var($string, FILTER_SANITIZE_NUMBER_INT);
+        return preg_replace('/[^0-9\-]/', '', $string);
     }
 
     public static function getApiResults($data)
