@@ -690,6 +690,27 @@ trait QtsHelpers
 
     }
 
+    public static function translateBankSlipEnums(String $string, Bool $get_badge=false)
+    {
+
+        switch(strtoupper($string)){
+
+            case 'WAITING_PAYMENT':
+                $string = 'Aguardando Pagamento';
+                $badge = 'warning';
+                break;
+
+            /** Default */
+            default:
+                $string = 'Não encontrado: ' . $string;
+                $badge = 'info';
+        }
+
+        if($get_badge){ return $badge; }
+        return $string;
+
+    }
+
     public static function translateDocument(String $string)
     {
 
