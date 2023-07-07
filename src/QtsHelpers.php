@@ -711,6 +711,42 @@ trait QtsHelpers
 
     }
 
+    public static function translateUserEnums(String $string, Bool $get_badge=false)
+    {
+
+        switch(strtoupper($string)){
+
+            case 'VAN_STATUS':
+                $string = 'Status de VANs bancárias';
+                $badge = 'warning';
+                break;
+
+            case 'TODAYS_DEBT':
+                $string = 'PMTs vencendo hoje';
+                $badge = 'warning';
+                break;
+            
+            case 'ALL':
+                $string = 'Todos os alertas disponíveis';
+                $badge = 'warning';
+                break;
+
+            case 'OTHER':
+                $string = 'Assuntos genéricos';
+                $badge = 'warning';
+                break;
+
+            /** Default */
+            default:
+                $string = 'Não encontrado: ' . $string;
+                $badge = 'info';
+        }
+
+        if($get_badge){ return $badge; }
+        return $string;
+
+    }
+
     public static function translateDocument(String $string)
     {
 
