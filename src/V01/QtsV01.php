@@ -101,7 +101,7 @@ trait QtsV01
 
         try {
 
-            $client = new \GuzzleHttp\Client();
+            $client = new \GuzzleHttp\Client(['verify' => false]);
             $request = $client->post( $keycloak, ['form_params' => $payload] );
             $response = $request->getBody()->getContents();
 
