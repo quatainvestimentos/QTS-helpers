@@ -80,6 +80,22 @@ trait QtsUsers
         return (object)['status' => 201, 'data' => $user];
     }
 
+    public static function getNonCustomersByEin($env, $ein)
+    {
+
+        $results = Qts::fetch(Qts::getEndpoint($env) . 'users/non-customers/by/'.$ein, 'GET', [
+            'client-secret' => env('CLIENT_SECRET')
+        ]);
+
+        $data = (isset($results->data->results) && $results->data->results ? $results->data->results : []);
+
+        if(!isset($results->status) || $results->status >= 400){
+            return (object)['status' => $results->status, 'data' =>$results->data ];
+        }
+
+        return (object)['status' => 201, 'data' => $data];
+    }
+
     public static function filterPerson($key, $object)
     {
         foreach($object as $person):
