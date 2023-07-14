@@ -171,6 +171,7 @@ trait Transaction1 {
                 'size' => '001',
                 'content' => '1',
                 'type' => 'Numérico',
+                'friendly_name' => 'Número do Registo'
             ],
             'TIPO_INSCRICAO' => [ 
                 'position_from' => '002',
@@ -185,6 +186,7 @@ trait Transaction1 {
                     'OBS' => 'Relativo ao Sacado'
                 ],
                 'type' => 'Numérico',
+                'friendly_name' => 'CPF ou CNPJ do Sacado'
             ],
             'NUM_INSCRICAO' => [ 
                 'position_from' => '004',
@@ -192,6 +194,7 @@ trait Transaction1 {
                 'size' => '014',
                 'content' => 'CNPJ/CPF, Número, Filial, Controle do Sacado',
                 'type' => 'Numérico',
+                'friendly_name' => 'Número da Inscrição'
             ],
             'ZEROS_1' => [ 
                 'position_from' => '018',
@@ -199,6 +202,7 @@ trait Transaction1 {
                 'size' => '003',
                 'content' => 'Zeros',
                 'type' => 'Numérico',
+                'friendly_name' => 'Zeros'
             ],
             'BENEFICIARIA' => [ 
                 'position_from' => '021',
@@ -206,6 +210,7 @@ trait Transaction1 {
                 'size' => '017',
                 'content' => 'Zero, Carteira, Agência, Conta Corrente (convênio)',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Convênio'
             ],
             'NUM_PARTICIPANTE' => [ 
                 'position_from' => '038',
@@ -214,6 +219,7 @@ trait Transaction1 {
                 'content' => 'Uso da Empresa',
                 'type' => 'Alfanumérico',
                 'content' => 'Sdocumento no banco de dados',
+                'friendly_name' => 'Sdocumento'
             ],
             'ZEROS_2' => [ 
                 'position_from' => '063',
@@ -221,6 +227,7 @@ trait Transaction1 {
                 'size' => '008',
                 'content' => 'Zeros',
                 'type' => 'Numérico',
+                'friendly_name' => 'Zeros'
             ],
             'NOSSO_NUM' => [ 
                 'position_from' => '071',
@@ -228,6 +235,7 @@ trait Transaction1 {
                 'size' => '011',
                 'content' => 'Nº Banco',
                 'type' => 'Numérico',
+                'friendly_name' => 'Nosso Número'
             ],
             'NOSSO_NUM_DV' => [ 
                 'position_from' => '082',
@@ -235,6 +243,7 @@ trait Transaction1 {
                 'size' => '01',
                 'content' => 'Nº Banco (dv)',
                 'type' => 'Numérico',
+                'friendly_name' => 'Nosso Número DV'
             ],
             'BANCO_1' => [ 
                 'position_from' => '083',
@@ -242,6 +251,7 @@ trait Transaction1 {
                 'size' => '010',
                 'content' => 'Zeros',
                 'type' => 'Numérico',
+                'friendly_name' => 'Primeiro Banco'
             ],
             'BANCO_2' => [ 
                 'position_from' => '093',
@@ -249,6 +259,7 @@ trait Transaction1 {
                 'size' => '012',
                 'content' => 'Zeros',
                 'type' => 'Numérico',
+                'friendly_name' => 'Segundo Banco'
             ],
             'RATEIO' => [ 
                 'position_from' => '105',
@@ -256,6 +267,7 @@ trait Transaction1 {
                 'size' => '001',
                 'content' => 'R',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Rateio'
             ],
             'PAGAMENTO_PARCIAL' => [ 
                 'position_from' => '106',
@@ -266,6 +278,7 @@ trait Transaction1 {
                     'Diferente 00' => 'Parcelamento aceito'
                 ],
                 'type' => 'Numérico',
+                'friendly_name' => 'Parcelamento'
             ],
             'CARTEIRA' => [ 
                 'position_from' => '108',
@@ -273,6 +286,7 @@ trait Transaction1 {
                 'size' => '001',
                 'content' => 'Carteira',
                 'type' => 'Numérico',
+                'friendly_name' => 'Carteira'
             ],
             'OCORRENCIA' => [ 
                 'position_from' => '109',
@@ -324,6 +338,7 @@ trait Transaction1 {
                     ]
                 ],
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Ocorrência'
             ],
             'DATA_OCORRENCIA' => [ 
                 'position_from' => '111',
@@ -331,6 +346,7 @@ trait Transaction1 {
                 'size' => '006',
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
+                'friendly_name' => 'Data da Ocorrência'
             ],
             'NUM_DOCUMENTO' => [ 
                 'position_from' => '117',
@@ -338,6 +354,7 @@ trait Transaction1 {
                 'size' => '010',
                 'content' => 'Nº do Documento',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Nº do Documento'
             ],
             'TITULO' => [ 
                 'position_from' => '127',
@@ -347,7 +364,8 @@ trait Transaction1 {
                 'type' => 'Numérico',
                 'content' => [
                     'title' => 'Normalmente utilizamos o nosso número + dígito verificador'
-                ]
+                ],
+                'friendly_name' => 'Título (NossoNum+DV)'
             ],
             'VENCIMENTO' => [ 
                 'position_from' => '147',
@@ -355,6 +373,7 @@ trait Transaction1 {
                 'size' => '006',
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
+                'friendly_name' => 'Vencimento'
             ],
             'VALOR_TITULO_CENTAVOS' => [ 
                 'position_from' => '153',
@@ -362,6 +381,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor do Título',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor Título Centavos'
             ],
             'BANCO_COBRADOR' => [ 
                 'position_from' => '166',
@@ -369,6 +389,7 @@ trait Transaction1 {
                 'size' => '003',
                 'content' => 'Código do Banco Câmara de Compensação',
                 'type' => 'Numérico',
+                'friendly_name' => 'Banco Cobrador'
             ],
             'AGENCIA_COBRADORA' => [ 
                 'position_from' => '169',
@@ -376,6 +397,7 @@ trait Transaction1 {
                 'size' => '005',
                 'content' => 'Código da Agência do Banco Cobrador',
                 'type' => 'Numérico',
+                'friendly_name' => 'Agência Cobrador'
             ],
             'ESPECIE' => [ 
                 'position_from' => '174',
@@ -383,6 +405,7 @@ trait Transaction1 {
                 'size' => '002',
                 'content' => 'Branco',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Espécie'
             ],
             'DESPESAS_1_CENTAVOS' => [ 
                 'position_from' => '176',
@@ -396,6 +419,7 @@ trait Transaction1 {
                     ]
                 ],
                 'type' => 'Numérico',
+                'friendly_name' => 'Despesas de cobrança (Códigos de Ocorrência)'
             ],
             'DESPESAS_2_CENTAVOS' => [ 
                 'position_from' => '189',
@@ -403,6 +427,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor outras despesas custas de Protesto',
                 'type' => 'Numérico',
+                'friendly_name' => 'Despesas de cobrança (Despesas de Protesto)'
             ],
             'JUROS_CENTAVOS' => [ 
                 'position_from' => '202',
@@ -410,6 +435,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Será informado  Com zeros',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor dos Juros'
             ],
             'IOF_CENTAVOS' => [ 
                 'position_from' => '215',
@@ -417,6 +443,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor do IOF',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor do IOF'
             ],
             'ABATIMENTO_CENTAVOS' => [ 
                 'position_from' => '228',
@@ -424,6 +451,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor abatimento concedido',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor do Abatimento'
             ],
             'DESCONTO_CENTAVOS' => [ 
                 'position_from' => '241',
@@ -431,6 +459,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor desconto concedido',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor do Desconto'
             ],
             'VALOR_PAGO_CENTAVOS' => [ 
                 'position_from' => '254',
@@ -438,6 +467,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor Pago',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor Pago'
             ],
             'JUROS_MORA_CENTAVOS' => [ 
                 'position_from' => '267',
@@ -445,6 +475,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Juros de Mora',
                 'type' => 'Numérico',
+                'friendly_name' => 'Valor de Juros de Mora'
             ],
             'OUTROS_CREDITOS_CENTAVOS' => [ 
                 'position_from' => '280',
@@ -452,6 +483,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Sera informado com zeros',
                 'type' => 'Numérico',
+                'friendly_name' => 'Outros Créditos'
             ],
             'BRANCOS_1' => [ 
                 'position_from' => '293',
@@ -459,6 +491,7 @@ trait Transaction1 {
                 'size' => '002',
                 'content' => 'Brancos',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Brancos'
             ],
             'MOTIVO_OCORRENCIA' => [ 
                 'position_from' => '295',
@@ -469,6 +502,7 @@ trait Transaction1 {
                     'D' => 'Desprezado'
                 ],
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Motivo Ocorrência'
             ],
             'DATA_CREDITO' => [ 
                 'position_from' => '296',
@@ -476,6 +510,7 @@ trait Transaction1 {
                 'size' => '006',
                 'content' => 'DDMMAA',
                 'type' => 'Numérico',
+                'friendly_name' => 'Data do Crédito'
             ],
             'ORIGEM_PAGAMENTO' => [ 
                 'position_from' => '302',
@@ -483,6 +518,7 @@ trait Transaction1 {
                 'size' => '03',
                 'content' => 'Origem',
                 'type' => 'Numérico',
+                'friendly_name' => 'Origem do pagamento'
             ],
             'BRANCOS_2' => [ 
                 'position_from' => '305',
@@ -490,6 +526,7 @@ trait Transaction1 {
                 'size' => '010',
                 'content' => 'Brancos',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Brancos'
             ],
             'CHEQUE_BRADESCO' => [ 
                 'position_from' => '315',
@@ -497,6 +534,7 @@ trait Transaction1 {
                 'size' => '004',
                 'content' => 'Codigo do Banco',
                 'type' => 'Numérico',
+                'friendly_name' => 'Código do Banco (cheque Bradesco)'
             ],
             'MOTIVO_REJEICAO' => [ 
                 'position_from' => '319',
@@ -504,6 +542,7 @@ trait Transaction1 {
                 'size' => '010',
                 'content' => 'Motivos das Rejeições para os Códigos de Ocorrência da Posição 109 a 110',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Motivo Rejeição (ocorrências)'
             ],
             'BRANCOS_3' => [ 
                 'position_from' => '329',
@@ -511,6 +550,7 @@ trait Transaction1 {
                 'size' => '040',
                 'content' => 'Brancos',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Brancos'
             ],
             'NUM_CARTORIO' => [ 
                 'position_from' => '369',
@@ -518,6 +558,7 @@ trait Transaction1 {
                 'size' => '002',
                 'content' => 'Número do Cartório',
                 'type' => 'Numérico',
+                'friendly_name' => 'Número do Cartório'
             ],
             'NUM_PROTOCOLO' => [ 
                 'position_from' => '371',
@@ -525,6 +566,7 @@ trait Transaction1 {
                 'size' => '010',
                 'content' => 'Número do Protocolo',
                 'type' => 'Alfanumérico',
+                'friendly_name' => 'Número do Protocolo'
             ],
             'BRANCOS_4' => [ 
                 'position_from' => '381',
@@ -532,6 +574,7 @@ trait Transaction1 {
                 'size' => '014',
                 'content' => 'Brancos',
                 'type' => 'Numérico',
+                'friendly_name' => 'Brancos'
             ],
             'SEQUENCIAL' => [ 
                 'position_from' => '395',
@@ -539,6 +582,7 @@ trait Transaction1 {
                 'size' => '006',
                 'content' => 'Nº Sequencial do Registro',
                 'type' => 'Numérico',
+                'friendly_name' => 'Nº Sequencial do Registro'
             ]
         ];
 
