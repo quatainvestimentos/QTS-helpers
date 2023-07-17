@@ -764,6 +764,52 @@ trait QtsHelpers
 
     }
 
+    public static function translateDocsAndLogsEnums(String $string, Bool $get_badge=false)
+    {
+
+        switch(strtoupper($string)){
+
+            case 'NOT_APPLICABLE':
+                $string = 'Não se aplica';
+                $badge = 'warning';
+                break;
+
+            case 'T1':
+                $string = 'Tier 1';
+                $badge = 'warning';
+                break;
+
+            case 'T2':
+                $string = 'Tier 2';
+                $badge = 'warning';
+                break;
+
+            case 'T3':
+                $string = 'Tier 3';
+                $badge = 'warning';
+                break;
+
+            case 'T4':
+                $string = 'Tier 4';
+                $badge = 'warning';
+                break;
+
+            case 'T5':
+                $string = 'Tier 5';
+                $badge = 'warning';
+                break;
+
+            /** Default */
+            default:
+                $string = 'Não encontrado: ' . $string;
+                $badge = 'info';
+        }
+
+        if($get_badge){ return $badge; }
+        return $string;
+
+    }
+
     public static function translateDocument(String $string)
     {
 
