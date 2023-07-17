@@ -148,6 +148,44 @@ trait QtsUsers
 
     }
 
+    public static function filterPersonByEinAndAsset($ein, $asset, $object)
+    {
+        foreach($object as $person):
+
+            if(!isset($person->ein)){ continue; }
+            if(!isset($person->asset)){ continue; }
+
+            $ein = str_pad($ein, 14, 0, STR_PAD_LEFT);
+            $ein_prefix = substr($ein, 0, 8);
+
+            if(
+                strpos($person->ein, $ein_prefix) !== false && 
+                strtoupper($person->asset) === $asset
+            ){
+                return $person;
+                break;
+            }
+
+        endforeach;
+
+        return (object)[];
+
+    }
+
+    public static function findAsset($apelido)
+    {
+        if(strpos($apelido, '(SOMA)') !== false){
+            return 'SOMA_ASSET';
+        }
+
+        if(strpos($apelido, '(ARCEL)') !== false){
+            return 'GRUPO_ARCEL';
+        }
+
+        return 'QUATA_INVESTIMENTOS';
+        
+    }
+
     public static function extractFilename($string) {
         $tokens = explode('/', $string);
         $total_tokens = count($tokens);

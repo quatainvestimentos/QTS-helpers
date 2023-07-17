@@ -33,6 +33,23 @@ trait QtsHelpers
     {
 
         switch(strtoupper($string)){
+            /** Assets */
+
+            case 'QUATA_INVESTIMENTOS':
+                $string = 'Quatá Investimentos';
+                $badge = 'warning';
+                break;
+
+            case 'SOMA_ASSET':
+                $string = 'Soma Asset';
+                $badge = 'warning';
+                break;
+
+            case 'GRUPO_ARCEL':
+                $string = 'Grupo Arcel';
+                $badge = 'warning';
+                break;
+
             /** Fileserver */
             case 'VAN':
                 $string = 'Van Bancária';
