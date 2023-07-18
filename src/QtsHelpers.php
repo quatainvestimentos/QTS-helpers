@@ -717,6 +717,11 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'PAID':
+                $string = 'Parcela Paga';
+                $badge = 'warning';
+                break;
+
             /** Default */
             default:
                 $string = 'Não encontrado: ' . $string;
