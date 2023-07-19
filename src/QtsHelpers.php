@@ -1455,6 +1455,38 @@ trait QtsHelpers
         return json_decode($data->getContent(), false)->results;
 
     }
+
+    public static function newlineToArray($string)
+    {
+
+        $string = str_replace("\\r\\n", PHP_EOL, $string);
+        $string = str_replace("\\r", PHP_EOL, $string);
+        $string = str_replace("\\n", PHP_EOL, $string);
+        $string = str_replace(',', PHP_EOL, $string);
+        $string = str_replace(PHP_EOL, ';', $string);
+        
+        $data = explode(';', $string);
+
+        $new_data = [];
+        foreach($data as $d):
+
+            $d = preg_replace('/\s+/', '', $d);
+            $d = preg_replace('/[^A-Za-z0-9@._-]/', '', $d);
+
+            if($d){
+                $new_data[] = trim(strtolower($d));
+            }
+
+        endforeach;
+
+        return $new_data;
+
+    }
+
+    public static function cleanUpHtml($string)
+    {
+        return preg_replace('/\s{2,}/', ' ', $string);
+    }
     
 
 }
