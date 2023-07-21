@@ -218,8 +218,8 @@ trait Transaction1 {
                 'size' => '025',
                 'content' => 'Uso da Empresa',
                 'type' => 'Alfanumérico',
-                'content' => 'Sdocumento no banco de dados',
-                'friendly_name' => 'Sdocumento'
+                'content' => 'N° do participante',
+                'friendly_name' => 'N° Participante'
             ],
             'ZEROS_2' => [ 
                 'position_from' => '063',
@@ -352,9 +352,9 @@ trait Transaction1 {
                 'position_from' => '117',
                 'position_to' => '126',
                 'size' => '010',
-                'content' => 'Nº do Documento',
+                'content' => 'Sdocumento no banco de dados',
                 'type' => 'Alfanumérico',
-                'friendly_name' => 'Nº do Documento'
+                'friendly_name' => 'Sdocumento'
             ],
             'TITULO' => [ 
                 'position_from' => '127',
@@ -435,7 +435,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Será informado  Com zeros',
                 'type' => 'Numérico',
-                'friendly_name' => 'Valor dos Juros'
+                'friendly_name' => 'Despesas de cobrança (Despesas de Protesto)'
             ],
             'IOF_CENTAVOS' => [ 
                 'position_from' => '215',
@@ -451,7 +451,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor abatimento concedido',
                 'type' => 'Numérico',
-                'friendly_name' => 'Valor do Abatimento'
+                'friendly_name' => 'Abatimento (Centavos)'
             ],
             'DESCONTO_CENTAVOS' => [ 
                 'position_from' => '241',
@@ -459,7 +459,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor desconto concedido',
                 'type' => 'Numérico',
-                'friendly_name' => 'Valor do Desconto'
+                'friendly_name' => 'Desconto (Centavos)'
             ],
             'VALOR_PAGO_CENTAVOS' => [ 
                 'position_from' => '254',
@@ -467,7 +467,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Valor Pago',
                 'type' => 'Numérico',
-                'friendly_name' => 'Valor Pago'
+                'friendly_name' => 'Valor Pago (Centavos)'
             ],
             'JUROS_MORA_CENTAVOS' => [ 
                 'position_from' => '267',
@@ -475,7 +475,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Juros de Mora',
                 'type' => 'Numérico',
-                'friendly_name' => 'Valor de Juros de Mora'
+                'friendly_name' => 'Juros de Mora (Centavos)'
             ],
             'OUTROS_CREDITOS_CENTAVOS' => [ 
                 'position_from' => '280',
@@ -483,7 +483,7 @@ trait Transaction1 {
                 'size' => '013',
                 'content' => 'Sera informado com zeros',
                 'type' => 'Numérico',
-                'friendly_name' => 'Outros Créditos'
+                'friendly_name' => 'Outros Créditos (Centavos)'
             ],
             'BRANCOS_1' => [ 
                 'position_from' => '293',
@@ -534,7 +534,7 @@ trait Transaction1 {
                 'size' => '004',
                 'content' => 'Codigo do Banco',
                 'type' => 'Numérico',
-                'friendly_name' => 'Código do Banco (cheque Bradesco)'
+                'friendly_name' => 'Código do Banco'
             ],
             'MOTIVO_REJEICAO' => [ 
                 'position_from' => '319',
@@ -542,7 +542,7 @@ trait Transaction1 {
                 'size' => '010',
                 'content' => 'Motivos das Rejeições para os Códigos de Ocorrência da Posição 109 a 110',
                 'type' => 'Alfanumérico',
-                'friendly_name' => 'Motivo Rejeição (ocorrências)'
+                'friendly_name' => 'Motivo Rejeição'
             ],
             'BRANCOS_3' => [ 
                 'position_from' => '329',
