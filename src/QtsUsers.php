@@ -213,4 +213,20 @@ trait QtsUsers
 
     }
 
+    public static function getCompaniesFromQts($env)
+    {
+
+        $results = Qts::fetch(Qts::getEndpoint($env) . 'customers-users', 'GET', [
+            'client-secret' => env('CLIENT_SECRET')
+        ]);
+
+        $data = (isset($results->data->results) && $results->data->results ? $results->data->results : []);
+
+        if(!isset($results->status) || $results->status >= 400){
+            return (object)['status' => $results->status, 'data' =>$results->data ];
+        }
+
+        return (object)['status' => 201, 'data' => $data];
+    }
+
 }
