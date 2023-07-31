@@ -172,18 +172,21 @@ trait Transaction1 {
                 'content' => '1',
                 'type' => 'Numérico',
                 'friendly_name' => 'Número do Registo'
+                
             ],
             'TIPO_INSCRICAO' => [ 
                 'position_from' => '002',
                 'position_to' => '003',
                 'size' => '002',
                 'content' => [
-                    '01' => 'CPF',
-                    '02' => 'CNPJ',
-                    '03' => 'PIS/PASEP',
-                    '98' => 'Não tem',
-                    '99' => 'Outros',
-                    'OBS' => 'Relativo ao Sacado'
+                    'title' => 'Relativo ao Sacado',
+                    'options' => [
+                        '01' => 'CPF',
+                        '02' => 'CNPJ',
+                        '03' => 'PIS/PASEP',
+                        '98' => 'Não tem',
+                        '99' => 'Outros',
+                    ]
                 ],
                 'type' => 'Numérico',
                 'friendly_name' => 'CPF ou CNPJ do Sacado'
@@ -193,8 +196,9 @@ trait Transaction1 {
                 'position_to' => '017',
                 'size' => '014',
                 'content' => 'CNPJ/CPF, Número, Filial, Controle do Sacado',
-                'type' => 'Numérico',
-                'friendly_name' => 'Número da Inscrição'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Número da Inscrição',
+                'format_as' => 'IDENTIFICATION_TYPE'
             ],
             'ZEROS_1' => [ 
                 'position_from' => '018',
@@ -216,7 +220,6 @@ trait Transaction1 {
                 'position_from' => '038',
                 'position_to' => '062',
                 'size' => '025',
-                'content' => 'Uso da Empresa',
                 'type' => 'Alfanumérico',
                 'content' => 'N° do participante',
                 'friendly_name' => 'N° Participante'
@@ -274,8 +277,10 @@ trait Transaction1 {
                 'position_to' => '107',
                 'size' => '002',
                 'content' => [
-                    '00' => 'Não foi informado parcelamento ou o parcelamento foi rejeitado',
-                    'Diferente 00' => 'Parcelamento aceito'
+                    'options' => [
+                        '00' => 'Não foi informado parcelamento ou o parcelamento foi rejeitado',
+                        'Diferente 00' => 'Parcelamento aceito'
+                    ]
                 ],
                 'type' => 'Numérico',
                 'friendly_name' => 'Parcelamento'
@@ -345,8 +350,9 @@ trait Transaction1 {
                 'position_to' => '116',
                 'size' => '006',
                 'content' => 'DDMMAA',
-                'type' => 'Numérico',
-                'friendly_name' => 'Data da Ocorrência'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Data da Ocorrência',
+                'format_as' => 'DATE'
             ],
             'NUM_DOCUMENTO' => [ 
                 'position_from' => '117',
@@ -360,7 +366,6 @@ trait Transaction1 {
                 'position_from' => '127',
                 'position_to' => '146',
                 'size' => '020',
-                'content' => 'Nº Banco',
                 'type' => 'Numérico',
                 'content' => [
                     'title' => 'Normalmente utilizamos o nosso número + dígito verificador'
@@ -372,16 +377,18 @@ trait Transaction1 {
                 'position_to' => '152',
                 'size' => '006',
                 'content' => 'DDMMAA',
-                'type' => 'Numérico',
-                'friendly_name' => 'Vencimento'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Vencimento',
+                'format_as' => 'DATE'
             ],
             'VALOR_TITULO_CENTAVOS' => [ 
                 'position_from' => '153',
                 'position_to' => '165',
                 'size' => '013',
                 'content' => 'Valor do Título',
-                'type' => 'Numérico',
-                'friendly_name' => 'Valor Título Centavos'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Valor Título Centavos',
+                'format_as' => 'CURRENCY'
             ],
             'BANCO_COBRADOR' => [ 
                 'position_from' => '166',
@@ -426,64 +433,72 @@ trait Transaction1 {
                 'position_to' => '201',
                 'size' => '013',
                 'content' => 'Valor outras despesas custas de Protesto',
-                'type' => 'Numérico',
-                'friendly_name' => 'Despesas de cobrança (Despesas de Protesto)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Despesas de cobrança (Despesas de Protesto)',
+                'format_as' => 'CURRENCY'
             ],
             'JUROS_CENTAVOS' => [ 
                 'position_from' => '202',
                 'position_to' => '214',
                 'size' => '013',
                 'content' => 'Será informado  Com zeros',
-                'type' => 'Numérico',
-                'friendly_name' => 'Despesas de cobrança (Despesas de Protesto)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Despesas de cobrança (Despesas de Protesto)',
+                'format_as' => 'CURRENCY'
             ],
             'IOF_CENTAVOS' => [ 
                 'position_from' => '215',
                 'position_to' => '227',
                 'size' => '013',
                 'content' => 'Valor do IOF',
-                'type' => 'Numérico',
-                'friendly_name' => 'Valor do IOF'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Valor do IOF',
+                'format_as' => 'CURRENCY'
             ],
             'ABATIMENTO_CENTAVOS' => [ 
                 'position_from' => '228',
                 'position_to' => '240',
                 'size' => '013',
                 'content' => 'Valor abatimento concedido',
-                'type' => 'Numérico',
-                'friendly_name' => 'Abatimento (Centavos)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Abatimento (Centavos)',
+                'format_as' => 'CURRENCY'
             ],
             'DESCONTO_CENTAVOS' => [ 
                 'position_from' => '241',
                 'position_to' => '253',
                 'size' => '013',
                 'content' => 'Valor desconto concedido',
-                'type' => 'Numérico',
-                'friendly_name' => 'Desconto (Centavos)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Desconto (Centavos)',
+                'format_as' => 'CURRENCY'
             ],
             'VALOR_PAGO_CENTAVOS' => [ 
                 'position_from' => '254',
                 'position_to' => '266',
                 'size' => '013',
                 'content' => 'Valor Pago',
-                'type' => 'Numérico',
-                'friendly_name' => 'Valor Pago (Centavos)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Valor Pago (Centavos)',
+                'format_as' => 'CURRENCY'
             ],
             'JUROS_MORA_CENTAVOS' => [ 
                 'position_from' => '267',
                 'position_to' => '279',
                 'size' => '013',
                 'content' => 'Juros de Mora',
-                'type' => 'Numérico',
-                'friendly_name' => 'Juros de Mora (Centavos)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Juros de Mora (Centavos)',
+                'format_as' => 'CURRENCY'
             ],
             'OUTROS_CREDITOS_CENTAVOS' => [ 
                 'position_from' => '280',
                 'position_to' => '292',
                 'size' => '013',
                 'content' => 'Sera informado com zeros',
-                'type' => 'Numérico',
-                'friendly_name' => 'Outros Créditos (Centavos)'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Outros Créditos (Centavos)',
+                'format_as' => 'CURRENCY'
             ],
             'BRANCOS_1' => [ 
                 'position_from' => '293',
@@ -498,8 +513,10 @@ trait Transaction1 {
                 'position_to' => '295',
                 'size' => '001',
                 'content' => [
-                    'A' => 'Aceito',
-                    'D' => 'Desprezado'
+                    'options' => [
+                        'A' => 'Aceito',
+                        'D' => 'Desprezado'
+                    ]
                 ],
                 'type' => 'Alfanumérico',
                 'friendly_name' => 'Motivo Ocorrência'
@@ -509,8 +526,9 @@ trait Transaction1 {
                 'position_to' => '301',
                 'size' => '006',
                 'content' => 'DDMMAA',
-                'type' => 'Numérico',
-                'friendly_name' => 'Data do Crédito'
+                'type' => 'Alfanumérico',
+                'friendly_name' => 'Data do Crédito',
+                'format_as' => 'DATE'
             ],
             'ORIGEM_PAGAMENTO' => [ 
                 'position_from' => '302',
@@ -540,9 +558,54 @@ trait Transaction1 {
                 'position_from' => '319',
                 'position_to' => '328',
                 'size' => '010',
-                'content' => 'Motivos das Rejeições para os Códigos de Ocorrência da Posição 109 a 110',
+                'content' => [
+                    'title' => 'Motivos das Rejeições para os Códigos de Ocorrência da Posição 109 a 110',
+                    'options' => [
+                        '02' => 'Entrada Confirmada (verificar motivo nas posições 319 a 328)',
+                        '03' => 'Entrada Rejeitada (verificar motivo nas posições 319 a 328)',
+                        '06' => 'Liquidação Normal (sem motivo)',
+                        '07' => 'Conf. Exc. Cadastro Pagador Débito (verificar motivos nas posições 319 a 328)',
+                        '08' => 'Rej. Ped. Exc. Cadastro de Pagador Débito (verificar motivos nas posições 319 a 328)',
+                        '09' => 'Baixado Automat. via Arquivo (verificar motivo posições 319 a 328)',
+                        '10' => 'Baixado conforme instruções da Agência (verificar motivo Pos.319 a 328)',
+                        '11' => 'Em Ser - Arquivo de Títulos Pendentes',
+                        '12' => 'Abatimento Concedido',
+                        '13' => 'Abatimento Cancelado',
+                        '14' => 'Vencimento Alterado',
+                        '15' => 'Liquidação em Cartório (sem motivo)',
+                        '16' => 'Título Pago em Cheque - Vinculado',
+                        '17' => 'Liquidação após Baixa ou Título não Registrado (verificar motivo nas posições 319 a 328)',
+                        '18' => 'Acerto de Depositária',
+                        '19' => 'Confirmação Receb. Inst. de Protesto (verificar motivo pos.295 a 295)',
+                        '20' => 'Confirmação Recebimento Instrução Sustação de Protesto',
+                        '21' => 'Acerto do Controle do Participante',
+                        '22' => 'Título com Pagamento Cancelado',
+                        '23' => 'Entrada do Título em Cartório',
+                        '24' => 'Entrada Rejeitada por CEP Irregular (verificar motivo pos.319 a 328)',
+                        '25' => 'Confirmação Receb.Inst.de Protesto Falimentar (verificar pos.295 a 295)',
+                        '27' => 'Baixa Rejeitada (verificar motivo posições 319 a 328)',
+                        '28' => 'Débito de Tarifas/Custas (verificar motivo nas posições 319 a 328)',
+                        '29' => 'Ocorrências do Pagador (verificar motivo nas posições 319 a 328)',
+                        '30' => 'Alteração de Outros Dados Rejeitados (verificar motivo Pos.319 a 328)',
+                        '31' => 'Confirmado Inclusão Cadastro Pagador',
+                        '32' => 'Instrução Rejeitada (verificar motivo posições 319 a 328)',
+                        '33' => 'Confirmação Pedido Alteração Outros Dados',
+                        '34' => 'Retirado de Cartório e Manutenção Carteira',
+                        '35' => 'Cancelamento do Agendamento do Débito Automático (verificar motivos pos. 319 a 328)',
+                        '37' => 'Rejeitado Inclusão Cadastro Pagador (verificar motivos nas posições 319 a 328)',
+                        '38' => 'Confirmado Alteração Pagador',
+                        '39' => 'Rejeitado Alteração Cadastro Pagador (verificar motivos nas posições 319 a 328)',
+                        '40' => 'Estorno de Pagamento',
+                        '55' => 'Sustado Judicial',
+                        '68' => 'Acerto dos Dados do Rateio de Crédito (verificar motivo posição de status do registro Tipo 3)',
+                        '69' => 'Cancelamento de Rateio (verificar motivo posição de status do registro Tipo 3)',
+                        '73' => 'Confirmação Receb. Pedido de Negativação',
+                        '74' => 'Confir Pedido de Excl de Negat (com ou sem baixa)'
+                    ]
+                ],
                 'type' => 'Alfanumérico',
-                'friendly_name' => 'Motivo Rejeição'
+                'friendly_name' => 'Motivo Rejeição',
+                'format_as' => 'REJECTION_REASON'
             ],
             'BRANCOS_3' => [ 
                 'position_from' => '329',

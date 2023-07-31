@@ -914,6 +914,15 @@ trait QtsHelpers
         return 'R$ ' . number_format($float, '2', ',', '.');
     }
 
+    public static function centsToFloat($amount_in_cents, $prefix = null)
+    {
+        $formatted= number_format($amount_in_cents / 100, 2, '.', '');
+        if ($prefix === true) {
+           return "{$prefix} {$formatted}";
+        }
+        return $formatted;
+    }
+
     public static function date(String $datetime, String $format='d/m/Y H:i')
     {
 
