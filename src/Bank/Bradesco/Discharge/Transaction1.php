@@ -171,7 +171,7 @@ trait Transaction1 {
                 'size' => '001',
                 'content' => '1',
                 'type' => 'Numérico',
-                'friendly_name' => 'Número do Registo'
+                'friendly_name' => 'Tipo da Transação'
                 
             ],
             'TIPO_INSCRICAO' => [ 
@@ -189,7 +189,7 @@ trait Transaction1 {
                     ]
                 ],
                 'type' => 'Numérico',
-                'friendly_name' => 'CPF ou CNPJ do Sacado'
+                'friendly_name' => 'Tipo de Identificação'
             ],
             'NUM_INSCRICAO' => [ 
                 'position_from' => '004',
