@@ -1496,6 +1496,26 @@ trait QtsHelpers
     {
         return preg_replace('/\s{2,}/', ' ', $string);
     }
+
+    public static function platformsToArray($data)
+    {
+
+        $new_data = [];
+        foreach($data as $d):
+            $usu_ids = explode(',',$d);
+
+            if(!is_array($usu_ids)){
+                $new_data[] = (int)$d;
+                continue;
+            }
+
+            foreach($usu_ids as $usu_id):
+                $new_data[] = (int)$usu_id;
+            endforeach;
+        endforeach;
+        return $new_data;
+
+    }
     
 
 }
