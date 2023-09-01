@@ -1001,7 +1001,7 @@ trait QtsHelpers
 
     }
 
-    public static function extractBase64($request, $input_name, $md5=false)
+    public static function extractBase64($request, $input_name, $create_hash=false)
     {
 
         if(!$request->has($input_name)){ return []; }
@@ -1011,25 +1011,39 @@ trait QtsHelpers
         foreach($request->all() as $key => $value):
             if($key === $input_name):
 
-                foreach($value as $remittance):
+                foreach($value as $file):
 
-                    if(isset($remittance['filename']) && isset($remittance['base64'])){
+                    if(isset($file['filename']) && isset($file['base64'])){
         
                         $file_info = finfo_open();
 
-                        $filename = Qts::cleanUpString($remittance['filename']);
+                        $filename = Qts::cleanUpString($file['filename']);
             
-                        if(isset($md5) && $md5){
-                            $original_filename = explode('.', $remittance['filename']);
+                        if(isset($create_hash) && $create_hash){
+                            $original_filename = explode('.', $file['filename']);
                             $count = count($original_filename);
                             $extension = $original_filename[ $count - 1];
-                            $filename = md5(Qts::cleanUpString($remittance['filename'])) . '.' . $extension;
+
+                            switch(strtoupper($create_hash)){
+                                case 'MD5': 
+                                    $filename = md5(Qts::cleanUpString($file['filename'])) . '.' . $extension;
+                                    break;
+            
+                                case 'UUID': 
+                                    $filename = (string)\Str::uuid() . '.' . $extension;
+                                    break;
+            
+                                default:
+                                    $filename = md5(Qts::cleanUpString($file['filename'])) . '.' . $extension;
+                                    
+                            }
+
                         }
 
                         $converted[] = (object)[
                             'filename' => $filename,
-                            'base64' => $remittance['base64'],
-                            'mimetype' =>finfo_buffer($file_info, base64_decode($remittance['base64']), FILEINFO_MIME_TYPE)
+                            'base64' => $file['base64'],
+                            'mimetype' =>finfo_buffer($file_info, base64_decode($file['base64']), FILEINFO_MIME_TYPE)
                         ];     
         
                     }
