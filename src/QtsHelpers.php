@@ -224,6 +224,22 @@ trait QtsHelpers
                 break;
 
             /** Status */
+
+            case 'ONGOING':
+                $string = 'Em andamento';
+                $badge = 'success';
+                break;
+            
+            case 'CANCELED':
+                $string = 'Cancelado';
+                $badge = 'danger';
+                break;
+
+            case 'FINISHED':
+                $string = 'Finalizado';
+                $badge = 'success';
+                break;
+
             case 'RECEIVED':
                 $string = 'Recebido';
                 $badge = 'success';
