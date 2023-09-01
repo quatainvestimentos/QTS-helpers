@@ -954,30 +954,45 @@ trait QtsHelpers
         return $string;
     }
 
-    public static function convertToBase64($request, $input_name, $md5=false)
+    public static function convertToBase64($request, $input_name, $create_hash=false)
     {
 
         if( !$request->hasFile($input_name) ){ return []; }
 
         $converted = [];            
-        foreach($request->file($input_name) as $remittance):
+        foreach($request->file($input_name) as $file):
 
             $file_info = finfo_open();
-            $content = file_get_contents($remittance);
+            $content = file_get_contents($file);
 
-            $filename = Qts::cleanUpString($remittance->getClientOriginalName());
+            $filename = Qts::cleanUpString($file->getClientOriginalName());
             
-            if(isset($md5) && $md5){
-                $original_filename = explode('.', $remittance->getClientOriginalName());
+            if(isset($create_hash) && $create_hash){
+                $original_filename = explode('.', $file->getClientOriginalName());
                 $count = count($original_filename);
                 $extension = $original_filename[ $count - 1];
-                $filename = md5($remittance->getClientOriginalName()) . '.' . $extension;
+
+                switch(strtoupper($create_hash)){
+                    case 'MD5': 
+                        $filename = md5($file->getClientOriginalName()) . '.' . $extension;
+                        break;
+
+                    case 'UUID': 
+                        $filename = (string)\Str::uuid() . '.' . $extension;
+                        break;
+
+                    default:
+                        $filename = md5($file->getClientOriginalName()) . '.' . $extension;
+                        
+                }
+
+                
             }
 
             $converted[] = (object)[
                 'filename' => $filename,
                 'base64' => base64_encode($content),
-                'mimetype' => $remittance->getClientMimeType()
+                'mimetype' => $file->getClientMimeType()
             ];
 
         endforeach;
