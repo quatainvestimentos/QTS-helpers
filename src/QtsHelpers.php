@@ -738,6 +738,11 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'WRITTEN_OFF':
+                $string = 'Baixado';
+                $badge = 'warning';
+                break;
+
             /** Default */
             default:
                 $string = 'Não encontrado: ' . $string;
