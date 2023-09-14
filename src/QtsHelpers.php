@@ -239,6 +239,11 @@ trait QtsHelpers
 
             /** Status */
 
+            case 'WAITING_FOR_APPROVAL':
+                $string = 'Aguardando aprovação';
+                $badge = 'warning';
+                break;
+
             case 'ONGOING':
                 $string = 'Em andamento';
                 $badge = 'success';
