@@ -6,6 +6,20 @@ date_default_timezone_set('America/Sao_Paulo');
 trait QtsHelpers 
 {
 
+    public static function publicUrl($env='LOCAL')
+    {
+
+        switch(strtoupper($env)){
+            case 'LOCAL': 
+                return 'http://local-qts.quatainvestimentos.com.br:4000/';
+            case 'TESTING': 
+                return 'https://dev-qts.quatainvestimentos.com.br/';
+            case 'PRODUCTION': 
+                return 'https://qts.quatainvestimentos.com.br/';
+        }
+
+    }
+
     public static function debug($label,$debug)
     {
         $header = <<<EOD
