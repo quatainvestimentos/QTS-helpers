@@ -229,4 +229,29 @@ trait QtsUsers
         return (object)['status' => 201, 'data' => $data];
     }
 
+    public static function letters($data) {
+
+        $words = explode(' ', $data);
+        $first_letter = $second_letter = '';
+    
+        if (count($words) >= 1) {
+            $first_letter = substr($words[0], 0, 1);
+    
+            if (count($words) >= 2) {
+                $second_letter = substr($words[1], 0, 1);
+            }
+        }
+    
+        if (count($words) > 3) {
+            return $first_letter . $second_letter;
+        }
+    
+        if (count($words) === 1) {
+            return $first_letter . substr($words[0], 1, 1);
+        }
+    
+        return $first_letter . $second_letter;
+    
+    }
+
 }
