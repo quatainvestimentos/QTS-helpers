@@ -854,6 +854,21 @@ trait QtsHelpers
                 $badge = 'warning';
                 break;
 
+            case 'GENERAL':
+                $string = 'Gerais';
+                $badge = 'warning';
+                break;
+
+            case 'SUPPORT_BOX':
+                $string = 'Notificação de Issue V02';
+                $badge = 'warning';
+                break;
+
+            case 'AUTO':
+                $string = 'Automáticos do QTS';
+                $badge = 'warning';
+                break;
+
             /** Default */
             default:
                 $string = 'Não encontrado: ' . $string;
