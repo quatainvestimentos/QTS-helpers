@@ -514,6 +514,11 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
+            case 'ACQUISITION':
+                $string = 'Captação';
+                $badge = 'primary';
+                break;
+
             case 'CUSTOMER':
                 $string = 'Cliente';
                 $badge = 'primary';
@@ -536,6 +541,11 @@ trait QtsHelpers
 
             case 'MOP':
                 $string = 'Mesa de Operações';
+                $badge = 'primary';
+                break;
+
+            case 'STRUCTURING':
+                $string = 'Estruturação';
                 $badge = 'primary';
                 break;
 
