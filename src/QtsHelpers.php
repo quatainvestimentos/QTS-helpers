@@ -1610,6 +1610,17 @@ trait QtsHelpers
         return $new_data;
 
     }
+
+    public static function strToUpper($string)
+    {
+
+        $current_encoding = mb_internal_encoding();
+        mb_internal_encoding("UTF-8");
+        $upper = mb_strtoupper($string, "UTF-8");
+        mb_internal_encoding($current_encoding);
+        return $upper;
+
+    }
     
 
 }
