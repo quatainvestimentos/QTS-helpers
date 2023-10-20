@@ -1621,6 +1621,25 @@ trait QtsHelpers
         return $upper;
 
     }
+
+    public static function getCommercialUsersArray($data)
+    {
+
+        $new_data = [];
+        foreach($data as $d):
+            $qts_commercial_ids = str_replace('"', '', $d['qts_commercial_ids']);
+            $qts_commercial_ids = explode(',', $qts_commercial_ids);
+
+            foreach($qts_commercial_ids as $id):
+                if(!in_array((int)$id, $new_data)){
+                    $new_data[] = (int)$id;
+                }
+            endforeach;
+        endforeach;
+
+        return $new_data;
+
+    }
     
 
 }
