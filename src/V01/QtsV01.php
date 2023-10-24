@@ -162,6 +162,20 @@ trait QtsV01
             case 'MULTISETORIAL': return 1; break;
             case 'PRASS_II': return 5; break;
             case 'QUATA_NX': return 33; break;
+
+            case 'QB1_FIM_HY_CP': return 29; break;
+            case 'SELECT_REFERENCIADO_DI': return 28; break;
+            case 'SELECT_LIGHT_FIRF_CP': return 25; break;
+            case 'QW1_CP_FIM': return 19; break;
+            case 'SELECT_FI_RF_CP': return 15; break;
+            case 'UNIQUE_AAA': return 30; break;
+            case 'QI_PLUS': return 35; break;
+            case 'QT_UNIQUE': return 31; break;
+            case 'QT_UNIQUE_PRIME': return 32; break;
+            case 'QUATA_CLO': return 34; break;
+            case 'QUATA_ARCEL': return 36; break;
+            case 'QI_QUATA': return 37; break;
+
             default: return null;
         }
     }
