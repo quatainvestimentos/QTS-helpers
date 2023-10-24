@@ -445,6 +445,51 @@ trait QtsHelpers
                 $badge = 'primary';
                 break;
 
+            case 'QB1_FIM_HY_CP':
+                $string = 'QB1 FIM HY CP';
+                $badge = 'primary';
+                break;
+
+            case 'SELECT_REFERENCIADO_DI':
+                $string = 'Select Referenciado DI';
+                $badge = 'primary';
+                break;
+
+            case 'SELECT_LIGHT_FIRF_CP':
+                $string = 'Select Light FIRF CP';
+                $badge = 'primary';
+                break;
+
+            case 'QW1_CP_FIM':
+                $string = 'QW1 CP FIM';
+                $badge = 'primary';
+                break;
+
+            case 'SELECT_FI_RF_CP':
+                $string = 'Select FI RF CP';
+                $badge = 'primary';
+                break;
+
+            case 'QI_PLUS':
+                $string = 'Qi Plus';
+                $badge = 'primary';
+                break;
+
+            case 'QUATA_CLO':
+                $string = 'Quatá CLO';
+                $badge = 'primary';
+                break;
+
+            case 'QUATA_ARCEL':
+                $string = 'Quatá Arcel';
+                $badge = 'primary';
+                break;
+
+            case 'QI_QUATA':
+                $string = 'Qi Quatá';
+                $badge = 'primary';
+                break;
+
             /** Bancos */
             case 'BRADESCO':
                 $string = 'Bradesco';
