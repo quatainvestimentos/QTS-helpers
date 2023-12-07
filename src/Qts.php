@@ -4,6 +4,7 @@ namespace QuataInvestimentos;
 
 use QuataInvestimentos\QtsApi;
 use QuataInvestimentos\QtsHelpers;
+use QuataInvestimentos\QtsBankSlipHelpers;
 use QuataInvestimentos\QtsIndexer;
 use QuataInvestimentos\QtsUsers;
 use QuataInvestimentos\QtsEs512;
@@ -23,6 +24,7 @@ use QuataInvestimentos\V01\DischargeController;
 class Qts {
     use QtsApi,
     QtsHelpers,
+    QtsBankSlipHelpers,
     QtsUsers,
     QtsEs512,
     QiTech,
