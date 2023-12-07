@@ -842,6 +842,11 @@ trait QtsHelpers
                 $string = 'PMTs vencendo hoje';
                 $badge = 'warning';
                 break;
+
+            case 'HOMOLOGATION':
+                $string = 'Status das homologações';
+                $badge = 'warning';
+                break;
             
             case 'ALL':
                 $string = 'Todos os alertas disponíveis';
