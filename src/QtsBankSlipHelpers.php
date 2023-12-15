@@ -81,17 +81,16 @@ trait QtsBankSlipHelpers
     {
 
         switch(strtoupper($string)){
-
             case 'CCB':
                 $string = 'CCB: Cédula de Crédito Bancário';
                 $badge = 'primary';
                 break;
             case 'CCE':
-                $string = 'CCE: Certificado de Crédito Comercial';
+                $string = 'CCE: Cédula de Crédito à Exportação';
                 $badge = 'primary';
                 break;
             case 'CCBI':
-                $string = 'CCBI';
+                $string = 'CCBI: Cédula de Crédito Bancário Habitacional';
                 $badge = 'primary';
                 break;
             case 'DISCOUNT':
@@ -99,7 +98,7 @@ trait QtsBankSlipHelpers
                 $badge = 'primary';
                 break;
             case 'NCE':
-                $string = 'Nota de Câmbio Comercial';
+                $string = 'Nota de Crédito à Exportação';
                 $badge = 'primary';
                 break;
             case 'PROMISSORY_NOTE':
