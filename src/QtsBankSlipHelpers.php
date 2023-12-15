@@ -75,6 +75,63 @@ trait QtsBankSlipHelpers
         return $string;
 
     }
+
+
+    public static function translateProductEnums(String $string, Bool $get_badge=false)
+    {
+
+        switch(strtoupper($string)){
+
+            case 'CCB':
+                $string = 'CCB: Cédula de Crédito Bancário';
+                $badge = 'primary';
+                break;
+            case 'CCE':
+                $string = 'CCE: Certificado de Crédito Comercial';
+                $badge = 'primary';
+                break;
+            case 'CCBI':
+                $string = 'CCBI';
+                $badge = 'primary';
+                break;
+            case 'DISCOUNT':
+                $string = 'Desconto';
+                $badge = 'primary';
+                break;
+            case 'NCE':
+                $string = 'Nota de Câmbio Comercial';
+                $badge = 'primary';
+                break;
+            case 'PROMISSORY_NOTE':
+                $string = 'Nota Promissória';
+                $badge = 'primary';
+                break;
+            case 'COMMERCIAL_NOTE':
+                $string = 'Nota Comercial';
+                $badge = 'primary';
+                break;
+            case 'DRAWN_RISK':
+                $string = 'Risco Sacado';
+                $badge = 'primary';
+                break;
+            case 'CDI_PLUS':
+                $string = 'CDI+';
+                $badge = 'primary';
+                break;
+            case 'PRE':
+                $string = 'Pré';
+                $badge = 'primary';
+                break;
+
+            default:
+                $string = 'Não encontrado: ' . $string;
+                $badge = 'info';
+        }
+
+        if($get_badge){ return $badge; }
+        return $string;
+
+    }
     
 
 }
