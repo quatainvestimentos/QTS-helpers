@@ -44,7 +44,7 @@ trait RemittanceController
 
         $endpoint = "v1/EnvioRemessa/index";
 
-        $results = Qts::v1Fetch('POST',$endpoint,$payload);
+        $results = Qts::v1Fetch('POST',$endpoint,$payload,true);
         $data = (isset($results->data) && $results->data ?  $results->data : []);
         
         if(!isset($results->status) || $results->status >= 400){

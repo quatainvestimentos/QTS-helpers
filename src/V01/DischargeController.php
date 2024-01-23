@@ -56,7 +56,7 @@ trait DischargeController
 
                 $endpoint = "v1/TbUpload/listagemArquivoRetorno";
 
-                $results = Qts::v1Fetch('POST',$endpoint,$payload);
+                $results = Qts::v1Fetch('POST',$endpoint,$payload,true);
                 $data_files = (isset($results->data) && $results->data ?  $results->data : []);
 
                 # Cleaning data
@@ -247,7 +247,7 @@ trait DischargeController
 
         $endpoint = "v1/TbUpload/V2ListagemArquivoRetorno";
 
-        $results = Qts::v1Fetch('POST',$endpoint,$payload);
+        $results = Qts::v1Fetch('POST',$endpoint,$payload,true);
         $data = (isset($results->data) && $results->data ?  $results->data : []);
 
         if(!isset($results->status) || $results->status >= 400){

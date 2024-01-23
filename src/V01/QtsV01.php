@@ -6,22 +6,30 @@ use QuataInvestimentos\Qts;
 trait QtsV01 
 {
 
-    public static function v1Fetch($method='GET',$endpoint,$payload=[])
+    public static function v1Fetch($method='GET',$endpoint,$payload=[],$use_static_token=false)
     {
 
         /**
          * Auth
          */
 
-        $results = Qts::QtsAccessToken();
-        if(!isset($results->status) || $results->status >= 400){
-            return (object)[
-                'status' => $results->status,
-                'data' => $results->data
-            ];
+        if(isset($use_static_token) && $use_static_token){
+            $access_token = env('QTSV1_KEYCLOAK_STATIC_TOKEN');
         }
 
-        $access_token = $results->data->access_token;
+        if(!isset($access_token)){
+
+            $results = Qts::QtsAccessToken();
+            if(!isset($results->status) || $results->status >= 400){
+                return (object)[
+                    'status' => $results->status,
+                    'data' => $results->data
+                ];
+            }
+
+            $access_token = $results->data->access_token;
+
+        }
 
         /**
          * Montar os headers

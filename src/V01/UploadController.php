@@ -49,7 +49,7 @@ trait UploadController
         ];
 
         $endpoint = "v1/TbUpload/uploadBase64";
-        $results = Qts::v1Fetch('POST',$endpoint,$payload);
+        $results = Qts::v1Fetch('POST',$endpoint,$payload,true);
         $upload_data = (isset($results->data) && $results->data ?  $results->data : []);
         
         if(!isset($results->status) || $results->status >= 400){
