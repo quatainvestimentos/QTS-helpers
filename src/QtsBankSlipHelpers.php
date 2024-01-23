@@ -131,6 +131,48 @@ trait QtsBankSlipHelpers
         return $string;
 
     }
+
+    public static function translateFrequency(String $string, Bool $get_badge=false)
+    {
+
+        switch(strtoupper($string)){
+            case 'MONTHLY':
+                $string = 'Mensal';
+                $badge = 'primary';
+                break;
+            case 'BIMONTHLY':
+                $string = 'Bimestral';
+                $badge = 'primary';
+                break;
+            case 'QUARTERLY':
+                $string = 'Trimestral';
+                $badge = 'primary';
+                break;
+            case 'SEMI_ANNUAL':
+                $string = 'Semestral';
+                $badge = 'primary';
+                break;
+            case 'ANNUAL':
+                $string = 'Anual';
+                $badge = 'primary';
+                break;
+            case 'ENDING':
+                $string = 'No final do contrato';
+                $badge = 'primary';
+                break;
+            case 'OTHER':
+                $string = 'Outro';
+                $badge = 'primary';
+                break;
+            default:
+                $string = 'Não encontrado: ' . $string;
+                $badge = 'info';
+        }
+
+        if($get_badge){ return $badge; }
+        return $string;
+
+    }
     
 
 }
