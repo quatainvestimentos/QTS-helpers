@@ -23,7 +23,6 @@ trait Transaction4 {
             case 'ENVIAR_AVISO_PROTESTO': $value = substr($line, 232, 1); break;
             case 'BRANCOS': $value = substr($line, 233, 162); break;
             case 'SEQUENCIAL': $value = substr($line, 395, 6); break;
-            
             default: return 'Coluna não aceita no extract remessa data: '. $data;
         }
 
@@ -186,7 +185,6 @@ trait Transaction4 {
             case 'ENVIAR_AVISO_PROTESTO': return substr_replace($line, $new_value, 232, 1); break;
             case 'BRANCOS': return substr_replace($line, $new_value, 233, 162); break;
             case 'SEQUENCIAL': return substr_replace($line, $new_value, 395, 6); break;
-
             default: return 'Coluna não aceita no replace remessa data: ' . $data;
         }
 
@@ -202,19 +200,18 @@ trait Transaction4 {
 
         switch(strtoupper($data)){
             case 'REGISTRO': return str_pad(substr($value, 0, 1), 1, '4', STR_PAD_LEFT); break;
-            case 'DESTINATARIO': return str_pad(substr($value, 1, 100), 100, $pad_replace, STR_PAD_RIGHT); break;
-            case 'DOCUMENTO': return str_pad(substr($value, 101, 14), 14, $pad_replace, STR_PAD_RIGHT); break;
-            case 'EMAIL': return str_pad(substr($value, 115, 100), 100, $pad_replace, STR_PAD_RIGHT); break;
-            case 'COD_PAIS': return str_pad(substr($value, 216, 2), 2, '55', STR_PAD_RIGHT); break;
-            case 'COD_AREA': return str_pad(substr($value, 218, 2), 2, '0', STR_PAD_LEFT); break;
-            case 'TELEFONE': return str_pad(substr($value, 220, 8), 8, '0', STR_PAD_LEFT); break;
-            case 'ENVIAR_SEGUNDA_VIA': return str_pad(substr($value, 229, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'ENVIAR_ANTES_VENCIMENTO': return str_pad(substr($value, 230, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'ENVIAR_DEPOIS_VENCIMENTO': return str_pad(substr($value, 231, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'ENVIAR_AVISO_PROTESTO': return str_pad(substr($value, 232, 1), 1, '0', STR_PAD_LEFT); break;
-            case 'BRANCOS': return str_pad(substr($value, 233, 162), 162, $pad_replace, STR_PAD_RIGHT); break;
-            case 'SEQUENCIAL': return str_pad(substr($value, 395, 6), 6, '0', STR_PAD_LEFT); break;
-
+            case 'DESTINATARIO': return str_pad(substr($value, 0, 100), 100, $pad_replace, STR_PAD_RIGHT); break;
+            case 'DOCUMENTO': return str_pad(substr($value, 0, 14), 14, $pad_replace, STR_PAD_RIGHT); break;
+            case 'EMAIL': return str_pad(substr($value, 0, 100), 100, $pad_replace, STR_PAD_RIGHT); break;
+            case 'COD_PAIS': return str_pad(substr($value, 0, 2), 2, '55', STR_PAD_RIGHT); break;
+            case 'COD_AREA': return str_pad(substr($value, 0, 2), 2, '0', STR_PAD_LEFT); break;
+            case 'TELEFONE': return str_pad(substr($value, 0, 8), 8, '0', STR_PAD_LEFT); break;
+            case 'ENVIAR_SEGUNDA_VIA': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'ENVIAR_ANTES_VENCIMENTO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'ENVIAR_DEPOIS_VENCIMENTO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'ENVIAR_AVISO_PROTESTO': return str_pad(substr($value, 0, 1), 1, '0', STR_PAD_LEFT); break;
+            case 'BRANCOS': return str_pad(substr($value, 0, 162), 162, $pad_replace, STR_PAD_RIGHT); break;
+            case 'SEQUENCIAL': return str_pad(substr($value, 0, 6), 6, '0', STR_PAD_LEFT); break;
             default: return 'Coluna não aceita no extract remessa data: ' . $data;
         }
     }
