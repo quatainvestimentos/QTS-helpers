@@ -36,5 +36,5 @@ class Qts {
     RemittanceController,
     UploadController,
     DischargeController,
-    FileNavigator
+    FileNavigator;
 }
