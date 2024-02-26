@@ -10,6 +10,7 @@ use QuataInvestimentos\QtsUsers;
 use QuataInvestimentos\QtsEs512;
 use QuataInvestimentos\QiTech;
 use QuataInvestimentos\AwsApi;
+use QuataInvestimentos\Permissions\FileNavigator;
 
 /**
  * V01 Integration
@@ -34,5 +35,6 @@ class Qts {
     InstructionController,
     RemittanceController,
     UploadController,
-    DischargeController;
+    DischargeController,
+    FileNavigator
 }
