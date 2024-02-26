@@ -55,7 +55,7 @@ trait FileNavigator
    
             if ($permission[0] == '-') {
                 $bloked_dir = str_replace(" ", "", substr($permission, 1));
-                if ($path == $bloked_dir) {
+                if (trim($path, "/") == trim($bloked_dir, "/")) {
                     return false;
                 }
             } else if ($permission == '*') {
@@ -76,24 +76,16 @@ trait FileNavigator
     
         if (isset($perms[$currentServer])) {
             foreach ($content['files'] as $file) {
-                if($currentPath != null){
-                    $filePath = $currentPath . '/' . $file;
-                }else{
-                    $filePath = $file;
-                }
-    
+                $filePath = $file;
+                
                 if (self::hasAccess($filePath, $perms[$currentServer])) {
                     $filteredFiles[] = $file;
                 }
             }
     
             foreach ($content['folders'] as $folder) {
-                if($currentPath != null){
-                    $folderPath = $currentPath . '/' . $folder;
-                }else{
-                    $folderPath = $folder;
-                }
-
+                $folderPath = $folder;
+                
                 if (self::hasAccess($folderPath, $perms[$currentServer])) {
                     $filteredFolders[] = $folder;
                 }
@@ -105,5 +97,6 @@ trait FileNavigator
     
         return $content;
     }
+
 
 }
