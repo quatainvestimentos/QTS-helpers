@@ -72,10 +72,10 @@ trait QtsV01
             }
             
             $response = $request->getBody()->getContents();
+            $error_message = $response;
 
         } catch (\Exception $e){
 
-            
             $exception = ($e->getMessage() ? $e->getMessage() : null);
             $data = ($exception ? $exception : json_decode($e->getResponse()->getBody()->getContents(), true));
 
@@ -86,11 +86,13 @@ trait QtsV01
             
         }
 
-        $response = json_decode($response, true); 
+        $response = json_decode($response, true);
+        $data = (isset($response['data']) && $response['data'] ? $response['data'] : strip_tags($error_message));
+        $status = (isset($response['data']) && $response['data'] ? 200 : 401);
 
         return (object)[
-            'status' => 200,
-            'data' => $response['data']
+            'status' => $status,
+            'data' => $data
         ];
 
     }
