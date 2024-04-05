@@ -51,7 +51,16 @@ trait UploadController
         $endpoint = "v1/TbUpload/uploadBase64";
         $results = Qts::v1Fetch('POST',$endpoint,$payload,true);
         $upload_data = (isset($results->data) && $results->data ?  $results->data : []);
+
+        # Verifica se houve erro no upload por parte do QTS
+        if(!$upload_data['status']){
+            return (object)[
+                'status' => 401,
+                'data' => $upload_data['data']
+            ];
+        }
         
+        # Verifica se houve erro no upload por parte da requisição via API
         if(!isset($results->status) || $results->status >= 400){
             return (object)[
                 'status' => $results->status,
