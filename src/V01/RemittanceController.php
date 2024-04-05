@@ -72,9 +72,11 @@ trait RemittanceController
 
         }
 
+        $data = (isset($data['idContrato']) && $data['idContrato'] ? ["Remessa id " . $data['idContrato'] . " cadastrada com " . count($data['titulosCadastrados']) . " título(s)"] : $data);
+
         return (object)[
             'status' => 200,
-            'data' =>  ["Remessa id " . $data['idContrato'] . " cadastrada com " . count($data['titulosCadastrados']) . " título(s)"]
+            'data' =>  $data
         ];
         
     }
