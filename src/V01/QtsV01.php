@@ -87,10 +87,11 @@ trait QtsV01
         }
 
         $response = json_decode($response, true);
+        $data = (isset($response['data']) && $response['data'] ? $response['data'] : ['A operação ocorreu com sucesso, mas não foi possível obter o retorno']);
 
         return (object)[
             'status' => 200,
-            'data' => $response['data']
+            'data' => $data
         ];
 
     }
