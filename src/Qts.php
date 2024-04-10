@@ -9,6 +9,8 @@ use QuataInvestimentos\QtsIndexer;
 use QuataInvestimentos\QtsUsers;
 use QuataInvestimentos\QtsEs512;
 use QuataInvestimentos\QiTech;
+use QuataInvestimentos\Dtvm\QiTech\QiTechDtvm;
+use QuataInvestimentos\Dtvm\QiTech\QtsDtvmEs512;
 use QuataInvestimentos\AwsApi;
 use QuataInvestimentos\Permissions\FileNavigator;
 
@@ -29,6 +31,8 @@ class Qts {
     QtsUsers,
     QtsEs512,
     QiTech,
+    QiTechDtvm,
+    QtsDtvmEs512,
     AwsApi,
     QtsV01,
     QtsIndexer,
