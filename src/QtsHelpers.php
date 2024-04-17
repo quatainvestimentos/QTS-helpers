@@ -930,6 +930,32 @@ trait QtsHelpers
 
     }
 
+    public static function translateDtvmEnums(String $string, Bool $get_badge=false)
+    {
+
+        switch(strtoupper($string)){
+
+            case 'PENDING_REGISTRY':
+                $string = 'Registro pendente';
+                $badge = 'warning';
+                break;
+
+            case 'PENDING_DOCUMENTS':
+                $string = 'Documentação pendente';
+                $badge = 'warning';
+                break;
+
+            /** Default */
+            default:
+                $string = 'Não encontrado: ' . $string;
+                $badge = 'info';
+        }
+
+        if($get_badge){ return $badge; }
+        return $string;
+
+    }
+
     public static function translateDocument(String $string)
     {
 
