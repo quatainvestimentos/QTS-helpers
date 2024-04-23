@@ -935,13 +935,98 @@ trait QtsHelpers
 
         switch(strtoupper($string)){
 
+            case 'FACTORING':
+                $string = 'Fomento Mercantil';
+                $badge = 'info';
+                break;
+
+            case 'ASSIGNOR_RISK':
+                $string = 'Risco Cedente';
+                $badge = 'info';
+                break;
+
+            case 'DEBTOR_RISK':
+                $string = 'Risco Sacado';
+                $badge = 'info';
+                break;
+
+            case 'LIMITED_ISSUER_RISK':
+                $string = 'Risco Sacado Limitado';
+                $badge = 'info';
+                break;
+
+            case 'MALE':
+                $string = 'Masculino';
+                $badge = 'warning';
+                break;
+
+            case 'FEMALE':
+                $string = 'Feminino';
+                $badge = 'warning';
+                break;
+
             case 'PENDING_REGISTRY':
                 $string = 'Registro pendente';
                 $badge = 'warning';
                 break;
 
+            case 'REGISTERED':
+                $string = 'Registrado';
+                $badge = 'success';
+                break;
+
             case 'PENDING_DOCUMENTS':
                 $string = 'Documentação pendente';
+                $badge = 'warning';
+                break;
+
+            case 'SENT_TO_ANALYSIS':
+                $string = 'Enviado para Análise';
+                $badge = 'warning';
+                break;
+
+            case 'IN_MANUAL_ANALYSIS':
+                $string = 'Em Análise Manual';
+                $badge = 'warning';
+                break;
+
+            case 'APPROVED':
+                $string = 'Aprovado';
+                $badge = 'success';
+                break;
+
+            case 'REPROVED':
+                $string = 'Reprovado';
+                $badge = 'danger';
+                break;
+
+            case 'PRESIDENT':
+                $string = 'Presidente';
+                $badge = 'warning';
+                break;
+
+            case 'PARTNER':
+                $string = 'Sócio(a)';
+                $badge = 'warning';
+                break;
+
+            case 'ADMINISTRATOR':
+                $string = 'Administrador(a)';
+                $badge = 'warning';
+                break;
+
+            case 'DIRECTOR':
+                $string = 'Diretor(a)';
+                $badge = 'warning';
+                break;
+
+            case 'MANAGER':
+                $string = 'Gestor(a)';
+                $badge = 'warning';
+                break;
+
+            case 'ATTORNEY':
+                $string = 'Procurador(a)';
                 $badge = 'warning';
                 break;
 
